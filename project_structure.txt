@@ -1,0 +1,168 @@
+retailflow/
+│
+├── docker-compose.yml                  # all services: kafka, spark, minio, postgres, mongo, mlflow, trino, prefect, grafana
+├── Makefile                            # make up / down / generate / test / lint
+├── pyproject.toml                      # deps, ruff, mypy, pytest config
+├── .env.example                        # secrets template — never commit .env
+├── README.md
+└── ARCHITECTURE.md                     # design decisions, medallion layers, entity resolution
+│
+├── infra/                              # docker service configs and init scripts
+│   ├── kafka/
+│   │   ├── topics.yml                  # topic definitions per store
+│   │   └── init-topics.sh
+│   ├── minio/
+│   │   └── init-buckets.sh             # creates bronze/silver/gold + lifecycle policies
+│   ├── postgres/
+│   │   ├── 01_schema.sql               # alpha OLTP DDL
+│   │   └── 02_seed.sql
+│   ├── mongo/
+│   │   └── init-mongo.sh               # beta collections + indexes
+│   ├── trino/
+│   │   └── catalog/delta.properties    # Trino connector for Delta Lake on MinIO
+│   └── grafana/
+│       └── provisioning/               # auto-provisioned datasources + dashboards
+│
+├── schemas/                            # single source of truth for all data contracts
+│   ├── avro/
+│   │   ├── clickstream
+│   │   │   ├── v1
+│   │   │   ├── v2
+│   │   ├── orders
+│   │   │   ├── v1
+│   │   │   ├── v2
+│   ├── bronze/                         # Pandera schemas validating raw Bronze DataFrames
+│   │   ├── clickstream.py
+│   │   ├── orders.py
+│   │   ├── users.py
+│   │   └── products.py
+│   └── silver/                         # Pandera schemas for normalised Silver DataFrames
+│       ├── sessions.py
+│       ├── orders.py
+│       ├── users.py
+│       ├── products.py
+│       └── returns.py
+│
+├── generator/                          # simulates all three stores' source systems
+│   ├── __main__.py                     # entrypoint: --store alpha|beta|gamma --rate 100
+│   ├── config.py                       # per-store settings: event rates, null rates, ID formats
+│   ├── stores/
+│   │   ├── alpha.py                    # writes Kafka + Postgres, UUID IDs, Avro v2
+│   │   ├── beta.py                     # writes Kafka + MongoDB, integer IDs, Avro v1
+│   │   └── gamma.py                    # drops CSV/JSON to MinIO, Polish columns, encoding chaos
+│   ├── entities/                       # shared Faker-based entity builders
+│   │   ├── users.py                    # generates users shared across stores for identity resolution testing
+│   │   ├── products.py                 # generates overlapping products (same EAN across stores)
+│   │   ├── orders.py
+│   │   └── sessions.py
+│   └── noise/                          # data quality degradation helpers
+│       ├── nullify.py                  # randomly nulls fields per store null-rate config
+│       ├── corrupt.py                  # date format randomiser, encoding corruptor, fraction/percent flipper
+│       └── duplicate.py               # injects duplicate event_ids to test dedup logic
+│
+├── ingestion/                          # Bronze layer — three ingestion patterns
+│   ├── streaming/                      # PySpark Structured Streaming — Kafka → Bronze
+│   │   ├── clickstream_consumer.py     # alpha + beta → bronze/clickstream/store=X/date=Y/
+│   │   ├── orders_consumer.py
+│   │   └── avro_deserializer.py        # handles v1 and v2 schema versions transparently
+│   ├── batch/                          # scheduled DB extracts
+│   │   ├── postgres_extract.py         # incremental on updated_at with clock-skew buffer
+│   │   └── mongo_extract.py            # incremental on updatedAt — handles 3 document archetypes
+│   ├── files/                          # gamma file drop ingestion
+│   │   ├── file_watcher.py             # polls MinIO landing zone, routes by filename pattern
+│   │   ├── csv_loader.py               # encoding detection, BOM strip, column name normalisation
+│   │   └── json_loader.py              # returns JSON — coerces WMS items object→array bug
+│   └── base.py                         # shared Bronze writer: partitioning, Delta append, metadata injection
+│
+├── processing/
+│   ├── bronze_to_silver/
+│   │   ├── clickstream.py              # dedup on event_id, watermark, session boundary detection
+│   │   ├── orders.py                   # ID namespacing, v1/v2 reconciliation, currency tagging
+│   │   ├── users.py                    # PII hashing, legacy ID normalisation, GDPR gating
+│   │   ├── products.py                 # MongoDB archetype detection, tag dedup, image URL validation
+│   │   ├── returns.py                  # reason_code + condition mapping, timezone → UTC
+│   │   └── promotions.py               # column name resolver, date parser, discount normaliser
+│   ├── entity_resolution/
+│   │   ├── user_resolver.py            # email_hash → phone_hash → probabilistic, confidence scoring
+│   │   ├── product_resolver.py         # EAN exact match → name TF-IDF similarity
+│   │   └── id_mapping.py              # persists store_id → global_id mapping table to Delta
+│   ├── silver_to_gold/
+│   │   ├── unified_orders.py           # cross-store consolidation, PLN normalisation via fx_rates
+│   │   ├── user_features.py            # cross-store LTV, purchase freq, category affinity, abandon rate
+│   │   ├── training_dataset.py         # label: purchased within 24h of session — versioned snapshots
+│   │   └── business_metrics.py         # GMV, conversion rate, return rate per store per period
+│   └── common/                         # shared Spark helpers
+│       ├── spark_session.py            # SparkSession factory with Delta + MinIO S3A config
+│       ├── delta_writer.py             # merge/append/overwrite wrappers with partition management
+│       ├── fx_rates.py                 # daily EUR/GBP→PLN rates from MinIO reference table
+│       └── pii.py                      # SHA-256 helpers, IP masking, field exclusion
+│
+├── data_quality/                       # Great Expectations
+│   ├── expectations/                   # one suite per Bronze table
+│   │   ├── bronze_clickstream.json
+│   │   ├── bronze_orders.json
+│   │   ├── bronze_users.json
+│   │   └── bronze_products.json
+│   ├── checkpoints.py                  # GX checkpoint runner — called by Prefect before Silver write
+│   └── custom_expectations.py          # e.g. expect_items_to_be_array, expect_discount_normalised
+│
+├── dbt/                                # SQL transformations on Gold via Trino
+│   ├── dbt_project.yml
+│   ├── profiles.yml                    # Trino connection to Gold Delta tables
+│   ├── models/
+│   │   ├── staging/                    # light renames/casts on Gold Delta tables
+│   │   │   ├── stg_unified_orders.sql
+│   │   │   ├── stg_global_users.sql
+│   │   │   └── stg_global_products.sql
+│   │   └── marts/                      # business-facing aggregates
+│   │       ├── mart_store_performance.sql   # GMV, AOV, conversion per store per week
+│   │       ├── mart_customer_ltv.sql        # cross-store LTV, cohort, loyalty tier
+│   │       └── mart_product_performance.sql # revenue, return rate, category rollup
+│   ├── tests/                          # not_null, unique, accepted_values, relationships
+│   └── macros/                         # currency_to_pln(), hash_pii(), safe_divide()
+│
+├── ml/
+│   ├── features/
+│   │   ├── feature_store.yaml          # Feast feature repo definition
+│   │   ├── user_feature_view.py        # Feast FeatureView on Gold user_features Delta table
+│   │   └── session_feature_view.py     # real-time session features for online inference
+│   ├── training/
+│   │   ├── train.py                    # LightGBM via PySpark pandas UDF, logs to MLflow
+│   │   ├── evaluate.py                 # AUC, precision@k, lift curve — logged to MLflow
+│   │   ├── register.py                 # promotes model to registry on threshold pass
+│   │   └── params.yaml                 # hyperparameters, feature list, label definition
+│   └── serving/
+│       ├── app.py                      # FastAPI: /predict, /health, /model-info
+│       ├── predictor.py                # loads model from MLflow, pulls features from Feast
+│       ├── schemas.py                  # Pydantic request/response models
+│       └── Dockerfile                  # slim serving image, separate from Spark images
+│
+├── orchestration/                      # Prefect flows
+│   ├── flows/
+│   │   ├── bronze_ingestion.py         # daily: Postgres + Mongo extract + gamma file pickup
+│   │   ├── bronze_to_silver.py         # GX gate → normalise → write Silver Delta
+│   │   ├── silver_to_gold.py           # entity resolution → features → Gold write
+│   │   ├── ml_training.py              # weekly: build dataset → train → evaluate → register
+│   │   └── dbt_run.py                  # triggers dbt after Gold write completes
+│   └── tasks/
+│       └── notifications.py            # Slack alert on flow failure
+│
+├── tests/
+│   ├── unit/                           # pure Python — no Spark, no external services
+│   │   ├── test_noise.py
+│   │   ├── test_pii.py
+│   │   ├── test_csv_loader.py          # encoding detection, column variants, date formats
+│   │   └── test_entity_resolution.py   # matching logic, confidence scoring edge cases
+│   ├── integration/                    # PySpark + local MinIO via testcontainers
+│   │   ├── test_bronze_to_silver.py    # full pipeline run on small fixture DataFrames
+│   │   └── test_delta_writer.py        # merge, append, idempotency
+│   └── fixtures/                       # small sample data per source and schema version
+│       ├── alpha_clickstream_v2.py
+│       ├── beta_orders_v1.py
+│       └── gamma_orders_corrupt.py     # intentionally messy for normalisation tests
+│
+└── notebooks/                          # exploration only — not part of the pipeline
+    ├── 01_eda_bronze.ipynb             # null rates, schema drift, data quality overview
+    ├── 02_entity_resolution.ipynb      # match rate, confidence distribution across stores
+    ├── 03_feature_analysis.ipynb       # feature importance, label distribution, leakage check
+    └── 04_model_evaluation.ipynb       # AUC curves, calibration, per-store breakdown

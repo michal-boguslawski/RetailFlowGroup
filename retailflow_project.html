@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RetailFlow Group — Project Reference</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --bg:        #0d0f14;
+    --bg2:       #13161e;
+    --bg3:       #1b1f2b;
+    --border:    #252a38;
+    --text:      #c8cdd8;
+    --muted:     #5a6278;
+    --heading:   #e8eaf0;
+    --alpha:     #4e9eff;
+    --beta:      #a78bfa;
+    --gamma:     #34d399;
+    --warn:      #fb923c;
+    --accent:    #4e9eff;
+    --tag-bg:    #1a2035;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 48px 64px 40px;
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+  }
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  header h1 {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--heading);
+    letter-spacing: -.02em;
+  }
+  header h1 strong { font-weight: 600; color: var(--alpha); }
+  .header-meta {
+    margin-left: auto;
+    text-align: right;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 2;
+  }
+  .store-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+  }
+  .pill-alpha { background: #0d2240; color: var(--alpha); }
+  .pill-beta  { background: #1e1535; color: var(--beta);  }
+  .pill-gamma { background: #0a2620; color: var(--gamma); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 64px;
+    display: flex;
+    gap: 0;
+  }
+  nav a {
+    display: block;
+    padding: 14px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  nav a:hover { color: var(--heading); border-color: var(--border); }
+
+  /* ── LAYOUT ── */
+  main { padding: 0 64px 80px; max-width: 1400px; }
+
+  section { padding-top: 56px; }
+  section + section { border-top: 1px solid var(--border); margin-top: 56px; }
+
+  h2 {
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--heading);
+    margin-bottom: 12px;
+  }
+  h4 {
+    font-size: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 20px 0 10px;
+  }
+  p { color: var(--text); margin-bottom: 12px; max-width: 780px; }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+  }
+  .card-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .card h3 { font-size: 15px; margin-bottom: 8px; }
+  .card p  { font-size: 13px; margin-bottom: 0; max-width: none; }
+
+  /* ── STORE OVERVIEW TABLE ── */
+  .store-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .store-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 400;
+  }
+  .store-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .store-table tr:last-child td { border-bottom: none; }
+  .store-table tr:hover td { background: var(--bg2); }
+
+  /* ── SCHEMA BLOCKS ── */
+  .schema-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 900px) { .schema-grid { grid-template-columns: 1fr; } }
+
+  .schema-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .schema-block.full { grid-column: 1 / -1; }
+
+  .schema-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg3);
+  }
+  .schema-header .source-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .schema-header .source-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  .field-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .field-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 16px;
+    text-align: left;
+    font-weight: 400;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg3);
+  }
+  .field-table td {
+    padding: 7px 16px;
+    border-bottom: 1px solid #1a1f2c;
+    vertical-align: top;
+  }
+  .field-table tr:last-child td { border-bottom: none; }
+  .field-table .fname {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--alpha);
+    white-space: nowrap;
+  }
+  .field-table .ftype {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--beta);
+    white-space: nowrap;
+  }
+  .field-table .fdesc { color: var(--text); }
+  .field-table .fnull { color: var(--warn); font-family: 'IBM Plex Mono', monospace; font-size: 10px; }
+
+  /* ── ISSUES LIST ── */
+  .issues-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .issues-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    padding: 8px 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .issue-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 1px;
+  }
+  .tag-null    { background: #2d1a00; color: var(--warn); }
+  .tag-format  { background: #0d2240; color: var(--alpha); }
+  .tag-schema  { background: #1e1535; color: var(--beta); }
+  .tag-pii     { background: #1a0d1a; color: #e879f9; }
+  .tag-dedup   { background: #0a2620; color: var(--gamma); }
+  .tag-type    { background: #1a1a00; color: #fbbf24; }
+
+  /* ── MERMAID ── */
+  .mermaid-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px;
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+  .mermaid { min-width: 900px; }
+
+  /* ── TECH STACK ── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .tech-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tech-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .tech-role { font-size: 12px; color: var(--muted); }
+
+  /* ── BUILD TIMELINE ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+    border-left: 2px solid var(--border);
+    margin-left: 8px;
+    padding-left: 28px;
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -36px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .tl-week {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .tl-title { font-size: 14px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+  .tl-desc  { font-size: 13px; color: var(--text); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-eyebrow">Portfolio Project · Data Engineering + ML Pipelines</div>
+    <h1><strong>RetailFlow</strong> Group</h1>
+    <p style="margin-top:10px;font-size:13px;color:var(--muted);max-width:560px;">
+      A multi-store retail data lakehouse — three independent brands, one unified data lake,
+      real-time streaming, entity resolution, and a purchase-propensity ML pipeline.
+    </p>
+  </div>
+  <div class="header-meta">
+    <div><span class="store-pill pill-alpha">ALPHA</span> Premium Electronics</div>
+    <div><span class="store-pill pill-beta">BETA</span> Fashion &amp; Clothing</div>
+    <div><span class="store-pill pill-gamma">GAMMA</span> Home &amp; Lifestyle (legacy)</div>
+  </div>
+</header>
+
+<nav>
+  <a href="#overview">Overview</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#stores">Stores</a>
+  <a href="#schemas">Schemas</a>
+  <a href="#issues">Data Issues</a>
+  <a href="#stack">Tech Stack</a>
+  <a href="#timeline">Build Plan</a>
+</nav>
+
+<main>
+
+<!-- ── OVERVIEW ── -->
+<section id="overview">
+  <h2>Project Overview</h2>
+  <p>
+    RetailFlow Group is a fictional retail holding company that operates three independent store brands,
+    each with its own OLTP systems, event formats, and data quality characteristics. The project
+    simulates the real-world challenge of consolidating heterogeneous sources into a single
+    medallion-architecture data lakehouse (MinIO + Delta Lake), applying entity resolution to
+    produce global user and product identities, and ultimately training a purchase-propensity model.
+  </p>
+  <p>
+    The three ingestion patterns — Kafka streaming, Spark batch DB extract, and file drops — are
+    not distributed artificially. Each store uses the pattern that fits its maturity level, which
+    is exactly how this looks in production at a real company post-acquisition.
+  </p>
+
+  <div class="card-grid" style="margin-top:24px;">
+    <div class="card">
+      <div class="card-label">Core challenge</div>
+      <h3>Entity Resolution</h3>
+      <p>The same customer shops all three stores. Each store assigns its own user ID. Silver layer must stitch identities via email hash, phone hash, and probabilistic matching.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Core challenge</div>
+      <h3>Schema Heterogeneity</h3>
+      <p>Same concepts, different shapes: camelCase vs snake_case, UUID vs integer IDs, flat vs nested price structures, boolean vs 0/1 flags — all across three stores.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Core challenge</div>
+      <h3>Order ID Collisions</h3>
+      <p>All three stores use sequential integer order IDs. order_id=10042 exists in all three. Bronze must namespace with store_id before deduplication.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">ML goal</div>
+      <h3>Purchase Propensity</h3>
+      <p>Gold layer features feed a cross-store model predicting purchase probability per user per session. Served via FastAPI with real-time feature lookup from the feature store.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHITECTURE ── -->
+<section id="architecture">
+  <h2>Architecture Diagram</h2>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    subgraph SRC_A["store_alpha — Premium Electronics"]
+        A_GEN[Python Generator]
+        A_PG[(PostgreSQL\nUsers · Orders)]
+        A_KAFKA[Kafka Topics\nAvro v2.1\nclickstream · orders]
+    end
+
+    subgraph SRC_B["store_beta — Fashion & Clothing"]
+        B_GEN[Python Generator]
+        B_MONGO[(MongoDB\nCatalog · Profiles)]
+        B_KAFKA[Kafka Topics\nAvro v1.3\nclickstream · orders]
+    end
+
+    subgraph SRC_G["store_gamma — Home & Lifestyle (legacy)"]
+        G_GEN[Python Generator]
+        G_FILES[File Drops\nCSV · JSON\norders · users · catalog · returns]
+    end
+
+    subgraph INGEST["Ingestion Layer"]
+        STREAM[PySpark\nStructured Streaming]
+        JDBC[Spark JDBC\nIncremental Extract]
+        MONGO_SPARK[Spark Mongo\nConnector]
+        FILE_INGEST[File Watcher\nMinIO trigger]
+    end
+
+    subgraph BRONZE["MinIO — Bronze  /  raw · immutable · partitioned by store + date"]
+        BR_CL[clickstream/\nalpha · beta]
+        BR_ORD[orders_stream/\nalpha · beta]
+        BR_PG[postgres_extract/\nalpha_users · alpha_orders]
+        BR_MG[mongo_extract/\nbeta_catalog · beta_profiles]
+        BR_FL[file_drops/\ngamma_orders · gamma_users\ngamma_catalog · gamma_returns]
+    end
+
+    subgraph SILVER["MinIO — Silver  /  Delta Lake · cleaned · typed · deduplicated"]
+        SI_USERS[users/\nnormalised per store]
+        SI_ORDERS[orders/\nprefixed IDs · unified currency]
+        SI_PRODUCTS[products/\nnormalised catalog]
+        SI_CLICKS[sessions/\nstitched · watermarked]
+        SI_RETURNS[returns/\nnormalised reason codes]
+    end
+
+    subgraph RESOLVE["Entity Resolution  —  PySpark"]
+        ER_USER[Global User ID\nemail hash · phone hash\nconfidence score]
+        ER_PROD[Global Product ID\nname similarity · barcode match]
+    end
+
+    subgraph GOLD["MinIO — Gold  /  Delta Lake · features · aggregates · ML-ready"]
+        GO_USERS[global_users/]
+        GO_PRODS[global_products/]
+        GO_ORDERS[unified_orders/]
+        GO_FEAT[user_features/\ncross-store LTV · affinities]
+        GO_TRAIN[training_dataset/\nlabelled · versioned]
+        GO_METRICS[business_metrics/]
+    end
+
+    subgraph PROC["Processing Orchestration — Prefect"]
+        GX[Great Expectations\nData Quality Gates]
+        DBT[dbt\nSQL on Gold]
+    end
+
+    subgraph CONSUME["Consumption"]
+        FEAST[Feast\nFeature Store]
+        MLFLOW[MLflow\nExperiment Tracking\nModel Registry]
+        FASTAPI[FastAPI\nModel Serving\n/predict]
+        TRINO[Trino\nAd-hoc SQL on Lakehouse]
+        GRAFANA[Grafana\nDashboards]
+    end
+
+    A_GEN -->|events| A_KAFKA
+    A_GEN -->|inserts| A_PG
+    B_GEN -->|events| B_KAFKA
+    B_GEN -->|inserts| B_MONGO
+    G_GEN -->|drops files| G_FILES
+
+    A_KAFKA --> STREAM --> BR_CL & BR_ORD
+    B_KAFKA --> STREAM
+
+    A_PG --> JDBC --> BR_PG
+    B_MONGO --> MONGO_SPARK --> BR_MG
+    G_FILES --> FILE_INGEST --> BR_FL
+
+    BR_CL & BR_ORD & BR_PG & BR_MG & BR_FL --> GX
+    GX --> SI_USERS & SI_ORDERS & SI_PRODUCTS & SI_CLICKS & SI_RETURNS
+
+    SI_USERS --> ER_USER --> GO_USERS
+    SI_PRODUCTS --> ER_PROD --> GO_PRODS
+    SI_ORDERS --> GO_ORDERS
+    SI_CLICKS & GO_USERS & GO_ORDERS --> GO_FEAT
+    GO_FEAT & GO_ORDERS --> GO_TRAIN
+    GO_ORDERS & GO_USERS --> GO_METRICS
+
+    GO_METRICS --> DBT
+    GO_FEAT --> FEAST
+    GO_TRAIN --> MLFLOW
+    MLFLOW --> FASTAPI
+    FEAST --> FASTAPI
+    GO_METRICS --> GRAFANA
+    GOLD --> TRINO
+    </div>
+  </div>
+</section>
+
+<!-- ── STORES ── -->
+<section id="stores">
+  <h2>Store Profiles</h2>
+  <table class="store-table">
+    <thead>
+      <tr>
+        <th>Store</th>
+        <th>Domain</th>
+        <th>Sources</th>
+        <th>Ingestion</th>
+        <th>ID format</th>
+        <th>Encoding</th>
+        <th>Quirks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="store-pill pill-alpha">ALPHA</span></td>
+        <td>Premium Electronics</td>
+        <td>Kafka + PostgreSQL</td>
+        <td>Streaming + Spark JDBC</td>
+        <td>UUID strings</td>
+        <td>UTF-8</td>
+        <td>Avro v2.1 · most complete data · client-clock drift in events</td>
+      </tr>
+      <tr>
+        <td><span class="store-pill pill-beta">BETA</span></td>
+        <td>Fashion &amp; Clothing</td>
+        <td>Kafka + MongoDB</td>
+        <td>Streaming + Spark Mongo connector</td>
+        <td>Integer strings</td>
+        <td>UTF-8</td>
+        <td>Avro v1.3 (old) · camelCase fields · 3 document archetypes in Mongo · EN/PL mixed text</td>
+      </tr>
+      <tr>
+        <td><span class="store-pill pill-gamma">GAMMA</span></td>
+        <td>Home &amp; Lifestyle</td>
+        <td>CSV + JSON file drops</td>
+        <td>File watcher → MinIO Bronze</td>
+        <td>Legacy sequential int</td>
+        <td>Windows-1250 / UTF-8 mixed</td>
+        <td>No streaming · weekly batch · column name chaos · date format chaos · WMS bugs</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── SCHEMAS ── -->
+<section id="schemas">
+  <h2>Source Schemas</h2>
+
+  <!-- ── ALPHA KAFKA CLICKSTREAM ── -->
+  <h3 style="margin-bottom:16px;">store_alpha — Kafka Clickstream <span style="font-size:13px;font-weight:300;color:var(--muted)">(Avro topic: alpha.clickstream)</span></h3>
+  <div class="schema-block full" style="margin-bottom:32px;">
+    <div class="schema-header">
+      <span class="store-pill pill-alpha">ALPHA</span>
+      <span class="source-name">ClickstreamEvent v2.1</span>
+      <span class="source-desc">Frontend tracking · ~40% anonymous · client clock unreliable</span>
+    </div>
+    <table class="field-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">event_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">UUID v4, client-generated. Duplicates possible on retry — deduplicate in Silver.</td></tr>
+        <tr><td class="fname">event_type</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">page_view | product_view | search | add_to_cart | remove_from_cart | checkout_start | checkout_abandon</td></tr>
+        <tr><td class="fname">event_ts</td><td class="ftype">long (ms)</td><td class="fnull">NO</td><td class="fdesc">Client clock. Can be future-dated or hours behind. Use received_ts for ordering.</td></tr>
+        <tr><td class="fname">received_ts</td><td class="ftype">long (ms)</td><td class="fnull">NO</td><td class="fdesc">Server ingestion timestamp. Authoritative for ordering and watermarking.</td></tr>
+        <tr><td class="fname">store_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Always "alpha". Injected by ingestion layer for multi-store namespacing.</td></tr>
+        <tr><td class="fname">session_id</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Null if cookie blocked or on first event before session init (~8%).</td></tr>
+        <tr><td class="fname">user_id</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Null for anonymous users (~42%). UUID format. Populated after login within session.</td></tr>
+        <tr><td class="fname">anonymous_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Fingerprint-based. Always present. Used to stitch pre/post-login events.</td></tr>
+        <tr><td class="fname">product_id</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Present only for product_view, add_to_cart, remove_from_cart events.</td></tr>
+        <tr><td class="fname">search_query</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Raw string. May contain PII, typos, HTML/XSS attempts. Sanitise before Silver.</td></tr>
+        <tr><td class="fname">page_url</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Full URL incl. query params. Null on native app events.</td></tr>
+        <tr><td class="fname">device_type</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">desktop | mobile | tablet | unknown</td></tr>
+        <tr><td class="fname">ip_address</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">IPv4 or IPv6. Null when GDPR anonymisation flag set. Must be masked before Silver.</td></tr>
+        <tr><td class="fname">country_code</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">ISO 3166-1 alpha-2. Derived from IP — may lag VPN use.</td></tr>
+        <tr><td class="fname">ab_variant</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">A/B test bucket. Null if user not in any active experiment.</td></tr>
+        <tr><td class="fname">scroll_depth_pct</td><td class="ftype">float?</td><td class="fnull">YES</td><td class="fdesc">0–100. page_view only. Null on mobile native app.</td></tr>
+        <tr><td class="fname">schema_version</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">"2.1.0". alpha only — beta still on 1.3.0 with missing fields.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── ALPHA/BETA KAFKA ORDERS ── -->
+  <h3 style="margin-bottom:16px;">store_alpha + store_beta — Kafka Orders <span style="font-size:13px;font-weight:300;color:var(--muted)">(Avro topics: alpha.orders, beta.orders)</span></h3>
+  <div class="schema-block full" style="margin-bottom:32px;">
+    <div class="schema-header">
+      <span class="store-pill pill-alpha">ALPHA</span>
+      <span class="store-pill pill-beta">BETA</span>
+      <span class="source-name">OrderEvent — v2.1 (alpha) / v1.3 (beta)</span>
+      <span class="source-desc">Full order lifecycle on one topic · guest orders · currency differences</span>
+    </div>
+    <table class="field-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes / Differences between stores</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">event_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">UUID (alpha) vs "EVT-{int}" string (beta).</td></tr>
+        <tr><td class="fname">event_type</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">order_created | payment_initiated | payment_confirmed | payment_failed | shipped | delivered | return_requested | refunded | cancelled</td></tr>
+        <tr><td class="fname">event_ts</td><td class="ftype">long (ms)</td><td class="fnull">NO</td><td class="fdesc">Server-side on alpha. Client-side on beta (unreliable).</td></tr>
+        <tr><td class="fname">store_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">"alpha" or "beta". Critical for order ID namespacing.</td></tr>
+        <tr><td class="fname">order_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Sequential integers in both stores. COLLISIONS GUARANTEED. Prefix with store_id in Bronze.</td></tr>
+        <tr><td class="fname">user_id</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Null for guest checkouts (~12% alpha, ~18% beta). UUID (alpha) vs integer string (beta).</td></tr>
+        <tr><td class="fname">guest_email</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Plain text on alpha (v2.1). Missing entirely on beta v1.3 — not in schema.</td></tr>
+        <tr><td class="fname">currency</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">alpha: PLN/EUR/GBP. beta: EUR/PLN mixed. Must normalise to PLN equivalent in Gold.</td></tr>
+        <tr><td class="fname">total_amount</td><td class="ftype">double?</td><td class="fnull">YES</td><td class="fdesc">Null on non-financial events (shipped, delivered). Called "totalPrice" in beta v1.3.</td></tr>
+        <tr><td class="fname">tax_amount</td><td class="ftype">double?</td><td class="fnull">YES</td><td class="fdesc">Null when calculated at fulfilment. Missing entirely in beta v1.3.</td></tr>
+        <tr><td class="fname">items</td><td class="ftype">array</td><td class="fnull">NO</td><td class="fdesc">Empty array on non-order events. beta v1.3: "lineItems" not "items". Item fields differ (see below).</td></tr>
+        <tr><td class="fname">items[].product_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">alpha: "prod_{uuid}". beta: integer string. Must map to global_product_id.</td></tr>
+        <tr><td class="fname">items[].discount_pct</td><td class="ftype">float?</td><td class="fnull">YES</td><td class="fdesc">0–100 on alpha. 0.0–1.0 fraction on beta. Normalise in Silver.</td></tr>
+        <tr><td class="fname">failure_reason</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Present on payment_failed, cancelled only. Free text — inconsistent values.</td></tr>
+        <tr><td class="fname">schema_version</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">"2.1.0" (alpha) or "1.3.0" (beta). Consumer must handle both shapes.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── ALPHA POSTGRES ── -->
+  <h3 style="margin-bottom:16px;">store_alpha — PostgreSQL OLTP <span style="font-size:13px;font-weight:300;color:var(--muted)">(Spark JDBC incremental on updated_at)</span></h3>
+  <div class="schema-grid" style="margin-bottom:32px;">
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-alpha">ALPHA</span>
+        <span class="source-name">users</span>
+        <span class="source-desc">Registered only · mixed ID formats</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">user_id</td><td class="ftype">VARCHAR(64)</td><td class="fnull">NO</td><td class="fdesc">UUID post-2021. Integer string for legacy rows (~15%).</td></tr>
+          <tr><td class="fname">email</td><td class="ftype">VARCHAR(255)</td><td class="fnull">NO</td><td class="fdesc">Identity resolution key. Lowercase but not guaranteed.</td></tr>
+          <tr><td class="fname">phone</td><td class="ftype">VARCHAR(32)</td><td class="fnull">YES</td><td class="fdesc">E.164 format not enforced. ~60% populated.</td></tr>
+          <tr><td class="fname">first_name</td><td class="ftype">VARCHAR(128)</td><td class="fnull">YES</td><td class="fdesc">Null for social login users who skip profile.</td></tr>
+          <tr><td class="fname">date_of_birth</td><td class="ftype">DATE</td><td class="fnull">YES</td><td class="fdesc">Only collected for age-restricted products (~30%).</td></tr>
+          <tr><td class="fname">loyalty_tier</td><td class="ftype">VARCHAR(32)</td><td class="fnull">NO</td><td class="fdesc">standard | silver | gold | vip</td></tr>
+          <tr><td class="fname">acquisition_channel</td><td class="ftype">VARCHAR(64)</td><td class="fnull">YES</td><td class="fdesc">Null for legacy/unknown. organic | paid_search | referral | social</td></tr>
+          <tr><td class="fname">gdpr_consent</td><td class="ftype">BOOLEAN</td><td class="fnull">NO</td><td class="fdesc">Must gate ip_address and email usage in Silver.</td></tr>
+          <tr><td class="fname">legacy_customer_no</td><td class="ftype">INTEGER</td><td class="fnull">YES</td><td class="fdesc">Mostly NULL post-2022. Kept for audit.</td></tr>
+          <tr><td class="fname">updated_at</td><td class="ftype">TIMESTAMPTZ</td><td class="fnull">NO</td><td class="fdesc">Incremental extract cursor. Handle clock skew with buffer window.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-alpha">ALPHA</span>
+        <span class="source-name">orders + order_items</span>
+        <span class="source-desc">OLTP mirror · lags Kafka by seconds</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">order_id</td><td class="ftype">VARCHAR(64)</td><td class="fnull">NO</td><td class="fdesc">Sequential int — collides with beta. Prefix with "alpha_".</td></tr>
+          <tr><td class="fname">user_id</td><td class="ftype">VARCHAR(64)</td><td class="fnull">YES</td><td class="fdesc">Null for guests. Format matches users.user_id.</td></tr>
+          <tr><td class="fname">guest_email_hash</td><td class="ftype">VARCHAR(128)</td><td class="fnull">YES</td><td class="fdesc">SHA-256 of guest email. Note: Kafka has plain text — must hash in Silver.</td></tr>
+          <tr><td class="fname">total_price</td><td class="ftype">NUMERIC(12,2)</td><td class="fnull">YES</td><td class="fdesc">Named "total_price" here, "total_amount" in Kafka. Reconcile in Silver.</td></tr>
+          <tr><td class="fname">tax_price</td><td class="ftype">NUMERIC(12,2)</td><td class="fnull">YES</td><td class="fdesc">Null if calculated post-checkout.</td></tr>
+          <tr><td class="fname">items[].unit_price</td><td class="ftype">NUMERIC(12,4)</td><td class="fnull">NO</td><td class="fdesc">4 decimal places here vs 2 in Kafka. Precision difference.</td></tr>
+          <tr><td class="fname">items[].category_path</td><td class="ftype">VARCHAR(256)</td><td class="fnull">YES</td><td class="fdesc">Denormalized at order time. May differ from current catalog category.</td></tr>
+          <tr><td class="fname">notes</td><td class="ftype">TEXT</td><td class="fnull">YES</td><td class="fdesc">Free text from customer. May contain PII. Exclude from Silver.</td></tr>
+          <tr><td class="fname">updated_at</td><td class="ftype">TIMESTAMPTZ</td><td class="fnull">NO</td><td class="fdesc">Incremental cursor. May lag Kafka by seconds — use Kafka as canonical.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── BETA MONGODB ── -->
+  <h3 style="margin-bottom:16px;">store_beta — MongoDB Catalog &amp; Profiles <span style="font-size:13px;font-weight:300;color:var(--muted)">(Spark Mongo connector · incremental on updatedAt)</span></h3>
+  <div class="schema-grid" style="margin-bottom:32px;">
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-beta">BETA</span>
+        <span class="source-name">products collection</span>
+        <span class="source-desc">3 document archetypes · camelCase · legacy flat docs</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">"prod_{uuid}" modern · integer string legacy (~8%). Maps to beta product_id.</td></tr>
+          <tr><td class="fname">categoryPath</td><td class="ftype">array?</td><td class="fnull">YES</td><td class="fdesc">["Clothing","Men","Hoodies"]. Legacy docs use flat "category" string instead.</td></tr>
+          <tr><td class="fname">prices</td><td class="ftype">array?</td><td class="fnull">YES</td><td class="fdesc">Array of {country, currency, amount, vatRate}. Legacy docs: flat "price" float + "currency" string.</td></tr>
+          <tr><td class="fname">stock</td><td class="ftype">object?</td><td class="fnull">YES</td><td class="fdesc">Nested {total, reserved, warehouses{}}. Legacy: flat integer.</td></tr>
+          <tr><td class="fname">active</td><td class="ftype">int?</td><td class="fnull">YES</td><td class="fdesc">Legacy only: 0 or 1. Modern docs use "status": "active|inactive".</td></tr>
+          <tr><td class="fname">variants</td><td class="ftype">array?</td><td class="fnull">YES</td><td class="fdesc">Absent on legacy documents. Each variant has sku, color, size, stock.</td></tr>
+          <tr><td class="fname">tags</td><td class="ftype">array?</td><td class="fnull">YES</td><td class="fdesc">Free-form. Contains duplicates with different casing: ["hoodie","Hoodie","HOODIE"].</td></tr>
+          <tr><td class="fname">avgRating</td><td class="ftype">float?</td><td class="fnull">YES</td><td class="fdesc">Async updated — may lag up to 1h. camelCase (differs from Postgres snake_case).</td></tr>
+          <tr><td class="fname">images</td><td class="ftype">array</td><td class="fnull">NO</td><td class="fdesc">May contain broken URLs. Validate in Silver.</td></tr>
+          <tr><td class="fname">updatedAt</td><td class="ftype">string (ISO)</td><td class="fnull">NO</td><td class="fdesc">camelCase. Incremental extract cursor. Convert to UTC in Silver.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-beta">BETA</span>
+        <span class="source-name">user_profiles collection</span>
+        <span class="source-desc">Evolving schema · preference embedding · EN/PL mixed</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Integer string. Does NOT match alpha user_id — entity resolution needed.</td></tr>
+          <tr><td class="fname">emailHash</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">SHA-256. Primary key for cross-store identity stitching. ~5% null (old docs).</td></tr>
+          <tr><td class="fname">phoneHash</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">SHA-256. Secondary identity key. ~40% null.</td></tr>
+          <tr><td class="fname">preferredLanguage</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">"en" | "pl" | null. Affects which language product descriptions are in reviews.</td></tr>
+          <tr><td class="fname">sizePreferences</td><td class="ftype">object?</td><td class="fnull">YES</td><td class="fdesc">{tops: "M", bottoms: "32/32"}. Schema varies by user-provided data.</td></tr>
+          <tr><td class="fname">wishlist</td><td class="ftype">array</td><td class="fnull">NO</td><td class="fdesc">Array of product _id strings. May reference deleted products.</td></tr>
+          <tr><td class="fname">loyaltyPoints</td><td class="ftype">int?</td><td class="fnull">YES</td><td class="fdesc">beta-specific loyalty scheme. No equivalent in alpha. Null for pre-loyalty-scheme users.</td></tr>
+          <tr><td class="fname">gdprConsent</td><td class="ftype">boolean?</td><td class="fnull">YES</td><td class="fdesc">Null for pre-GDPR legacy profiles — treat as false.</td></tr>
+          <tr><td class="fname">createdAt</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">ISO datetime string. Some legacy docs: "YYYY-MM-DD" date only (no time).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── GAMMA FILES ── -->
+  <h3 style="margin-bottom:16px;">store_gamma — File Drops <span style="font-size:13px;font-weight:300;color:var(--muted)">(Weekly batch · CSV + JSON · Windows-1250 encoding risk)</span></h3>
+  <div class="schema-grid" style="margin-bottom:32px;">
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-gamma">GAMMA</span>
+        <span class="source-name">orders_YYYYMMDD.csv</span>
+        <span class="source-desc">Column name chaos · date format roulette</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Canonical field</th><th>Known variants</th><th>Issues</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">order_id</td><td class="ftype">OrderID / order_no / ID</td><td class="fdesc">Sequential int. Prefix "gamma_" in Bronze.</td></tr>
+          <tr><td class="fname">user_id</td><td class="ftype">CustomerID / cust_id / user</td><td class="fdesc">Legacy int. Null for guests (~25%).</td></tr>
+          <tr><td class="fname">order_date</td><td class="ftype">Date / OrderDate / data</td><td class="fdesc">Formats: YYYY-MM-DD · DD/MM/YYYY · MM-DD-YYYY · "15 Jan 2024".</td></tr>
+          <tr><td class="fname">total_amount</td><td class="ftype">Total / Amount / Kwota / TotalPLN</td><td class="fdesc">Sometimes includes currency symbol: "189,99 zł". Strip and cast.</td></tr>
+          <tr><td class="fname">status</td><td class="ftype">Status / OrderStatus / stan</td><td class="fdesc">Polish values: "zrealizowane" | "anulowane" | "w trakcie". Map to canonical EN.</td></tr>
+          <tr><td class="fname">product_ids</td><td class="ftype">Products / items / ProductList</td><td class="fdesc">Pipe-separated string: "1042|1087|2201". Must split into array in Silver.</td></tr>
+          <tr><td class="fname">discount_code</td><td class="ftype">Promo / PromoCode / rabat</td><td class="fdesc">Sometimes has trailing whitespace or mixed case.</td></tr>
+          <tr><td class="fname">city</td><td class="ftype">City / Miasto / shipping_city</td><td class="fdesc">Polish chars in Windows-1250 if opened in Excel: "Kraków" → "Krak&#xF3;w".</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-gamma">GAMMA</span>
+        <span class="source-name">returns_WH-{id}_YYYYMMDD.json</span>
+        <span class="source-desc">WMS export · local timezone · items bug</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Issues</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">return_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">"RET-YYYYMMDD-{seq}". Prefix with warehouse_id for global uniqueness.</td></tr>
+          <tr><td class="fname">order_id</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Refers to gamma order IDs. Prefix "gamma_" to match Bronze order namespace.</td></tr>
+          <tr><td class="fname">return_ts</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Local warehouse timezone (Europe/Warsaw or Europe/Berlin). Convert to UTC.</td></tr>
+          <tr><td class="fname">customer_id</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Null for guest orders.</td></tr>
+          <tr><td class="fname">reason_code</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">WH-PL: DEF|SIZ|CHG|DAM. WH-DE: DEFEKT|GROESSE|TRANSPORT. Map to canonical.</td></tr>
+          <tr><td class="fname">condition</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">WH-PL: NEW|DAMAGED|USED. WH-DE: A|B|C|D. Map to canonical.</td></tr>
+          <tr><td class="fname">items</td><td class="ftype">array OR object</td><td class="fnull">NO</td><td class="fdesc">⚠ WMS BUG: single-item returns send object not array. Always coerce to array.</td></tr>
+          <tr><td class="fname">refund_amount</td><td class="ftype">float?</td><td class="fnull">YES</td><td class="fdesc">Key entirely ABSENT (not null) on ~30% of records. Use .get() with default 0.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-gamma">GAMMA</span>
+        <span class="source-name">catalog_YYYYMMDD.json</span>
+        <span class="source-desc">Static product dump · flat structure · missing fields on old products</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>Type</th><th>Nullable</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">id</td><td class="ftype">int</td><td class="fnull">NO</td><td class="fdesc">Legacy sequential int. Prefix "gamma_" for global product namespace.</td></tr>
+          <tr><td class="fname">name</td><td class="ftype">string</td><td class="fnull">NO</td><td class="fdesc">Polish product names. Windows-1250 risk on older exports.</td></tr>
+          <tr><td class="fname">category</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Flat string. No category hierarchy. Map to global category tree in Silver.</td></tr>
+          <tr><td class="fname">price</td><td class="ftype">float?</td><td class="fnull">YES</td><td class="fdesc">PLN only. Null on discontinued products (~3%).</td></tr>
+          <tr><td class="fname">stock_count</td><td class="ftype">int?</td><td class="fnull">YES</td><td class="fdesc">No warehouse breakdown. Null means "unknown" not zero.</td></tr>
+          <tr><td class="fname">ean_barcode</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">Key for global product deduplication across stores. ~70% populated.</td></tr>
+          <tr><td class="fname">active</td><td class="ftype">int</td><td class="fnull">NO</td><td class="fdesc">0 or 1. Integer, not boolean. Consistent with beta legacy docs.</td></tr>
+          <tr><td class="fname">created_date</td><td class="ftype">string?</td><td class="fnull">YES</td><td class="fdesc">"YYYY-MM-DD" string. No time component. Some records null.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="schema-block">
+      <div class="schema-header">
+        <span class="store-pill pill-gamma">GAMMA</span>
+        <span class="source-name">promotions_weekly.csv</span>
+        <span class="source-desc">Marketing team export · maximum chaos</span>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Canonical field</th><th>Known column variants</th><th>Issues</th></tr></thead>
+        <tbody>
+          <tr><td class="fname">promo_code</td><td class="ftype">PromoCode / code / PROMO_CODE / Promo Code</td><td class="fdesc">Mixed case. Trailing spaces common.</td></tr>
+          <tr><td class="fname">discount_value</td><td class="ftype">Discount% / discount / disc_pct / Rabat</td><td class="fdesc">0.20 (fraction) vs 20 (percent) — inconsistent between exports.</td></tr>
+          <tr><td class="fname">valid_from</td><td class="ftype">start_date / StartDate / from / od</td><td class="fdesc">4 date format variants. Polish column names on some exports.</td></tr>
+          <tr><td class="fname">valid_to</td><td class="ftype">end_date / EndDate / to / expiry / do</td><td class="fdesc">Null = no expiry.</td></tr>
+          <tr><td class="fname">min_order_value</td><td class="ftype">MinOrder / min_cart / Minimalna</td><td class="fdesc">Sometimes "100 PLN" or "€50" with currency symbol. Strip before cast.</td></tr>
+          <tr><td class="fname">discount_type</td><td class="ftype">Type / DiscountType / rodzaj</td><td class="fdesc">percentage | fixed | free_shipping | bogo — and Polish equivalents.</td></tr>
+          <tr><td class="fname">[file-level issues]</td><td class="ftype">—</td><td class="fdesc">BOM char on Windows Excel exports. Empty rows. Summary rows at end. Windows-1250 encoding.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── DATA ISSUES ── -->
+<section id="issues">
+  <h2>Bronze → Silver Normalisation Checklist</h2>
+  <ul class="issues-list">
+    <li><span class="issue-tag tag-dedup">DEDUP</span>Deduplicate Kafka events on event_id using watermark — client retries produce duplicates in both alpha and beta.</li>
+    <li><span class="issue-tag tag-null">NULL</span>user_id is null for ~42% of clickstream (anonymous) and ~12–18% of orders (guest checkout). Never drop — use anonymous_id for stitching.</li>
+    <li><span class="issue-tag tag-format">FORMAT</span>Prefix all order_ids with store_id ("alpha_10042", "beta_10042", "gamma_10042") — sequential integers collide across all three stores.</li>
+    <li><span class="issue-tag tag-schema">SCHEMA</span>Reconcile Kafka alpha v2.1 vs beta v1.3: "items" → "lineItems", "total_amount" → "totalPrice", missing tax_amount, discount_pct fraction vs percent.</li>
+    <li><span class="issue-tag tag-pii">PII</span>Hash guest_email before Silver. Mask ip_address when gdpr_consent=false. Exclude order notes (free text) entirely.</li>
+    <li><span class="issue-tag tag-format">FORMAT</span>Normalise all timestamps to UTC. gamma file drops use Europe/Warsaw or Europe/Berlin local time. Some beta Mongo docs use date-only strings.</li>
+    <li><span class="issue-tag tag-type">TYPE</span>Coerce legacy boolean representations: active=0/1 (gamma CSV, beta legacy Mongo), gdprConsent=null → false, status "zrealizowane"→"completed" etc.</li>
+    <li><span class="issue-tag tag-schema">SCHEMA</span>Flatten MongoDB prices array to per-region rows. Legacy docs have flat "price" float — synthesise single-region prices array before joining.</li>
+    <li><span class="issue-tag tag-null">NULL</span>refund_amount key entirely absent (not null) in ~30% of gamma returns JSON. Always use .get("refund_amount", 0.0) — KeyError will crash the job.</li>
+    <li><span class="issue-tag tag-type">TYPE</span>Coerce gamma returns items to always be an array — WMS sends a single object for single-item returns instead of a one-element array.</li>
+    <li><span class="issue-tag tag-format">FORMAT</span>Detect and convert gamma CSV encoding: try UTF-8, fall back to Windows-1250. Strip BOM. Skip empty rows and summary rows at end of file.</li>
+    <li><span class="issue-tag tag-format">FORMAT</span>Normalise gamma promo discount_value: detect fraction (≤1.0) vs percent (>1.0) and convert to consistent 0–100 scale.</li>
+    <li><span class="issue-tag tag-schema">SCHEMA</span>Deduplicate and lowercase MongoDB tags array: ["hoodie","Hoodie","HOODIE"] → ["hoodie"].</li>
+    <li><span class="issue-tag tag-format">FORMAT</span>Validate and filter broken image URLs in MongoDB products before Silver. Log broken URLs as data quality metric.</li>
+    <li><span class="issue-tag tag-schema">SCHEMA</span>Map warehouse-specific reason_code enums to canonical return reasons across WH-PL-01 and WH-DE-01.</li>
+    <li><span class="issue-tag tag-null">NULL</span>Treat MongoDB gdprConsent=null as false (pre-GDPR legacy profiles). Never infer consent from absence.</li>
+    <li><span class="issue-tag tag-dedup">DEDUP</span>Entity resolution (Silver → Gold): stitch global_user_id via email_hash, then phone_hash, with confidence_score. Stitch global_product_id via EAN barcode, then name similarity.</li>
+    <li><span class="issue-tag tag-format">FORMAT</span>Normalise all currency amounts to PLN equivalent using daily exchange rate snapshot stored in MinIO. alpha/beta orders may be in EUR or GBP.</li>
+  </ul>
+</section>
+
+<!-- ── TECH STACK ── -->
+<section id="stack">
+  <h2>Technology Stack</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="tech-name">Apache Kafka</div><div class="tech-role">Event streaming — alpha & beta</div></div>
+    <div class="tech-item"><div class="tech-name">Avro + Schema Registry</div><div class="tech-role">Event schema contracts & evolution</div></div>
+    <div class="tech-item"><div class="tech-name">PySpark</div><div class="tech-role">Streaming (Kafka) + Batch (DB, files)</div></div>
+    <div class="tech-item"><div class="tech-name">MinIO</div><div class="tech-role">S3-compatible object storage (data lake)</div></div>
+    <div class="tech-item"><div class="tech-name">Delta Lake</div><div class="tech-role">ACID + time travel on Silver & Gold</div></div>
+    <div class="tech-item"><div class="tech-name">PostgreSQL</div><div class="tech-role">alpha OLTP — users, orders</div></div>
+    <div class="tech-item"><div class="tech-name">MongoDB</div><div class="tech-role">beta catalog & user profiles</div></div>
+    <div class="tech-item"><div class="tech-name">dbt</div><div class="tech-role">SQL transformations on Gold layer</div></div>
+    <div class="tech-item"><div class="tech-name">Great Expectations</div><div class="tech-role">Data quality gates at Bronze→Silver</div></div>
+    <div class="tech-item"><div class="tech-name">Feast</div><div class="tech-role">Feature store on Gold user_features</div></div>
+    <div class="tech-item"><div class="tech-name">MLflow</div><div class="tech-role">Experiment tracking + model registry</div></div>
+    <div class="tech-item"><div class="tech-name">FastAPI</div><div class="tech-role">Model serving — /predict endpoint</div></div>
+    <div class="tech-item"><div class="tech-name">Trino</div><div class="tech-role">Ad-hoc SQL over the lakehouse</div></div>
+    <div class="tech-item"><div class="tech-name">Prefect</div><div class="tech-role">Batch job orchestration</div></div>
+    <div class="tech-item"><div class="tech-name">Grafana</div><div class="tech-role">Business metrics dashboards</div></div>
+    <div class="tech-item"><div class="tech-name">Docker Compose</div><div class="tech-role">Full local environment</div></div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section id="timeline">
+  <h2>Build Plan — 8 Weeks</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 1–2</div>
+      <div class="tl-title">Infrastructure + Data Generator</div>
+      <div class="tl-desc">Docker Compose with all services. Python generator producing realistic events and DB records for all three stores. Kafka topics + Schema Registry + Avro schemas.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 2–3</div>
+      <div class="tl-title">Bronze Ingestion — All Three Patterns</div>
+      <div class="tl-desc">PySpark Structured Streaming (Kafka → Bronze). Spark JDBC incremental extract (Postgres → Bronze). Spark Mongo connector (MongoDB → Bronze). File watcher (gamma drops → Bronze).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 3–4</div>
+      <div class="tl-title">Bronze → Silver + Great Expectations</div>
+      <div class="tl-desc">All normalisation from the checklist. Schema reconciliation, type coercion, PII hashing, timestamp UTC conversion, ID namespacing. GX quality gates on every Silver table.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 4–5</div>
+      <div class="tl-title">Entity Resolution</div>
+      <div class="tl-desc">Global user identity stitching via email/phone hash with confidence scoring. Global product deduplication via EAN barcode and name similarity (TF-IDF or Levenshtein).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 5–6</div>
+      <div class="tl-title">Gold Layer + dbt</div>
+      <div class="tl-desc">unified_orders, global_users, global_products, user_features (cross-store LTV, category affinities, cart abandonment rate). dbt models with tests and lineage docs.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 6–7</div>
+      <div class="tl-title">ML Pipeline — Feast + MLflow</div>
+      <div class="tl-desc">Feature store setup with Feast. Training dataset construction. Purchase propensity model (LightGBM via PySpark pandas UDF). MLflow experiment tracking and model registry.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-week">Week 7–8</div>
+      <div class="tl-title">Serving + Observability + Docs</div>
+      <div class="tl-desc">FastAPI /predict endpoint pulling from Feast + MLflow. Trino setup for ad-hoc SQL. Grafana dashboards. README, architecture diagram, and a recorded demo walkthrough.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    background: '#13161e',
+    primaryColor: '#1b1f2b',
+    primaryTextColor: '#c8cdd8',
+    primaryBorderColor: '#252a38',
+    lineColor: '#3a4055',
+    secondaryColor: '#1b1f2b',
+    tertiaryColor: '#13161e',
+    edgeLabelBackground: '#13161e',
+    clusterBkg: '#13161e',
+    clusterBorder: '#252a38',
+    titleColor: '#e8eaf0',
+    nodeTextColor: '#e8eaf0',
+  },
+  flowchart: { curve: 'basis', padding: 20 }
+});
+</script>
+
+</body>
+</html>

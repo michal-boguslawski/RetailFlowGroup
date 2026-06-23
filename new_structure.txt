@@ -1,0 +1,253 @@
+retailflow/
+│
+├── docker-compose.yml
+├── pyproject.toml
+├── .env
+│
+├── config/
+│   ├── models.py                    # StoreConfig, NullRates, IdFormat, FieldNaming, ClockConfig, PipelineToggles
+│   ├── loader.py                    # load_config(store_id) → StoreConfig from YAML
+│   ├── alpha.yaml
+│   ├── beta.yaml
+│   └── gamma.yaml
+│
+├── data/
+│   └── seed/
+│       ├── alpha_products.csv
+│       └── beta_products.csv
+│
+├── generator/
+│   ├── builders/
+│   │   ├── base.py                 # StoreBuilder Protocol — build_router(), build_factory()
+│   │   ├── alpha_builder.py        # AlphaBuilder
+│   │   ├── beta_builder.py         # BetaBuilder
+│   │   └── gamma_builder.py        # GammaBuilder
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── id_generator.py
+│   │   ├── models.py                # Canonical dataclasses: OrderEvent, ClickstreamEvent, User, Product, OrderLineItem
+│   │   ├── types.py                 # Enums: OrderEventType, EntityType, StoreId, DeviceType
+│   │   ├── fake.py                  # shared Faker helpers
+│   │   └── loop.py                  # GeneratorLoop: ticks, rate control, wires factory→pipeline→mapper→router
+│   │
+│   ├── session/
+│   │   ├── __init__.py
+│   │   ├── state.py                          # SessionState enum + SessionContext dataclass
+│   │   ├── machine.py                        # FSM — transitions, guards, valid next states
+│   │   ├── transitions.py                    # Transition dataclass + TransitionTable per store profile
+│   │   ├── handlers/
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py                       # TransitionHandler Protocol
+│   │   │   ├── clickstream_handler.py        # Emits ClickstreamEvent for every transition
+│   │   │   └── order_handler.py              # Emits OrderEvent on financial transitions
+│   │   └── session_factory.py               # Builds SessionContext from StoreConfig
+│   │
+│   ├── pipeline/
+│   │   ├── __init__.py
+│   │   ├── base.py                  # PipelineStep Protocol, Pipeline(Generic[T]) with .run()
+│   │   ├── builder.py               # build_pipeline(config) → Pipeline — reads PipelineToggles from config
+│   │   └── steps/
+│   │       ├── __init__.py
+│   │       ├── nullify.py           # NullifyStep — per-field null injection from NullRates
+│   │       ├── clock_drift.py       # ClockDriftStep — skews event_ts by configured drift_seconds
+│   │       ├── duplicate.py         # DuplicateStep — retry simulation, calls sink.write() twice
+│   │       ├── encoding_corrupt.py  # EncodingCorruptionStep — Windows-1250 Polish char mangling
+│   │       └── field_corrupt.py     # FieldCorruptionStep — trailing spaces, currency symbols, mixed case
+│   │
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── avro
+│   │   │   ├── alpha/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── order_event.py
+│   │   │   │   └── clickstream.py
+│   │   │   └── beta/
+│   │   │       ├── __init__.py
+│   │   │       ├── order_event.py
+│   │   │       └── clickstream.py
+│   │   └── bronze                   # Pandera schemas validating raw Bronze DataFrames
+│   │       ├── clickstream.py
+│   │       ├── orders.py
+│   │       ├── users.py
+│   │       └── products.py
+│   │
+│   ├── stores/
+│   │   ├── alpha/
+│   │   │   ├── __init__.py
+│   │   │   ├── factory.py           # AlphaOrderFactory, AlphaClickstreamFactory, AlphaUserFactory
+│   │   │   ├── mapper.py            # AlphaOrderMapper, AlphaClickstreamMapper — snake_case, v2.1 field names
+│   │   │   └── router.py            # AlphaRouter — routes EntityType → KafkaSink / PostgresSink
+│   │   │
+│   │   ├── beta/
+│   │   │   ├── __init__.py
+│   │   │   ├── factory.py           # BetaOrderFactory, BetaClickstreamFactory, BetaUserFactory
+│   │   │   ├── mapper.py            # BetaOrderMapper — camelCase, overrides (totalPrice/lineItems), v1.3 nulls omitted
+│   │   │   └── router.py            # BetaRouter — routes EntityType → KafkaSink / MongoSink
+│   │   │
+│   │   └── gamma/
+│   │       ├── __init__.py
+│   │       ├── factory.py           # GammaOrderFactory, GammaUserFactory, GammaProductFactory, GammaReturnFactory
+│   │       ├── mapper.py            # GammaOrderMapper → CSV row dict; GammaReturnMapper → JSON dict
+│   │       └── router.py            # GammaRouter — routes EntityType → FileSink(csv) / FileSink(json)
+│   │
+│   ├── context.py                   # GeneratorContext — just calls builder, holds result
+│   └── runner.py                    # Entrypoint: loads configs, builds all store loops, runs concurrently
+│
+├── infrastructure/
+│   ├── config/
+│   │   ├── __init__.py
+│   │   ├── settings.py         # PydanticSettings classes
+│   │   ├── kafka_config.py     # KafkaConfig dataclass built from settings
+│   │   └── topics.yaml         # Kafka Topics
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   └── repository_service.py
+│   │
+│   ├── kafka/
+│   │   ├── __init__.py
+│   │   ├── producer.py              # KafkaProducerClient — wraps confluent_kafka, delivery callbacks, error handling
+│   │   ├── schema_registry.py       # SchemaRegistryClient — register/fetch Avro schemas, cache by subject+version
+│   │   ├── serializer.py            # AvroSerializer — schema_registry + confluent_kafka AvroSerializer wrappers
+│   │   ├── topics.py                # Topic name constants + TopicConfig dataclass (partitions, replication)
+│   │   └── admin.py                 # KafkaAdminClient — create topics on startup if missing
+│   │
+│   ├── postgres/
+│   │   ├── __init__.py
+│   │   ├── session.py               # create_session_factory(), get_session()
+│   │   ├── models.py                # SQLAlchemy ORM models — AlphaUserORM, AlphaOrderORM
+│   │   ├── migrations/
+│   │   │   ├── 001_alpha_users.sql
+│   │   │   └── 002_alpha_orders.sql
+│   │   └── repositories/
+│   │       ├── __init__.py
+│   │       ├── base.py              # BaseRepository — generic upsert(), find_by_id(), bulk_insert()
+│   │       ├── user_repository.py   # AlphaUserRepository — upsert on user_id, updated_at cursor logic
+│   │       └── order_repository.py  # AlphaOrderRepository — upsert orders + order_items, prefix "alpha_"
+│   │
+│   ├── mongo/
+│   │   ├── __init__.py
+│   │   ├── client.py                # MongoClient — motor async client, get_database() helper
+│   │   └── repositories/
+│   │       ├── __init__.py
+│   │       ├── base.py              # BaseMongoRepository — bulk_write(), find_one(), upsert_one()
+│   │       ├── product_repository.py  # BetaProductRepository — upsert on _id, handles 3 document archetypes
+│   │       └── profile_repository.py  # BetaProfileRepository — upsert on _id, emailHash index
+│   │
+│   └── minio/
+│       ├── __init__.py
+│       ├── client.py                # MinioClient — boto3/minio-py wrapper, get_client() with credentials from env
+│       └── service.py               # MinioService — put_object(), ensure_bucket(), presigned_url()
+│
+├── sinks/
+│   ├── __init__.py
+│   ├── base.py                      # BaseSink ABC — write(record), flush(), close()
+│   ├── kafka_sink.py                # KafkaSink — uses KafkaProducerClient + AvroSerializer, routes to correct topic
+│   ├── postgres_sink.py             # PostgresSink — uses PostgresService, batches records, flushes on interval
+│   ├── mongo_sink.py                # MongoSink — uses MongoService, bulk_write buffer
+│   └── file_sink.py                 # FileSink — CSV or JSON writer, encoding-aware, BOM injection, MinIO upload
+│
+├── ingestion/                       # Week 2-3 — PySpark jobs
+│   ├── streaming/
+│   ├── jdbc/
+│   ├── mongo/
+│   └── filewatcher/
+│
+├── silver/                          # Week 3-4
+├── gold/                            # Week 5-6
+├── ml/                              # Week 6-7
+└── serving/                         # Week 7-8
+└── tests/
+    │
+    ├── conftest.py                  # global fixtures: event_loop, store configs, faker instance
+    │
+    ├── fixtures/                    # reusable pytest fixtures as modules
+    │   ├── __init__.py
+    │   ├── configs.py               # alpha_config(), beta_config(), gamma_config() fixtures
+    │   ├── factories.py             # alpha_factory(), beta_factory(), gamma_factory() fixtures
+    │   ├── sinks.py                 # mock_kafka_sink(), mock_postgres_sink() — in-memory captures
+    │   ├── routers.py               # alpha_router(mock_kafka_sink, mock_postgres_sink) fixture
+    │   ├── sessions.py              # sample_session_context(), completed_session() fixtures
+    │   └── records.py               # canonical OrderEvent, ClickstreamEvent, User sample instances
+    │
+    ├── unit/                        # pure logic, no I/O, no Docker
+    │   │
+    │   ├── config/
+    │   │   ├── test_loader.py       # load_config() returns correct StoreConfig per store_id
+    │   │   └── test_kafka_config.py # KafkaConfig.from_settings() filters topics by store_id
+    │   │
+    │   ├── pipeline/
+    │   │   ├── test_nullify.py      # NullifyStep respects null_rates — statistical assertion over N runs
+    │   │   ├── test_clock_drift.py  # ClockDriftStep stays within configured drift_seconds bounds
+    │   │   ├── test_duplicate.py    # DuplicateStep calls sink.write() twice at rate=1.0
+    │   │   ├── test_encoding.py     # EncodingCorruptionStep mangles Polish chars at expected rate
+    │   │   ├── test_field_corrupt.py # trailing spaces, currency symbols injected correctly
+    │   │   └── test_pipeline.py     # Pipeline.run() applies steps in order, returns correct type
+    │   │
+    │   ├── schemas/
+    │   │   ├── test_alpha_schema.py # OrderEventV21.schema() produces valid Avro JSON
+    │   │   └── test_beta_schema.py  # OrderEventV13 has lineItems not items, no tax_amount field
+    │   │
+    │   ├── session/
+    │   │   ├── test_state_machine.py      # FSM never reaches ORDERED without PAYMENT_CONFIRMED first
+    │   │   ├── test_transitions.py        # pick_transition() distribution matches configured probabilities
+    │   │   ├── test_clickstream_handler.py # emits ClickstreamEvent on correct states, skips financial states
+    │   │   └── test_order_handler.py      # order_id consistent across order_created → shipped events
+    │   │
+    │   ├── stores/
+    │   │   ├── alpha/
+    │   │   │   ├── test_factory.py  # UUID event_id, PLN/EUR/GBP currency, correct null rates
+    │   │   │   ├── test_mapper.py   # snake_case fields, v2.1 schema, guest_email present
+    │   │   │   └── test_router.py   # OrderEvent → both sinks; ClickstreamEvent → kafka only
+    │   │   ├── beta/
+    │   │   │   ├── test_factory.py  # EVT-{int} event_id, integer user_id, no tax_amount
+    │   │   │   ├── test_mapper.py   # camelCase, totalPrice not total_amount, lineItems not items
+    │   │   │   └── test_router.py   # OrderEvent → kafka + mongo; User → mongo only
+    │   │   └── gamma/
+    │   │       ├── test_factory.py  # Polish status values, pipe-separated product_ids, legacy int IDs
+    │   │       ├── test_mapper.py   # CSV row dict correct, JSON structure correct for returns
+    │   │       └── test_router.py   # orders → FileSink(csv); returns → FileSink(json)
+    │   │
+    │   └── infrastructure/
+    │       └── config/
+    │           └── test_topics.py   # topics.yaml loads correctly, all_topics() flattens all stores
+    │
+    ├── integration/                 # real I/O — require running Docker services
+    │   │
+    │   ├── conftest.py              # session-scoped fixtures: real Kafka, Postgres, Mongo connections
+    │   │
+    │   ├── kafka/
+    │   │   ├── test_producer.py     # KafkaProducerClient delivers message, delivery callback fires
+    │   │   ├── test_schema_registry.py  # schema registers, second call returns cached id
+    │   │   ├── test_serializer.py   # OrderEventV21 serializes → deserializes round-trip correctly
+    │   │   └── test_admin.py        # ensure_topics() creates missing topics, skips existing
+    │   │
+    │   ├── postgres/
+    │   │   ├── test_client.py       # connection pool opens, get_connection() yields working conn
+    │   │   ├── test_user_repository.py   # upsert inserts new, updates existing on conflict
+    │   │   └── test_order_repository.py  # order + items inserted, order_id prefixed "alpha_"
+    │   │
+    │   ├── mongo/
+    │   │   ├── test_client.py       # motor client connects, ping succeeds
+    │   │   ├── test_product_repository.py  # bulk_write handles all 3 document archetypes
+    │   │   └── test_profile_repository.py  # upsert on emailHash, gdprConsent null → false
+    │   │
+    │   ├── minio/
+    │   │   └── test_minio_service.py       # put_object(), ensure_bucket() creates if missing
+    │   │
+    │   └── sinks/
+    │       ├── test_kafka_sink.py    # KafkaSink.write() → message appears on topic
+    │       ├── test_postgres_sink.py # PostgresSink.flush() → rows in DB
+    │       ├── test_mongo_sink.py    # MongoSink.flush() → documents in collection
+    │       └── test_file_sink.py     # FileSink writes CSV/JSON, encoding correct, appears in MinIO
+    │
+    └── e2e/                         # full pipeline — generator → sink → assert data landed
+        │
+        ├── conftest.py              # spins up GeneratorContext per store, runs N ticks
+        │
+        ├── test_alpha_pipeline.py   # run alpha N ticks → assert rows in Postgres + messages on Kafka topic
+        ├── test_beta_pipeline.py    # run beta N ticks → assert docs in Mongo + messages on Kafka topic
+        ├── test_gamma_pipeline.py   # run gamma N ticks → assert CSV/JSON files appear in MinIO
+        └── test_session_causality.py  # across all stores: payment_confirmed never before payment_initiated
+                                       # order_id consistent from order_created → shipped on same session

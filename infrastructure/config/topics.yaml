@@ -1,0 +1,18 @@
+alpha:
+    orders:
+        name: alpha.orders
+        partitions: 3
+        replication_factor: 1
+    clickstreams:
+        name: alpha.clickstreams
+        partitions: 3
+        replication_factor: 1
+beta:
+    orders:
+        name: beta.orders
+        partitions: 3
+        replication_factor: 1
+    clickstreams:
+        name: beta.clickstreams
+        partitions: 3
+        replication_factor: 1

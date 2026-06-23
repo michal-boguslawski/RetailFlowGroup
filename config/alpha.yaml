@@ -1,0 +1,23 @@
+store_id: alpha
+ids:
+  user_id:
+    style: uuid
+  order_id:
+    style: integer
+    prefix: alpha_
+  product_id:
+    style: uuid
+    prefix: prod_
+  event_id:
+    style: uuid
+null_rates:
+  user_id: 0.
+  order_id: 0.
+  product_id: 0.
+  event_id: 0.
+currencies:
+  - PLN
+  - EUR
+  - GBP
+state_path: data/state/alpha_generator_state.json
+clock_drift_seconds: 100
