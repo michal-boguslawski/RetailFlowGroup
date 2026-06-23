@@ -2,6 +2,7 @@ from dataclasses import asdict
 from typing import Any
 
 from domain.models import ClickstreamEvent
+from domain.enums import DeviceType
 from generator.schemas.clickstreams.beta import ClickstreamEvent as AvroClickstreamEvent
 
 def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
@@ -15,11 +16,19 @@ def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
         session_id=event.session_id,
         user_id=event.user.id if event.user else None,
         product_id=event.product.id if event.product else None,
-        page_url=event.page_url,
+        page_url=(
+            None 
+            if event.device_type and event.device_type.is_mobile()
+            else event.page_url
+        ),
         device_type=event.device_type.value if event.device_type else None,
         ip_address=event.ip_address,
         country_code=event.country_code,
-        scroll_depth_pct=event.scroll_depth_pct,
+        scroll_depth_pct=(
+            None
+            if event.device_type and event.device_type.is_mobile()
+            else event.scroll_depth_pct
+        ),
         ab_variant=event.ab_variant,
         schema_version=None,
     )

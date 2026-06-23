@@ -8,7 +8,10 @@ from generator.schemas.orders.beta import OrderLineItem as AvroOrderLineItem
 
 def order_renderer(event: OrderEvent, ctx) -> dict[str, Any]:
     items = [
-        AvroOrderLineItem(item.product.id, item.discount_pct)
+        AvroOrderLineItem(
+            item.product.id,
+            item.discount_pct / 100 if item.discount_pct else None,
+        )
         for item in event.order.items
     ]
     avro_event = AvroOrderEvent(

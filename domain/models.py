@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
-from typing import Optional, Literal
+from typing import Optional
 
 from domain.enums import (
     ClickstreamEventType, StoreId, OrderEventType, Currency, LoyaltyTier, AcquisitionChannel, DeviceType
@@ -26,6 +26,7 @@ class ClickstreamEvent:
     ab_variant: Optional[str]
     scroll_depth_pct: Optional[float]
     schema_version: str
+    new: bool = True
 
     @property
     def page_url(self):

@@ -45,6 +45,7 @@ class ClickstreamTransitionHandler(TransitionHandler[ClickstreamT], Generic[Clic
         session.current_state = self.expected_event_type
         session.clickstream_event.event_id = self.id_generator.make_id("clickstream_event_id")
         session.clickstream_event.event_type = self.expected_event_type
+        session.clickstream_event.new = False
         return self._post_handle(session, *args, **kwargs)
 
     @abstractmethod

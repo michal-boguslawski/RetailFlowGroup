@@ -24,6 +24,10 @@ class KafkaSink:
                 self.kafka_client.produce("orders", serialized)
         print(f"Saved to Kafka: {record}")
 
+    def bulk_write(self, records: list[GeneratedRecord]) -> None:
+        for record in records:
+            self.write(record)
+
     def flush(self) -> None:
         self.kafka_client.flush()
 

@@ -36,6 +36,12 @@ class DeviceType(StrEnum):
     TABLET      = "tablet"
     UNKNOWN     = "unknown"
 
+    def is_mobile(self):
+        return self in {
+            self.MOBILE,
+            self.TABLET,
+        }
+
 
 class LoyaltyTier(StrEnum):
     STANDARD    = "standard"
