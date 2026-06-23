@@ -7,10 +7,14 @@ from generator.session.handler_registry import registry
 from generator.session.machine import StateMachine
 from generator.session.transitions import TransitionMap
 from generator.session.profiles.alpha import TRANSITIONS
+from generator.schemas.clickstreams.alpha import ClickstreamEvent
+from generator.schemas.orders.alpha import OrderEvent
 from generator.stores.alpha.router import AlphaRouter
 from generator.stores.alpha.factories.clickstream import AlphaClickstreamFactory
 from generator.stores.alpha.factories.order import AlphaOrderFactory
 from generator.stores.alpha.factories.user import AlphaUserFactory
+from generator.stores.alpha.mappers.clickstream import clickstream_renderer
+from generator.stores.alpha.mappers.order import order_renderer
 from generator.stores.factory import StoreFactory
 from infrastructure.kafka.factory import build_kafka_config
 from infrastructure.kafka.serializer import AvroSerializerService
@@ -29,6 +33,8 @@ class AlphaBuilder:
         kafka_config = build_kafka_config(config.store_id)
         kafka_client = KafkaProducerClient(kafka_config)
         serializer = AvroSerializerService(kafka_config.schema_registry_url, config.store_id)
+        serializer.register_serializer("clickstreams", ClickstreamEvent, clickstream_renderer)
+        serializer.register_serializer("orders", OrderEvent, order_renderer)
         return KafkaSink(kafka_client, serializer)
     
     def build_router(self, config: StoreConfig) -> AlphaRouter:

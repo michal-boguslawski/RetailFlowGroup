@@ -2,11 +2,11 @@ from dataclasses import asdict
 from typing import Any
 
 from domain.models import OrderEvent
-from schemas.orders.beta import OrderEvent as AvroOrderEvent
-from schemas.orders.beta import OrderLineItem as AvroOrderLineItem
+from generator.schemas.orders.beta import OrderEvent as AvroOrderEvent
+from generator.schemas.orders.beta import OrderLineItem as AvroOrderLineItem
 
 
-def beta_order_renderer(event: OrderEvent, ctx) -> dict[str, Any]:
+def order_renderer(event: OrderEvent, ctx) -> dict[str, Any]:
     items = [
         AvroOrderLineItem(item.product.id, item.discount_pct)
         for item in event.order.items
@@ -25,4 +25,3 @@ def beta_order_renderer(event: OrderEvent, ctx) -> dict[str, Any]:
         lineItems=items,
     )
     return asdict(avro_event)
-    

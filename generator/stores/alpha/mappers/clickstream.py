@@ -1,24 +1,27 @@
+from dataclasses import asdict
+from typing import Any
+
 from domain.models import ClickstreamEvent
-from schemas.clickstreams.alpha import ClickstreamEvent as AvroClickstreamEvent
+from generator.schemas.clickstreams.alpha import ClickstreamEvent as AvroClickstreamEvent
 
 
-def clickstream_to_avro(clickstream_event: ClickstreamEvent) -> AvroClickstreamEvent:
-    user = clickstream_event.user
-    return AvroClickstreamEvent(
-        event_id=clickstream_event.event_id,
-        event_type=clickstream_event.event_type.value,
-        event_ts=clickstream_event.event_ts,
-        received_ts=clickstream_event.received_ts,
-        store_id=clickstream_event.store_id.value,
-        session_id=clickstream_event.session_id,
-        user_id=user.id if user else None,
-        anonymous_id=clickstream_event.anonymous_id,
-        product_id=clickstream_event.product_id,
-        page_url=clickstream_event.page_url,
-        device_type=clickstream_event.device_type.value if clickstream_event.device_type else None,
-        ip_address=None if user and user.gdpr_consent else clickstream_event.ip_address,
-        country_code=clickstream_event.country_code,
-        ab_variant=clickstream_event.ab_variant,
-        scroll_depth_pct=clickstream_event.scroll_depth_pct,
-        schema_version=clickstream_event.schema_version
+def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
+    avro_event = AvroClickstreamEvent(
+        event_id=event.event_id,
+        event_type=event.event_type.value,
+        event_ts=event.event_ts,
+        received_ts=event.received_ts,
+        anonymous_id=event.anonymous_id,
+        store_id=event.store_id,
+        session_id=event.session_id,
+        user_id=event.user.id if event.user else None,
+        product_id=event.product.id if event.product else None,
+        page_url=event.page_url,
+        device_type=event.device_type.value if event.device_type else None,
+        ip_address=event.ip_address,
+        country_code=event.country_code,
+        scroll_depth_pct=event.scroll_depth_pct,
+        ab_variant=event.ab_variant,
+        schema_version=event.schema_version or "2.1.0",
     )
+    return asdict(avro_event)

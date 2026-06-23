@@ -2,9 +2,9 @@ from dataclasses import asdict
 from typing import Any
 
 from domain.models import ClickstreamEvent
-from schemas.clickstreams.beta import ClickstreamEvent as AvroClickstreamEvent
+from generator.schemas.clickstreams.beta import ClickstreamEvent as AvroClickstreamEvent
 
-def beta_clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
+def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
     avro_event = AvroClickstreamEvent(
         event_id=event.event_id,
         event_type=event.event_type.value,
@@ -24,4 +24,3 @@ def beta_clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
         schema_version=None,
     )
     return asdict(avro_event)
-    
