@@ -4,6 +4,7 @@ from threading import Thread
 from config.loader import load_config
 from generator.core.loop import GeneratorLoop
 from generator.builders.alpha_builder import AlphaBuilder
+from generator.pipeline.builder import build_pipeline
 from generator.session.handlers.loader import load_handlers
 from infrastructure.kafka.factory import build_kafka_config
 from infrastructure.kafka.admin import KafkaAdminClient
@@ -22,18 +23,20 @@ if __name__ == "__main__":
     admin_client = KafkaAdminClient(kafka_config)
     admin_client.ensure_topics()
 
+    pipeline = build_pipeline(config.pipeline_config) if config.pipeline_config else None
+
     user_loop = GeneratorLoop(
         step=lambda: alpha_factory.make_one("users"),
         breaktime_generator=lambda: gamma(10, 2),
         router=alpha_router,
-        pipeline=None,
+        pipeline=pipeline,
     )
 
     events_loop = GeneratorLoop(
         step=lambda: alpha_event_handler.step(),
         breaktime_generator=lambda: gamma(0.5, 0.5),
         router=alpha_router,
-        pipeline=None,
+        pipeline=pipeline,
     )
     # user_loop.bootstrap(10)
 

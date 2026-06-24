@@ -26,7 +26,7 @@ class NullifyStep(PipelineStep):
         return False
 
     def _nullify_field(self, event: GeneratedRecord, field: str, value: float) -> None:
-        if hasattr(event, field) and ( value < self.faker.pyfloat(min_value=0., max_value=1.) ):
+        if hasattr(event, field) and ( self.faker.pyfloat(min_value=0., max_value=1.) < value ):
             setattr(event, field, None)
 
     def process(self, event: GeneratedRecord) -> list[GeneratedRecord]:

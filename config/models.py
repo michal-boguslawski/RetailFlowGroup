@@ -31,14 +31,26 @@ class NullRates(BaseModel):
     date_of_birth: float = Field(default=0.0, ge=0, le=1)
 
 
+class FieldCorruptRates(BaseModel):
+    email: float = Field(default=0.0, ge=0, le=1)
+
+
+class PipelineConfig(BaseModel):
+    null_rates: NullRates
+    field_corrupt_rates: FieldCorruptRates
+    duplication_rate: float = 0.
+    legacy_rate: float = 0.
+
+
 class StoreConfig(BaseModel):
     store_id: StoreId
 
     ids: IdConfig
-    null_rates: NullRates
 
     currencies: list[str]
     state_path: Optional[str] = None
 
     clock_drift_seconds: int = 0
     encoding: str = "utf-8"
+
+    pipeline_config: PipelineConfig | None = None

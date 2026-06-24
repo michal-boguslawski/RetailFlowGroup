@@ -3,6 +3,7 @@ from argparse import ArgumentParser
 from config.loader import load_config
 from generator.core.loop import GeneratorLoop
 from generator.builders.alpha_builder import AlphaBuilder
+from generator.pipeline.builder import build_pipeline
 
 
 def parse_args():
@@ -30,11 +31,13 @@ if __name__ == "__main__":
     alpha_factory = alpha_builder.build_factory(config)
     alpha_router = alpha_builder.build_router(config)
 
+    pipeline = build_pipeline(config.pipeline_config) if config.pipeline_config else None
+
     user_loop = GeneratorLoop(
         step=lambda: alpha_factory.make_one("users"),
         breaktime_generator=lambda: 1,
         router=alpha_router,
-        pipeline=None,
+        pipeline=pipeline,
     )
 
     user_loop.bootstrap(args.users)

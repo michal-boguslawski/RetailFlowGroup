@@ -10,14 +10,20 @@ ids:
     prefix: prod_
   event_id:
     style: uuid
-null_rates:
-  user_id: 0.
-  order_id: 0.
-  product_id: 0.
-  event_id: 0.
 currencies:
   - PLN
   - EUR
   - GBP
 state_path: data/state/alpha_generator_state.json
 clock_drift_seconds: 100
+
+pipeline_config:
+  null_rates:
+    user: 0.12
+    session_id: 0.08
+    phone: 0.4
+    date_of_birth: 0.3
+  field_corrupt_rates:
+    email: 0.05
+  duplication_rate: 0.02
+  legacy_rate: 0.15
