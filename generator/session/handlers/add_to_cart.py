@@ -12,7 +12,9 @@ class AddToCartHandler(ClickstreamTransitionHandler[ClickstreamEventType.ADD_TO_
 
         assert session.clickstream_event is not None
         product = session.clickstream_event.product
-        assert type(product) is Product, "Random product must be of type Product"
+        assert isinstance(product, Product), (
+            f"Random product must be a Product, but is {type(product)}"
+        )
         session.cart.append(
             OrderLineItem(
                 product=product,

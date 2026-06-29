@@ -1,6 +1,6 @@
 # infrastructure/core/db_service.py
 
-from typing import Protocol, TypeVar, runtime_checkable, Sequence, Optional
+from typing import Protocol, TypeVar, runtime_checkable, Sequence, Optional, Mapping
 
 from domain.types import GeneratedRecord
 
@@ -22,7 +22,7 @@ class DBService:
     lives entirely inside the repositories — this class only routes.
     """
 
-    def __init__(self, repositories: dict[str, Repository]):
+    def __init__(self, repositories: Mapping[str, Repository]):
         self._repos = repositories
 
     def save(self, entity_name: str, record: object) -> None:

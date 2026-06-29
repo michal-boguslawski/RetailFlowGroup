@@ -27,6 +27,8 @@ class ProductViewHandler(ClickstreamTransitionHandler[ClickstreamEventType.PRODU
 
         product = self.db_service.get_random("products")
         # print(f"Got random product: {product}")
-        assert type(product) is Product, "Random product must be of type Product"
+        assert isinstance(product, Product), (
+            f"Random product must be a Product, but is {type(product)}"
+        )
         session.clickstream_event.product = product
         return session.clickstream_event

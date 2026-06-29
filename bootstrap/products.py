@@ -1,12 +1,12 @@
 from infrastructure.core.db_service import DBService
-from ingestion.loaders.product_loader import ProductSeedLoader
+from ingestion.loaders.base_product_loader import BaseProductSeedLoader
 
 
 class ProductSeeder:
 
     def __init__(
         self,
-        loader: ProductSeedLoader, 
+        loader: BaseProductSeedLoader, 
         db_service: DBService,
     ):
         self.loader = loader
