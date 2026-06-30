@@ -6,10 +6,11 @@ from domain.models import BetaProduct
 def model_to_document(product: BetaProduct) -> dict:
     legacy = product.legacy_shape
     if legacy:
+        price_entry = product.price_entries[0]
         return {
             "_id": product.id,
-            "categoryPath": product.category,
-            "prices": ",".join([f"{p.amount} {p.currency}" for p in product.price_entries]),
+            "category": product.category,
+            "price": f"{price_entry.amount} {price_entry.currency}",
             "stock": product.stock_detail.total if product.stock_detail else None,
             "active": int(product.status),
             "tags": product.tags,
@@ -17,10 +18,17 @@ def model_to_document(product: BetaProduct) -> dict:
             "images": product.images,
             "updatedAt": datetime.now().isoformat(),
         }
+
+    price_entries = []
+    for p in product.price_entries:
+        d = asdict(p)
+        d["vatRate"] = d.pop("vat_rate")
+        price_entries.append(d)
+
     return {
         "_id": product.id,
         "categoryPath": product.category_path,
-        "prices": [asdict(p) for p in product.price_entries],
+        "prices": price_entries,
         "stock": asdict(product.stock_detail) if product.stock_detail else None,
         "status": "active" if product.status else "inactive",
         "variants": [asdict(v) for v in product.variants],

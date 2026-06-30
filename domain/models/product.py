@@ -87,7 +87,8 @@ class BetaProduct(Product):
         if an empty price_entries should instead signal a generator bug."""
         if not self.price_entries:
             return Decimal("0")
-        return self.price_entries[0].amount
+        price_entry = self.price_entries[0]
+        return price_entry.amount * (1 + price_entry.vat_rate / 100)
 
     @property
     def category(self) -> str:
@@ -98,3 +99,56 @@ class BetaProduct(Product):
         if not self.category_path:
             return ""
         return '/'.join(self.category_path)
+
+    @classmethod
+    def from_document(cls, doc: dict) -> "BetaProduct":
+        """Dispatches to the correct parser based on document shape."""
+        if "category" in doc:
+            return cls._from_legacy_document(doc)
+        return cls._from_modern_document(doc)
+
+    @classmethod
+    def _from_legacy_document(cls, doc: dict) -> "BetaProduct":
+        return cls(
+            id=doc["_id"],
+            # name=doc["name"],
+            name="",
+            category_path=[doc["category"].split("/")],
+            legacy_shape=True,
+            price_entries=[PriceEntry(
+                country="UNKNOWN",
+                currency=doc["price"].split(" ")[-1],
+                amount=Decimal(doc["price"].split(" ")[0]),
+                vat_rate=Decimal("0"),
+            )],
+            stock_detail=StockDetail(
+                total=doc["stock"],
+                reserved=0,
+                warehouses={},),
+            status=bool(doc["status"]),
+            tags=doc["tags"],
+            images=doc["images"],
+            avg_rating=doc["avg_rating"],
+        )
+
+    @classmethod
+    def _from_modern_document(cls, doc: dict) -> "BetaProduct":
+        # avg_rating: Optional[float] = None
+        return cls(
+            id=doc["_id"],
+            # name=doc["name"],
+            name="",
+            category_path=doc.get("categoryPath", []),
+            legacy_shape=False,
+            price_entries=[
+                PriceEntry(country=p["country"], currency=p["currency"],
+                           amount=Decimal(str(p["amount"])), vat_rate=Decimal(str(p["vatRate"])))
+                for p in doc.get("prices", [])
+            ],
+            stock_detail=StockDetail(**doc["stock"]) if doc.get("stock") else None,
+            status=( doc["status"] == "active" ),
+            variants=[ProductVariant(**v) for v in doc.get("variants", [])],
+            tags=doc.get("tags", []),
+            images=doc.get("images", []),
+            avg_rating=doc.get("avgRating"),
+        )
