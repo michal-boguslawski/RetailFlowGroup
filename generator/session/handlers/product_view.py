@@ -1,7 +1,6 @@
-from dataclasses import dataclass
 from typing import Literal
 
-from domain.enums import ClickstreamEventType
+from domain.enums import ClickstreamEventType, get_currency, Country
 from domain.models import ClickstreamEvent, Product
 from generator.session.handler_registry import handler
 from generator.session.handlers.base import ClickstreamTransitionHandler
@@ -24,8 +23,9 @@ class ProductViewHandler(ClickstreamTransitionHandler[ClickstreamEventType.PRODU
 
     def _post_handle(self, session: Session) -> ClickstreamEvent:
         assert session.clickstream_event is not None
+        currency = get_currency(Country(session.clickstream_event.country_code))
 
-        product = self.db_service.get_random("products")
+        product = self.db_service.get_random("products", currency=currency)
         # print(f"Got random product: {product}")
         assert isinstance(product, Product), (
             f"Random product must be a Product, but is {type(product)}"

@@ -36,7 +36,7 @@ class AlphaUserRepository(BaseRepository[User, AlphaUserORM]):
         return orm_to_model(orm)
 
     @with_session
-    def find_random(self, session: Session) -> Optional[User]:
+    def find_random(self, session: Session, *args, **kwargs) -> Optional[User]:
         select_stmt = select(AlphaUserORM).order_by(func.random()).limit(1)
         orm = session.execute(select_stmt).scalar_one_or_none()
         if orm is None:

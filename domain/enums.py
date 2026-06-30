@@ -78,3 +78,20 @@ class EntityType(StrEnum):
 
 class ExitEventType(StrEnum):
     EXIT = "exit"
+
+
+class Country(StrEnum):
+    PL = "PL"
+    DE = "DE"
+    GB = "GB"
+
+
+COUNTRY_CURRENCY_MAP = {
+    Country.PL: Currency.PLN,
+    Country.DE: Currency.EUR,
+    Country.GB: Currency.GBP,
+}
+
+
+def get_currency(country: Country) -> Currency:
+    return COUNTRY_CURRENCY_MAP[country]

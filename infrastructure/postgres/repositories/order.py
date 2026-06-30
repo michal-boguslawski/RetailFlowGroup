@@ -62,7 +62,7 @@ class AlphaOrderRepository(BaseRepository[Order, AlphaOrderORM]):
         pass
 
     @with_session
-    def find_random(self, session: Session) -> Optional[Order]:
+    def find_random(self, session: Session, *args, **kwargs) -> Optional[Order]:
         select_stmt = select(AlphaOrderORM).order_by(func.random()).limit(1)
         orm = session.execute(select_stmt).scalar_one_or_none()
         if orm is None:

@@ -9,6 +9,7 @@ from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
 from generator.stores.base import BaseFactory
 from infrastructure.core.db_service import DBService
+from generator.core.ip_generator import GeoIPGenerator
 
 
 class AlphaClickstreamFactory(BaseFactory[ClickstreamEvent]):
@@ -25,12 +26,14 @@ class AlphaClickstreamFactory(BaseFactory[ClickstreamEvent]):
         self.db_service = db_service
         self.clock_drift_seconds = clock_drift_seconds
         self.date_start = date_start or datetime(2023, 1, 1)
+        self.ip_generator = GeoIPGenerator()
+        
 
     def make_one(self) -> ClickstreamEvent:
         server_ts = int(self.fake.past_datetime(self.date_start).timestamp())
         client_ts = server_ts + self.fake.random_int(-self.clock_drift_seconds, self.clock_drift_seconds)
-        ip_address = self.fake.random_element([self.fake.ipv4(), self.fake.ipv6()])
-        country_code = get_country_code_from_ip(ip_address)
+        country_code = self.fake.random_element(["DE", "GB", "PL"])
+        ip_address = self.ip_generator.random_ip(country_code, self.fake.random_element([4, 6]))
 
         user = cast(User, self.db_service.get_random("users"))
 

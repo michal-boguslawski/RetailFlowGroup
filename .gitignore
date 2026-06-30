@@ -4,3 +4,4 @@ __pycache__
 venv
 
 data/state
+data/static/GeoLite2*

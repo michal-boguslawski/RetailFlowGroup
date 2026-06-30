@@ -48,6 +48,6 @@ class DBService:
                 f"Available: {list(self._repos.keys())}"
             )
 
-    def get_random(self, entity_name: str) -> GeneratedRecord | None:
+    def get_random(self, entity_name: str, *args, **kwargs) -> GeneratedRecord | None:
         repo = self._get_repo(entity_name)
-        return repo.find_random()
+        return repo.find_random(*args, **kwargs)

@@ -1,13 +1,24 @@
+from decimal import Decimal
 from sqlalchemy import select, func
 from sqlalchemy.orm import Session
 from sqlalchemy.dialects.postgresql import Insert, insert
+
 from typing import Optional
 
+from domain.enums import Currency
 from domain.models import AlphaProduct
 from infrastructure.postgres.models import AlphaProductORM
 from infrastructure.postgres.decorators import with_session
 from infrastructure.postgres.mappers.product import orm_to_model, model_to_row
 from infrastructure.postgres.repositories.base import BaseRepository
+
+
+# expected prices to be stored in EUR
+CURRENCY_CONVERSION_RATES = {
+    Currency.EUR: Decimal(1),
+    Currency.GBP: Decimal(0.86),
+    Currency.PLN: Decimal(4.3),
+}
 
 
 class AlphaProductRepository(BaseRepository[AlphaProduct, AlphaProductORM]):
@@ -31,11 +42,13 @@ class AlphaProductRepository(BaseRepository[AlphaProduct, AlphaProductORM]):
         return orm_to_model(orm)
 
     @with_session
-    def find_random(self, session: Session) -> Optional[AlphaProduct]:
+    def find_random(self, session: Session, currency: Currency) -> Optional[AlphaProduct]:
         select_stmt = select(AlphaProductORM).order_by(func.random()).limit(1)
         orm = session.execute(select_stmt).scalar_one_or_none()
         # print(f"Found product orm {orm}")
         if orm is None:
             return
-        return self._orm_to_model_mapper(orm)
+        model = self._orm_to_model_mapper(orm)
+        model.price = model.price * CURRENCY_CONVERSION_RATES[currency]
+        return model
     
