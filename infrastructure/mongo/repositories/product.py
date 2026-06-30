@@ -16,29 +16,38 @@ class ProductRepository(BaseRepository):
         product = BetaProduct.from_document(doc)
         return product
 
-    def find_random(self, currency: Currency, *args, **kwargs) -> BetaProduct | None:
-        cursor = self.collection.aggregate([
-            {
-                "$match": {
-                    "$or": [
-                        {
-                            "prices.currency": currency.value
-                        },
-                        {
-                            "price": {
-                                "$regex": currency.value,
-                                "$options": "i"
+    def find_random(self, currency: Currency | None = None, *args, **kwargs) -> BetaProduct | None:
+        if currency:
+            cursor = self.collection.aggregate([
+                {
+                    "$match": {
+                        "$or": [
+                            {
+                                "prices.currency": currency.value
+                            },
+                            {
+                                "price": {
+                                    "$regex": currency.value,
+                                    "$options": "i"
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    }
+                },
+                {
+                    "$sample": {
+                        "size": 1
+                    }
                 }
-            },
-            {
-                "$sample": {
-                    "size": 1
+            ])
+        else:
+            cursor = self.collection.aggregate([
+                {
+                    "$sample": {
+                        "size": 1
+                    }
                 }
-            }
-        ])
+            ])
         result = cursor.to_list(length=1)
         if result:
             product = BetaProduct.from_document(result[0])

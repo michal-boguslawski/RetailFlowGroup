@@ -10,7 +10,7 @@ from infrastructure.kafka.factory import build_kafka_config
 from infrastructure.kafka.admin import KafkaAdminClient
 
 
-if __name__ == "__main__":
+def alpha_runner():
     load_handlers()
     config = load_config("alpha")
     kafka_config = build_kafka_config(config.store_id)
@@ -61,4 +61,7 @@ if __name__ == "__main__":
             t.join()
 
         print("Stopped")
-    
+
+
+if __name__ == "__main__":
+    alpha_runner()

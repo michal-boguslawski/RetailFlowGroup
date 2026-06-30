@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime, UTC
 
 from domain.enums import (
     LoyaltyTier, AcquisitionChannel, PrefferedLanguages
@@ -27,8 +27,9 @@ class AlphaUser(User):
 class BetaUser(User):
     email_hash: str | None
     phone_hash: str | None
-    preferredLanguage: PrefferedLanguages | None
+    preferred_language: PrefferedLanguages | None
     size_preferences: dict[str, str]
     wishlist: list[str]
     loyalty_points: int | None
     gdpr_consent: bool | None
+    created_at: str = datetime.now(UTC).isoformat()

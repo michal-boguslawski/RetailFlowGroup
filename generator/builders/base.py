@@ -2,7 +2,7 @@
 
 from typing import Protocol
 from config.models import StoreConfig
-from domain.types import BaseFactory  # generic Protocol, not the old class
+from generator.stores.base import BaseFactory, BaseRouter
 from generator.session.handlers.base import TransitionHandler
 
 

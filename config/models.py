@@ -16,7 +16,6 @@ class IdConfig(BaseModel):
     order_id: IdFormat
     product_id: IdFormat
     product_id_legacy: IdFormat | None = None
-    event_id: IdFormat | None = None
     clickstream_event_id: IdFormat | None = None
     order_event_id: IdFormat | None = None
     session_id: IdFormat | None = None

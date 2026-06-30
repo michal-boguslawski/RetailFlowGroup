@@ -1,3 +1,5 @@
+from typing import Mapping
+
 from domain.types import GeneratedRecord
 from generator.stores.base import BaseFactory
 
@@ -5,7 +7,7 @@ from generator.stores.base import BaseFactory
 class StoreFactory:
     def __init__(
         self,
-        factories: dict[str, BaseFactory]
+        factories: Mapping[str, BaseFactory]
     ):
         self.factories = factories
 

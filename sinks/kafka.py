@@ -3,9 +3,10 @@ from domain.types import GeneratedRecord
 
 from infrastructure.kafka.serializer import AvroSerializerService
 from infrastructure.kafka.producer import KafkaProducerClient
+from sinks.base import BaseSink
 
 
-class KafkaSink:
+class KafkaSink(BaseSink):
     def __init__(
         self,
         kafka_client: KafkaProducerClient,

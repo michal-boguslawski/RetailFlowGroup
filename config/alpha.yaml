@@ -8,8 +8,6 @@ ids:
   product_id:
     style: uuid
     prefix: prod_
-  event_id:
-    style: uuid
 currencies:
   - PLN
   - EUR

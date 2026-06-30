@@ -4,10 +4,11 @@ from domain.models import User, OrderEvent, ClickstreamEvent
 from generator.stores.base import BaseRouter
 from sinks.base import BaseSink
 from sinks.postgres import PostgresSink
+from sinks.kafka import KafkaSink
 
 
 class AlphaRouter(BaseRouter):
-    def __init__(self, kafka_sink, postgres_sink: PostgresSink):
+    def __init__(self, kafka_sink: KafkaSink, postgres_sink: PostgresSink):
         self.kafka_sink = kafka_sink
         self.postgres_sink = postgres_sink
 

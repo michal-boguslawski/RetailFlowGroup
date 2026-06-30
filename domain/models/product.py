@@ -71,7 +71,7 @@ class BetaProduct(Product):
     category_path: list[str] = field(default_factory=list)
     legacy_shape: bool = False
     price_entries: list[PriceEntry] = field(default_factory=list)
-    stock_detail: Optional[StockDetail] = None
+    stock_detail: StockDetail | None = None
     status: bool = True
     variants: list[ProductVariant] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
@@ -125,10 +125,10 @@ class BetaProduct(Product):
                 total=doc["stock"],
                 reserved=0,
                 warehouses={},),
-            status=bool(doc["status"]),
-            tags=doc["tags"],
+            status=bool(doc["active"]),
+            tags=doc.get("tags", []),
             images=doc["images"],
-            avg_rating=doc["avg_rating"],
+            avg_rating=doc.get("avgRating"),
         )
 
     @classmethod
@@ -149,6 +149,6 @@ class BetaProduct(Product):
             status=( doc["status"] == "active" ),
             variants=[ProductVariant(**v) for v in doc.get("variants", [])],
             tags=doc.get("tags", []),
-            images=doc.get("images", []),
+            images=doc["images"],
             avg_rating=doc.get("avgRating"),
         )

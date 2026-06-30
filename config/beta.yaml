@@ -1,17 +1,17 @@
 store_id: beta
 ids:
   user_id:
-    style: uuid
+    style: integer
   order_id:
     style: integer
-    prefix: alpha_
   product_id:
     style: uuid
     prefix: prod_
   product_id_legacy:
     style: integer
-  event_id:
-    style: uuid
+  order_event_id:
+    style: integer
+    prefix: EVT-
 currencies:
   - PLN
   - EUR
