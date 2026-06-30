@@ -2,14 +2,14 @@ from datetime import date
 from faker import Faker
 from typing import Optional
 
-from domain.models import User
+from domain.models import AlphaUser
 from domain.enums import LoyaltyTier, AcquisitionChannel
 from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
 from generator.stores.base import BaseFactory
 
 
-class AlphaUserFactory(BaseFactory[User]):
+class AlphaUserFactory(BaseFactory[AlphaUser]):
     def __init__(
         self,
         id_generator: IdGenerator,
@@ -22,8 +22,8 @@ class AlphaUserFactory(BaseFactory[User]):
         self.birth_start = birth_start
         self.birth_end = birth_end
 
-    def make_one(self) -> User:
-        return User(
+    def make_one(self) -> AlphaUser:
+        return AlphaUser(
             id = self.id_generator.make_id("user_id"),
             email = self.fake.email(),
             phone = self.fake.phone_number(),

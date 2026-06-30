@@ -2,9 +2,8 @@ from datetime import datetime
 from faker import Faker
 from typing import Optional, cast
 
-from domain.models import ClickstreamEvent, User
+from domain.models import ClickstreamEvent, AlphaUser
 from domain.enums import ClickstreamEventType, StoreId, DeviceType
-from generator.core.utils import get_country_code_from_ip
 from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
 from generator.stores.base import BaseFactory
@@ -35,7 +34,7 @@ class AlphaClickstreamFactory(BaseFactory[ClickstreamEvent]):
         country_code = self.fake.random_element(["DE", "GB", "PL"])
         ip_address = self.ip_generator.random_ip(country_code, self.fake.random_element([4, 6]))
 
-        user = cast(User, self.db_service.get_random("users"))
+        user = cast(AlphaUser, self.db_service.get_random("users"))
 
         return ClickstreamEvent(
             event_id=self.id_generator.make_id("clickstream_event_id"),

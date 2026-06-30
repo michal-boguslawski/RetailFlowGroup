@@ -1,10 +1,10 @@
-from domain.models import User
+from domain.models import AlphaUser
 from domain.enums import LoyaltyTier, AcquisitionChannel
 from infrastructure.postgres.models import AlphaUserORM
 
 
-def orm_to_model(orm: AlphaUserORM) -> User:
-    user = User(
+def orm_to_model(orm: AlphaUserORM) -> AlphaUser:
+    user = AlphaUser(
         id=orm.user_id,
         email=orm.email,
         phone=orm.phone,
@@ -18,7 +18,7 @@ def orm_to_model(orm: AlphaUserORM) -> User:
     return user
 
 
-def model_to_row(record: User) -> dict:
+def model_to_row(record: AlphaUser) -> dict:
     return {
         "user_id": record.id,
         "email": record.email,

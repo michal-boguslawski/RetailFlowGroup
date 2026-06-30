@@ -86,6 +86,11 @@ class Country(StrEnum):
     GB = "GB"
 
 
+class PrefferedLanguages(StrEnum):
+    PL = "pl"
+    EN = "en"
+
+
 COUNTRY_CURRENCY_MAP = {
     Country.PL: Currency.PLN,
     Country.DE: Currency.EUR,

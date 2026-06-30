@@ -1,7 +1,7 @@
 from faker import Faker
 from typing import Optional
 
-from domain.models import OrderEvent, Order, OrderLineItem, User
+from domain.models import OrderEvent, Order, OrderLineItem, AlphaUser
 from domain.enums import OrderEventType, StoreId, Currency
 from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
@@ -19,7 +19,7 @@ class AlphaOrderFactory(BaseFactory[OrderEvent]):
         self.id_generator = id_generator
         self.clock_drift_seconds = clock_drift_seconds
 
-    def make_one(self, user: User, items: list[OrderLineItem], event_ts: int) -> OrderEvent:
+    def make_one(self, user: AlphaUser, items: list[OrderLineItem], event_ts: int) -> OrderEvent:
         order = Order(
             id=self.id_generator.make_id("order_id"),
             user=user,
