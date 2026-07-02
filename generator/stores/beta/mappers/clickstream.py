@@ -2,7 +2,6 @@ from dataclasses import asdict
 from typing import Any
 
 from domain.models import ClickstreamEvent
-from domain.enums import DeviceType
 from generator.schemas.clickstreams.beta import ClickstreamEvent as AvroClickstreamEvent
 
 def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:

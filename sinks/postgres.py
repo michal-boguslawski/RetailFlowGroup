@@ -28,10 +28,9 @@ class PostgresSink(BaseSink):
             case User():
                 self.service.bulk_save("users", records)
             case OrderEvent():
-                order_events: list[OrderEvent] = records  # type: ignore[assignment]
                 self.service.bulk_save(
                     "orders",
-                    [r.order for r in order_events]
+                    [r.order for r in records if isinstance(r, OrderEvent)]
                 )
             case Product():
                 self.service.bulk_save("products", records)

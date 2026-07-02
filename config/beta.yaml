@@ -21,11 +21,11 @@ clock_drift_seconds: 100
 
 pipeline_config:
   null_rates:
-    user: 0.12
-    session_id: 0.08
-    phone: 0.4
-    date_of_birth: 0.3
+    user: 0.18
+    email_hash: 0.05
+    phone_hash: 0.4
+    loyalty_points: 0.05
   field_corrupt_rates:
-    email: 0.05
+    email: 0.
   duplication_rate: 0.02
-  legacy_rate: 0.15
+  legacy_rate: 0.08

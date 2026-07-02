@@ -16,7 +16,7 @@ class ProductRepository(BaseRepository):
         product = BetaProduct.from_document(doc)
         return product
 
-    def find_random(self, currency: Currency | None = None, *args, **kwargs) -> BetaProduct | None:
+    def find_random(self, currency: Currency | None = None, *args, **kwargs) -> BetaProduct:
         if currency:
             cursor = self.collection.aggregate([
                 {
@@ -49,7 +49,7 @@ class ProductRepository(BaseRepository):
                 }
             ])
         result = cursor.to_list(length=1)
-        if result:
-            product = BetaProduct.from_document(result[0])
-            return product
-        return None
+        if not result:
+            raise ValueError(f"No products found for {currency}")
+        product = BetaProduct.from_document(result[0])
+        return product

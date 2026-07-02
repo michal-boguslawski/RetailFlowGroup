@@ -3,13 +3,14 @@ from generator.pipeline.base import Pipeline
 from generator.pipeline.steps.duplicate import DuplicateStep
 from generator.pipeline.steps.field_corrupt import FieldCorruptionStep
 from generator.pipeline.steps.nullify import NullifyStep
-from generator.pipeline.steps.user_legacy import UserLegacyStep
+from generator.pipeline.steps.user_legacy import AlphaUserLegacyStep, BetaUserLegacyStep
 
 
 def build_pipeline(pipeline_config: PipelineConfig) -> Pipeline:
     steps = [
         FieldCorruptionStep(pipeline_config.field_corrupt_rates),
-        UserLegacyStep(pipeline_config.legacy_rate),
+        AlphaUserLegacyStep(pipeline_config.legacy_rate),
+        BetaUserLegacyStep(pipeline_config.legacy_rate),
         NullifyStep(pipeline_config.null_rates),
         DuplicateStep(pipeline_config.duplication_rate)
     ]

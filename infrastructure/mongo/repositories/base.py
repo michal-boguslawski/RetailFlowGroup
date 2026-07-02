@@ -1,6 +1,8 @@
 from pymongo.database import Database
 from pymongo.collection import Collection
 
+from typing import Any
+
 
 class BaseRepository:
 

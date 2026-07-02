@@ -40,7 +40,7 @@ class BetaUserFactory(BaseFactory[BetaUser]):
             id = self.id_generator.make_id("user_id"),
             email_hash=self.fake.hashed(self.fake.email()),
             phone_hash=self.fake.hashed(self.fake.phone_number()),
-            preferred_language=self.fake.random_element(list(PrefferedLanguages)),
+            preferred_language=self.fake.random_element(list(PrefferedLanguages) + [None]),
             size_preferences=self._generate_size_preferences(self.fake.random_int(0, 5)),
             wishlist=self._generate_wishlist(self.fake.random_int(0, 5)),
             loyalty_points=self.fake.random_int(0, 10_000),

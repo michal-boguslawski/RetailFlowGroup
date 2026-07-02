@@ -1,5 +1,5 @@
 from domain.types import GeneratedRecord
-from domain.models import User
+from domain.models import User, OrderEvent, ClickstreamEvent
 from generator.stores.base import BaseRouter
 from sinks.base import BaseSink
 from sinks.kafka import KafkaSink
@@ -13,6 +13,16 @@ class BetaRouter(BaseRouter):
 
     def route(self, record: GeneratedRecord) -> tuple[BaseSink, ...]:
         match record:
+            case OrderEvent():
+                return (
+                    self.kafka_sink,
+                )
+
+            case ClickstreamEvent():
+                return (
+                    self.kafka_sink,
+                )
+
             case User():
                 return (self.mongo_sink, )
 

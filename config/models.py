@@ -29,6 +29,8 @@ class NullRates(BaseModel):
     phone: float = Field(default=0.0, ge=0, le=1)
     # tax_amount: float = Field(default=0.0, ge=0, le=1)
     date_of_birth: float = Field(default=0.0, ge=0, le=1)
+    email_hash: float = Field(default=0.0, ge=0, le=1)
+    phone_hash: float = Field(default=0.0, ge=0, le=1)
 
 
 class FieldCorruptRates(BaseModel):

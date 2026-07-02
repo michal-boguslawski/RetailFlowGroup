@@ -33,3 +33,18 @@ class BetaUser(User):
     loyalty_points: int | None
     gdpr_consent: bool | None
     created_at: str = datetime.now(UTC).isoformat()
+
+    @classmethod
+    def from_document(cls, doc: dict) -> "BetaUser":
+        preferred_language = doc.get("preferredLanguage")
+        return cls(
+            id=doc["_id"],
+            email_hash=doc.get("emailHash"),
+            phone_hash=doc.get("phoneHash"),
+            preferred_language=PrefferedLanguages(preferred_language) if preferred_language else None,
+            size_preferences=doc.get("sizePreferences", {}),
+            wishlist=doc.get("wishlist", []),
+            loyalty_points=doc.get("loyaltyPoints"),
+            gdpr_consent=doc.get("gdprConsent"),
+        )
+
