@@ -8,10 +8,7 @@ ids:
   product_id:
     style: uuid
     prefix: prod_
-currencies:
-  - PLN
-  - EUR
-  - GBP
+
 state_path: data/state/alpha_generator_state.json
 clock_drift_seconds: 100
 

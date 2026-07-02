@@ -49,7 +49,6 @@ class StoreConfig(BaseModel):
 
     ids: IdConfig
 
-    currencies: list[str]
     state_path: Optional[str] = None
 
     clock_drift_seconds: int = 0

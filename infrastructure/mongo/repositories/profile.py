@@ -2,6 +2,7 @@ from pymongo.database import Database
 
 from domain.models.user import BetaUser
 from infrastructure.mongo.repositories.base import BaseRepository
+from infrastructure.mongo.mappers.profile import document_to_model
 
 
 class UserProfileRepository(BaseRepository):
@@ -12,11 +13,11 @@ class UserProfileRepository(BaseRepository):
         doc = super().find_by_id(id_, *args, **kwargs)
         if doc is None:
             return None
-        product = BetaUser.from_document(doc)
+        product = document_to_model(doc)
         return product
 
     def find_random(self, *args, **kwargs) -> BetaUser:
         doc = super().find_random(*args, **kwargs)
         if not isinstance(doc, dict):
             raise TypeError("Expected a dictionary, got {}".format(type(doc)))
-        return BetaUser.from_document(doc)
+        return document_to_model(doc)

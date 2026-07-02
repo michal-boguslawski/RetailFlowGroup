@@ -3,6 +3,7 @@ from pymongo.database import Database
 from domain.enums import Currency
 from domain.models.product import BetaProduct
 from infrastructure.mongo.repositories.base import BaseRepository
+from infrastructure.mongo.mappers.product import document_to_model
 
 
 class ProductRepository(BaseRepository):
@@ -13,7 +14,7 @@ class ProductRepository(BaseRepository):
         doc = super().find_by_id(id_, *args, **kwargs)
         if doc is None:
             return None
-        product = BetaProduct.from_document(doc)
+        product = document_to_model(doc)
         return product
 
     def find_random(self, currency: Currency | None = None, *args, **kwargs) -> BetaProduct:
@@ -51,5 +52,5 @@ class ProductRepository(BaseRepository):
         result = cursor.to_list(length=1)
         if not result:
             raise ValueError(f"No products found for {currency}")
-        product = BetaProduct.from_document(result[0])
+        product = document_to_model(result[0])
         return product

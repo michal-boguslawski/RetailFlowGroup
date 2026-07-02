@@ -12,10 +12,7 @@ ids:
   order_event_id:
     style: integer
     prefix: EVT-
-currencies:
-  - PLN
-  - EUR
-  - GBP
+
 state_path: data/state/beta_generator_state.json
 clock_drift_seconds: 100
 
