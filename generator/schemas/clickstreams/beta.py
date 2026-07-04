@@ -127,10 +127,5 @@ class ClickstreamEvent(AvroModel):
         metadata={"description": "A/B test bucket assignment. Null if no experiment assigned."},
     )
 
-    schema_version: Optional[str] = field(
-        default=None,
-        metadata={"description": "Schema version for backward compatibility tracking."},
-    )
-
     class Meta:
         namespace = "com.retailflow.clickstream"

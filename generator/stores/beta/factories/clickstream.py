@@ -53,5 +53,4 @@ class BetaClickstreamFactory(BaseFactory[ClickstreamEvent]):
             country_code=country_code,
             ab_variant=self.fake.random_element(["A", "B", None]),
             scroll_depth_pct=self.fake.pyfloat(min_value=0, max_value=30),
-            schema_version="1.3.0",
         )

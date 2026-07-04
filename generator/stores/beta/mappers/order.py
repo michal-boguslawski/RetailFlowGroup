@@ -20,7 +20,6 @@ def order_renderer(event: OrderEvent, ctx) -> dict[str, Any]:
         event_ts=event.event_ts,
         order_id=event.order.id,
         currency=event.order.currency.value,
-        schema_version=event.schema_version,
         store_id=event.store_id,
         user_id=event.order.user.id if event.order.user else None,
         totalPrice=float(event.order.total_amount),

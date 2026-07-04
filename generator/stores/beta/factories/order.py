@@ -36,5 +36,4 @@ class BetaOrderFactory(BaseFactory[OrderEvent]):
             store_id=StoreId.BETA,
             order=order,
             failure_reason=None,
-            schema_version="1.3.0"
         )

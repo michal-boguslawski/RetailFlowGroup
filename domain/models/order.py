@@ -59,4 +59,3 @@ class OrderEvent:
     store_id: StoreId
     order: Order
     failure_reason: Optional[str]
-    schema_version: str

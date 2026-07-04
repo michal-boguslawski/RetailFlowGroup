@@ -29,6 +29,5 @@ def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
             else event.scroll_depth_pct
         ),
         ab_variant=event.ab_variant,
-        schema_version=None,
     )
     return asdict(avro_event)

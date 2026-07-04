@@ -96,15 +96,6 @@ class OrderEvent(AvroModel):
         }
     )
 
-    schema_version: str = field(
-        default="2.1.0",
-        metadata={
-            "description": (
-                "Schema version string."
-            )
-        }
-    )
-
     store_id: str = field(
         default="alpha",
         metadata={

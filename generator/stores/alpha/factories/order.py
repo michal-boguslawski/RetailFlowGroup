@@ -36,5 +36,4 @@ class AlphaOrderFactory(BaseFactory[OrderEvent]):
             store_id=StoreId.ALPHA,
             order=order,
             failure_reason=None,
-            schema_version="2.1.0"
         )

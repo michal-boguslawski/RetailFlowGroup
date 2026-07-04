@@ -22,6 +22,5 @@ def clickstream_renderer(event: ClickstreamEvent, ctx) -> dict[str, Any]:
         country_code=event.country_code,
         scroll_depth_pct=event.scroll_depth_pct,
         ab_variant=event.ab_variant,
-        schema_version=event.schema_version or "2.1.0",
     )
     return asdict(avro_event)

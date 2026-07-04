@@ -25,7 +25,6 @@ class ClickstreamEvent:
     country_code: Optional[str]
     ab_variant: Optional[str]
     scroll_depth_pct: Optional[float]
-    schema_version: str
     new: bool = True
 
     @property
