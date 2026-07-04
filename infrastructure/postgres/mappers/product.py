@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from domain.models import AlphaProduct
 from infrastructure.postgres.models import AlphaProductORM
 
@@ -8,6 +10,7 @@ def orm_to_model(orm: AlphaProductORM) -> AlphaProduct:
         name=orm.name,
         _price=orm.unit_price,
         category_path=orm.category_path,
+        tax_pc=Decimal(23),
     )
     # print(f"Mapped product {mapped_product}")
     return mapped_product 

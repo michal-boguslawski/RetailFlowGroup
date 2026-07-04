@@ -22,7 +22,7 @@ def order_renderer(event: OrderEvent, ctx) -> dict[str, Any]:
         user_id=event.order.user.id if event.order.user else None,
         guest_email=event.order.guest_email,
         total_amount=round(float(event.order.total_amount), 2),
-        tax_amount=round(float(event.order.tax_amount), 2) if event.order.tax_amount else None,
+        tax_amount=round(float(event.order.tax_amount), 2),
         failure_reason=event.failure_reason,
         items=items,
     )

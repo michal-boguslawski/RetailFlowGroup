@@ -44,10 +44,21 @@ class Product(ABC):
 
     @property
     @abstractmethod
+    def net_price(self) -> Decimal:
+        ...
+
+    @property
+    @abstractmethod
+    def tax_amount(self) -> Decimal:
+        """Tax amount, derived from price and tax rate. Not stored; computed
+        on-the-fly. Zero if tax_pc is not set."""
+        ...
+
+    @property
     def price(self) -> Decimal:
         """Every Product must expose a single canonical price, however it's
         derived. Stored field on Alpha; computed from price_entries on Beta."""
-        ...
+        return self.net_price + self.tax_amount
 
 
 @dataclass
@@ -58,12 +69,18 @@ class AlphaProduct(Product):
     currency: Optional[Currency] = None
 
     @property
-    def price(self) -> Decimal:
+    def net_price(self) -> Decimal:
         return self._price
 
-    @price.setter
-    def price(self, value: Decimal) -> None:
+    @net_price.setter
+    def net_price(self, value: Decimal) -> None:
         self._price = value
+
+    @property
+    def tax_amount(self) -> Decimal:
+        if self.tax_pc is None:
+            return Decimal("0")
+        return self.net_price * (self.tax_pc / 100)
 
 
 @dataclass
@@ -79,16 +96,10 @@ class BetaProduct(Product):
     avg_rating: Optional[float] = None
 
     @property
-    def price(self) -> Decimal:
-        """Derived from price_entries. No price_entries means no price was
-        ever generated for this product — returns 0 rather than raising, on
-        the assumption that's a recoverable/displayable state (e.g. a
-        not-yet-priced draft product), not a corrupted one. Reconsider this
-        if an empty price_entries should instead signal a generator bug."""
+    def net_price(self) -> Decimal:
         if not self.price_entries:
             return Decimal("0")
-        price_entry = self.price_entries[0]
-        return price_entry.amount * (1 + price_entry.vat_rate / 100)
+        return self.price_entries[0].amount
 
     @property
     def category(self) -> str:
@@ -99,3 +110,10 @@ class BetaProduct(Product):
         if not self.category_path:
             return ""
         return '/'.join(self.category_path)
+
+    @property
+    def tax_amount(self) -> Decimal:
+        if not self.price_entries:
+            return Decimal("0")
+        price_entry = self.price_entries[0]
+        return self.net_price * (price_entry.vat_rate / 100)

@@ -49,6 +49,6 @@ class AlphaProductRepository(BaseRepository[AlphaProduct, AlphaProductORM]):
         if orm is None:
             return
         model = self._orm_to_model_mapper(orm)
-        model.price = model.price * CURRENCY_CONVERSION_RATES[currency]
+        model.net_price = model.price * CURRENCY_CONVERSION_RATES[currency]
         return model
     
