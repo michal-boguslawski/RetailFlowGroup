@@ -117,3 +117,25 @@ class BetaProduct(Product):
             return Decimal("0")
         price_entry = self.price_entries[0]
         return self.net_price * (price_entry.vat_rate / 100)
+
+
+@dataclass
+class GammaProduct(Product):
+    category: str
+    _price: Decimal
+    stock_count: int
+    ean_barcode: str
+    active: int
+    created_date: str
+
+    @property
+    def net_price(self) -> Decimal:
+        return self._price
+
+    @net_price.setter
+    def net_price(self, value: Decimal) -> None:
+        self._price = value
+
+    @property
+    def tax_amount(self) -> Decimal:
+        return self.net_price * Decimal(0.23)

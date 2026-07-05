@@ -3,7 +3,7 @@ from decimal import Decimal
 import pandas as pd
 
 from domain.models import AlphaProduct
-from ingestion.loaders.base_product_loader import BaseProductSeedLoader
+from bootstrap.loaders.base_product_loader import BaseProductSeedLoader
 
 
 class AlphaProductSeedLoader(BaseProductSeedLoader):

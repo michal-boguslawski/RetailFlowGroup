@@ -1,5 +1,3 @@
-from typing import cast
-
 from domain.enums import ClickstreamEventType, ExitEventType
 from domain.models import ClickstreamEvent, OrderEvent
 from generator.core.id_generator import IdGenerator

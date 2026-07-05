@@ -1,5 +1,5 @@
 # infrastructure/core/db_service.py
-
+from datetime import date
 from typing import Protocol, TypeVar, runtime_checkable, Sequence, Optional, Mapping
 
 from domain.types import GeneratedRecord
@@ -11,8 +11,9 @@ T = TypeVar("T")
 class Repository(Protocol[T]):
     def upsert(self, record: T) -> None: ...
     def bulk_upsert(self, records: Sequence[T]) -> None: ...
-    def find_by_id(self, id_: str) -> Optional[T]: ...
-    def find_random(self) -> Optional[T]: ...
+    def find_by_id(self, id_: str, *args, **kwargs) -> Optional[T]: ...
+    def find_random(self, *args, **kwargs) -> Optional[T]: ...
+    def find_by_date(self, date_: date, *args, **kwargs) -> Sequence[T]: ...
 
 
 class DBService:
@@ -35,9 +36,9 @@ class DBService:
         repo = self._get_repo(entity_name)
         repo.bulk_upsert(records)
 
-    def get(self, entity_name: str, id_: str) -> GeneratedRecord | None:
+    def get(self, entity_name: str, id_: str, *args, **kwargs) -> GeneratedRecord | None:
         repo = self._get_repo(entity_name)
-        return repo.find_by_id(id_)
+        return repo.find_by_id(id_, *args, **kwargs)
 
     def _get_repo(self, entity_name: str) -> Repository:
         try:
@@ -51,3 +52,7 @@ class DBService:
     def get_random(self, entity_name: str, *args, **kwargs) -> GeneratedRecord | None:
         repo = self._get_repo(entity_name)
         return repo.find_random(*args, **kwargs)
+
+    def get_at_date(self, entity_name: str, date_: date, *args, **kwargs) -> Sequence[GeneratedRecord]:
+        repo = self._get_repo(entity_name)
+        return repo.find_by_date(date_, *args, **kwargs)

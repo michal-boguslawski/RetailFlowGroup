@@ -11,18 +11,23 @@ from generator.session.handlers.loader import load_handlers
 def run_stream(context: StoreContext) -> None:
     loops = [
         GeneratorLoop(
-            step=lambda: context.factory.make_one("users"),
-            breaktime_generator=lambda: gamma(10, 2),
-            router=context.router,
-            pipeline=context.pipeline,
-        ),
-        GeneratorLoop(
-            step=lambda: context.event_handler.step(),
+            step=lambda: context.generator_handler.step(),
             breaktime_generator=lambda: gamma(0.5, 0.5),
             router=context.router,
             pipeline=context.pipeline,
         ),
     ]
+
+    if context.async_generators:
+        loops.extend(
+            GeneratorLoop(
+                step=lambda: context.factory.make_one(generator_name),
+                breaktime_generator=lambda: gamma(12, 5),
+                router=context.router,
+                pipeline=context.pipeline,
+            )
+            for generator_name in context.async_generators
+        )
 
     threads = [Thread(target=loop.run, daemon=True) for loop in loops]
 
@@ -33,6 +38,7 @@ def run_stream(context: StoreContext) -> None:
         while any(t.is_alive() for t in threads):
             for t in threads:
                 t.join(timeout=0.5)
+
     except KeyboardInterrupt:
         print("Stopping...")
         for loop in loops:

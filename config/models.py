@@ -49,9 +49,12 @@ class StoreConfig(BaseModel):
 
     ids: IdConfig
 
+    minio_ingestion: str | None = None
+
     state_path: Optional[str] = None
 
     clock_drift_seconds: int = 0
     encoding: str = "utf-8"
 
     pipeline_config: PipelineConfig | None = None
+    async_generators: list[str] | None = None

@@ -8,8 +8,8 @@ from config.models import StoreConfig
 from generator.core.id_generator import IdGenerator
 from infrastructure.mongo.factory import build_beta_db_service
 from infrastructure.postgres.factory import build_alpha_db_service
-from ingestion.loaders.alpha_product_loader import AlphaProductSeedLoader
-from ingestion.loaders.beta_product_loader import BetaProductSeedLoader
+from bootstrap.loaders.alpha_product_loader import AlphaProductSeedLoader
+from bootstrap.loaders.beta_product_loader import BetaProductSeedLoader
 
 
 PRODUCT_REGISTRY = {

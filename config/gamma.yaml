@@ -1,15 +1,15 @@
-store_id: alpha
+store_id: gamma
 ids:
   user_id:
     style: uuid
   order_id:
     style: integer
-    prefix: alpha_
   product_id:
     style: uuid
-    prefix: prod_
 
-state_path: data/state/alpha_generator_state.json
+minio_bucket_name: raw-ingestion
+
+state_path: data/state/gamma_generator_state.json
 clock_drift_seconds: 100
 
 pipeline_config:
@@ -22,6 +22,3 @@ pipeline_config:
     email: 0.05
   duplication_rate: 0.02
   legacy_rate: 0.15
-
-async_generators:
-  - users

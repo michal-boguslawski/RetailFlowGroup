@@ -25,11 +25,11 @@ from sinks.kafka import KafkaSink
 
 
 class AlphaBuilder:
-    def build_postgres_sink(self, config: StoreConfig) -> PostgresSink:
+    def _build_postgres_sink(self, config: StoreConfig) -> PostgresSink:
         db_service = build_alpha_db_service()
         return PostgresSink(db_service)
 
-    def build_kafka_sink(self, config: StoreConfig) -> KafkaSink:
+    def _build_kafka_sink(self, config: StoreConfig) -> KafkaSink:
         kafka_config = build_kafka_config(config.store_id)
         kafka_client = KafkaProducerClient(kafka_config)
         serializer = AvroSerializerService(kafka_config.schema_registry_url, config.store_id)
@@ -39,8 +39,8 @@ class AlphaBuilder:
     
     def build_router(self, config: StoreConfig) -> AlphaRouter:
         # --- sinks ---
-        kafka_sink = self.build_kafka_sink(config)
-        postgres_sink = self.build_postgres_sink(config)
+        kafka_sink = self._build_kafka_sink(config)
+        postgres_sink = self._build_postgres_sink(config)
 
         # --- router ---
         return AlphaRouter(kafka_sink, postgres_sink)

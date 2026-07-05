@@ -91,6 +91,52 @@ class PrefferedLanguages(StrEnum):
     EN = "en"
 
 
+class DiscountTypesEN(StrEnum):
+    PERCENTAGE = "percentage"
+    FIXED = "fixed"
+    FREE_SHIPPING = "free_shipping"
+    BOGO = "bogo"
+
+
+class DiscountTypesPL(StrEnum):
+    PERCENTAGE = "procentowy"
+    FIXED = "stawka stała"
+    FREE_SHIPPING = "darmowa dostawa"
+    BOGO = "kup jedno, drugie w gratisie"
+
+
+class OrderStatus(StrEnum):
+    ZREALIZOWANE = "zrealizowane"
+    ANULOWANE = "anulowane"
+    W_TRAKCIE = "w trakcie"
+
+
+class ReasonCodePL(StrEnum):
+    DEFECT = "DEF"
+    SIZE = "SIZ"
+    EXCHANGE = "CHG"
+    SHIPPING_DAMAGE = "DAM"
+
+
+class ReasonCodeDE(StrEnum):
+    DEFECT = "DEFEKT"
+    SIZE = "GROESSE"
+    SHIPPING_DAMAGE = "TRANSPORT"
+
+
+class ConditionPL(StrEnum):
+    NEW = "NEW"
+    DAMAGED = "DAMAGED"
+    USED = "USED"
+
+
+class ConditionDE(StrEnum):
+    NEW = "A"
+    DAMAGED = "B"
+    USED = "C"
+    REFURBISHED = "D"
+
+
 COUNTRY_CURRENCY_MAP = {
     Country.PL: Currency.PLN,
     Country.DE: Currency.EUR,

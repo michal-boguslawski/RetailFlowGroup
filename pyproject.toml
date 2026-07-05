@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "attrs>=26.1.0",
     "authlib>=1.7.2",
+    "boto3>=1.43.40",
     "cachetools>=7.1.4",
     "certifi>=2026.5.20",
     "confluent-kafka>=2.14.2",

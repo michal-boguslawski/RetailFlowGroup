@@ -5,3 +5,5 @@ venv
 
 data/state
 data/static/GeoLite2*
+
+uv.lock

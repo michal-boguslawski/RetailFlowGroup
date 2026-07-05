@@ -1,0 +1,1001 @@
+id,name,category,price,stock_count,ean_barcode,active,created_date
+1,Lniany Konewka metalowa antracytowy,Garden,337.75,497,7383206038507,1,2010-01-12
+2,Nowoczesny Wiadro plastikowe granatowy,Garage,395.23,459,6641106541130,1,2010-01-13
+3,Wielofunkcyjny Wieszak na narzędzia,Garage,729.33,148,3095449791272,1,2010-01-23
+4,Skandynawski Poduszka na leżak,Garden,481.01,236,9417634250731,0,2010-01-26
+5,Praktyczny Konewka metalowa,Garden,531.84,446,3347272742311,0,2010-01-27
+6,Nowoczesny Zszywacz biurowy zielony XL,Office,653.49,290,3074645205998,1,2010-02-15
+7,Drewniany Obraz dekoracyjny brązowy L,Living Room,871.23,337,6946119524362,1,2010-02-22
+8,Składany Mobilne nad łóżeczko szary XL,Nursery,807.81,71,9912347851966,0,2010-02-24
+9,Vintage Kołdra letnia,Bedroom,759.85,118,1203875099776,0,2010-02-24
+10,Ekologiczny Teczka dokumentów szary,Office,68.78,16,4627765725656,0,2010-03-02
+11,Ceramiczny Wieszak na obrazki,Nursery,456.81,461,238061744513,1,2010-03-07
+12,Ekologiczny Karmnik dla ptaków antracytowy,Garden,475.68,104,9589477352283,1,2010-03-22
+13,Ceramiczny Regał na książki szary,Living Room,314.39,385,4235677826592,1,2010-03-23
+14,Wielofunkcyjny Naklejki ścienne antracytowy M,Nursery,268.52,99,107139660553,0,2010-04-03
+15,Boho Dywanik łazienkowy granatowy XL,Bathroom,53.56,153,4206788317125,0,2010-04-08
+16,Ekologiczny Latarka ręczna naturalny S,Garage,802.58,349,4421017509618,1,2010-04-09
+17,Luksusowy Organizer na narzędzia,Garage,783.24,91,644742123094,1,2010-04-11
+18,Kompaktowy Stolik kawowy brązowy,Living Room,630.26,16,5120461872345,1,2010-04-14
+19,Kompaktowy Ramka na certyfikat szary XL,Office,63.18,492,1157942387368,1,2010-04-17
+20,Klasyczny Donica ceramiczna kremowy S,Living Room,782.54,378,8386384066651,0,2010-04-17
+21,Drewniany Organizer do szafy,Bedroom,137.72,218,3761820916601,0,2010-04-22
+22,Skandynawski Wycieraczka wejściowa,Hallway,220.48,104,4167812778223,0,2010-04-25
+23,Kompaktowy Wieszak na obrazki kremowy,Nursery,422.62,460,7722660256261,1,2010-04-25
+24,Elegancki Poduszka dekoracyjna,Living Room,876.96,101,4206969421528,0,2010-04-26
+25,Szklany Lampka nocna,Bedroom,101.19,189,7090859914491,0,2010-05-10
+26,Drewniany Garnek ze stali nierdzewnej kremowy XL,Kitchen,869.56,308,7499564122038,0,2010-05-11
+27,Rustykały Wieszak na rośliny,Balcony,673.67,96,6829635339057,1,2010-05-13
+28,Skandynawski Mobilne nad łóżeczko kremowy S,Nursery,399.8,97,2030937618472,1,2010-05-15
+29,Bawełniany Zestaw szklanek czarny,Dining Room,286.1,335,6291486528162,1,2010-05-30
+30,Szklany Worek próżniowy,Storage,582.17,357,3700332285560,1,2010-06-07
+31,Boho Stolik kawowy beżowy,Living Room,503.94,295,5325939933799,1,2010-06-08
+32,Industrialny Worek próżniowy biały S,Storage,861.86,54,3443899827803,0,2010-06-10
+33,Praktyczny Podkładka pod talerz,Dining Room,624.57,30,3471754558845,1,2010-06-12
+34,Skandynawski Konewka plastikowa granatowy M,Garden,393.01,129,7124633515717,1,2010-06-17
+35,Boho Kosz wiklinowy,Hallway,702.67,458,3784233944955,0,2010-06-18
+36,Minimalistyczny Dywanik łazienkowy,Bathroom,203.95,180,6434369709313,1,2010-06-29
+37,Ceramiczny Blok na noże,Kitchen,788.73,266,468275670432,0,2010-06-30
+38,Bambusowy Świecznik na stół,Dining Room,654.86,235,6810409157014,1,2010-07-04
+39,Klasyczny Worek na delikatne pranie brązowy,Laundry Room,348.44,106,8027481242110,1,2010-07-06
+40,Rustykały Organizer do szafy,Bedroom,158.97,489,8801336138618,0,2010-07-14
+41,Industrialny Ręcznik kąpielowy naturalny L,Bathroom,637.84,242,4929751702819,1,2010-07-23
+42,Luksusowy Wieszak na rośliny kremowy M,Balcony,299.43,409,9966365807412,0,2010-07-23
+43,Lniany Narzuta na łóżko antracytowy,Bedroom,120.66,352,4648877190651,1,2010-07-31
+44,Drewniany Karafka szklana,Dining Room,131.79,414,4760108018104,0,2010-08-07
+45,Vintage Szczotka do zamiatania,Garage,134.6,63,9656523413899,1,2010-08-08
+46,Ekologiczny Karafka szklana,Dining Room,43.18,5,449646129391,0,2010-08-13
+47,Nowoczesny Pojemnik na narzędzia ogrodowe,Balcony,435.13,37,9236534606055,1,2010-08-15
+48,Luksusowy Stojak wielofunkcyjny,Storage,488.31,199,2884318848527,0,2010-08-17
+49,Minimalistyczny Szczotka do włosów czarny,Bathroom,590.89,207,6205634111595,1,2010-08-18
+50,Wielofunkcyjny Wąż ogrodowy,Garden,474.35,130,1390808823512,0,2010-08-30
+51,Drewniany Zszywacz biurowy kremowy,Office,27.86,133,1152621815996,1,2010-09-11
+52,Ceramiczny Taca do serwowania granatowy,Dining Room,278.0,170,8971480263259,1,2010-09-11
+53,Klasyczny Podkładka pod mysz,Office,414.67,172,6464170805317,0,2010-09-12
+54,Luksusowy Wieszak na rośliny naturalny,Balcony,374.72,164,1181022031735,0,2010-09-18
+55,Vintage Organizer na narzędzia czarny,Garage,193.71,76,4913577908333,1,2010-09-27
+56,Elegancki Podkładka pod mysz naturalny XL,Office,161.04,37,7508019630452,0,2010-09-29
+57,Premium Wieszak na biżuterię biały S,Bedroom,673.19,426,4395339421043,1,2010-10-01
+58,Drewniany Szczotka do zamiatania naturalny XL,Garage,739.85,196,5326909738468,1,2010-10-02
+59,Premium Lampion ogrodowy,Garden,633.37,476,2198655049449,1,2010-10-24
+60,Kompaktowy Wieszak na narzędzia granatowy,Garage,60.23,125,3349114152081,1,2010-11-03
+61,Składany Etykiety samoprzylepne antracytowy L,Storage,291.35,225,1774490581477,1,2010-11-05
+62,Lniany Podstawka pod gorące naczynia,Dining Room,687.27,202,3187328077116,0,2010-11-08
+63,Klasyczny Wieszak za drzwi brązowy,Storage,534.49,494,1767993593740,1,2010-11-14
+64,Stylowy Worek na delikatne pranie naturalny XL,Laundry Room,639.89,268,4434481230834,1,2010-11-17
+65,Dekoracyjny Zamek do roweru kremowy,Garage,258.45,373,6335693929067,0,2010-11-25
+66,Metalowy Suszarka ścienna czarny,Laundry Room,139.72,174,8562614991539,1,2010-12-01
+67,Szklany Aromatyczna świeca szary,Bedroom,620.78,480,1994101372151,0,2010-12-16
+68,Bawełniany Organizer na zabawki granatowy S,Nursery,243.56,429,5757574758336,0,2010-12-16
+69,Składany Półka na buty,Hallway,110.27,76,7722005436457,1,2010-12-21
+70,Rustykały Zestaw noży kuchennych czarny S,Kitchen,871.8,452,3371189547387,0,2010-12-25
+71,Szklany Worek na delikatne pranie granatowy,Laundry Room,429.52,123,8573680119239,1,2010-12-26
+72,Rustykały Stojak na monitor naturalny,Office,399.24,464,7422438649089,0,2011-01-05
+73,Dekoracyjny Deska do krojenia,Kitchen,390.11,178,5782019043227,0,2011-01-06
+74,Kompaktowy Dozownik do mydła naturalny,Bathroom,409.14,367,1617688029422,1,2011-01-08
+75,Praktyczny Pompka do roweru kremowy,Garage,865.38,317,4200749465399,1,2011-01-08
+76,Drewniany Szafka RTV,Living Room,541.42,387,4383034199091,1,2011-01-10
+77,Rustykały Naklejki ścienne,Nursery,871.62,422,3745458929752,0,2011-01-12
+78,Skandynawski Nożyczki biurowe szary M,Office,153.47,287,4011845826034,1,2011-01-14
+79,Ceramiczny Podkładka pod nadgarstek antracytowy S,Office,176.22,484,9233451100901,1,2011-01-16
+80,Wielofunkcyjny Ramka na certyfikat,Office,203.01,337,7767199038490,0,2011-02-05
+81,Wielofunkcyjny Rękawice ogrodowe beżowy,Garden,512.88,315,2771195296353,0,2011-02-10
+82,Bawełniany Naklejki ścienne biały S,Nursery,89.2,56,9721811437441,1,2011-02-15
+83,Szklany Kołdra zimowa kremowy,Bedroom,378.84,322,9367632016320,1,2011-02-16
+84,Wielofunkcyjny Skrzynka na kwiaty zielony M,Balcony,803.93,313,28772175351,1,2011-02-17
+85,Klasyczny Pojemnik na watę,Bathroom,559.62,61,8374550842895,0,2011-02-18
+86,Boho Suszarka ścienna biały M,Laundry Room,633.23,486,1876920828326,0,2011-02-20
+87,Szklany Zamek do roweru brązowy,Garage,151.67,167,9611110286713,0,2011-02-25
+88,Elegancki Skrzynka na kwiaty,Balcony,146.49,191,8955296386395,1,2011-02-27
+89,Stylowy Poduszka na krzesło balkonowe czarny M,Balcony,67.88,132,9384308948709,1,2011-03-01
+90,Premium Pokrowiec na deskę,Laundry Room,769.56,122,742359142610,1,2011-03-08
+91,Wielofunkcyjny Wieszak na obrazki kremowy S,Nursery,581.6,19,9610556613909,1,2011-03-20
+92,Wielofunkcyjny Wieszak za drzwi,Storage,268.92,259,3608545667664,1,2011-03-24
+93,Bawełniany Doniczka plastikowa beżowy S,Garden,561.4,391,1791100651207,1,2011-03-25
+94,Minimalistyczny Worek na śmieci kremowy L,Garage,349.22,159,1559450119293,0,2011-04-25
+95,Boho Półka na buty brązowy,Hallway,810.65,231,1331509839303,0,2011-04-28
+96,Metalowy Półka na buty antracytowy,Hallway,105.07,124,2579706734994,1,2011-05-01
+97,Kompaktowy Pojemnik na narzędzia ogrodowe szary XL,Balcony,98.12,250,9640537735153,1,2011-05-12
+98,Rustykały Organizer na zabawki zielony,Nursery,659.36,459,5023290282272,0,2011-05-17
+99,Dekoracyjny Podkładka pod mysz zielony M,Office,225.54,293,1307562636890,1,2011-05-26
+100,Minimalistyczny Cukiernica,Dining Room,616.54,162,4946519098625,1,2011-05-27
+101,Nowoczesny Przedłużacz elektryczny,Garage,635.03,243,1470827235906,1,2011-05-27
+102,Boho Pojemnik na narzędzia ogrodowe,Balcony,883.3,122,8179335548647,0,2011-06-04
+103,Rustykały Fartuch kuchenny beżowy S,Kitchen,519.94,293,7419267649212,1,2011-06-05
+104,Praktyczny Ramka na certyfikat,Office,151.82,69,448207001596,1,2011-06-05
+105,Stylowy Wieszak na obrazki,Nursery,49.98,436,2311775331267,1,2011-06-12
+106,Vintage Pudełko kartonowe zielony,Storage,775.25,295,5229462093558,1,2011-06-25
+107,Drewniany Kołdra zimowa beżowy L,Bedroom,123.43,474,3220414474328,0,2011-06-25
+108,Premium Kubek termiczny,Kitchen,49.16,6,2369362689437,0,2011-06-27
+109,Praktyczny Lustro łazienkowe,Bathroom,663.47,181,6062953506378,0,2011-07-01
+110,Premium Wycieraczka wejściowa szary,Hallway,148.75,67,3959473721325,0,2011-07-04
+111,Kompaktowy Kosz wiklinowy,Hallway,327.34,88,650637314959,0,2011-07-06
+112,Luksusowy Kosz dekoracyjny naturalny,Living Room,640.57,335,2812356798368,0,2011-07-17
+113,Premium Organizer na biurko,Bedroom,441.91,224,8487392855746,0,2011-07-19
+114,Ekologiczny Wieszak na narzędzia antracytowy,Garage,326.04,344,8771694722562,1,2011-08-08
+115,Lniany Ramka na certyfikat beżowy L,Office,261.61,440,7134936183247,0,2011-08-08
+116,Praktyczny Stolik balkonowy brązowy XL,Balcony,715.74,141,1307538418529,0,2011-08-11
+117,Praktyczny Suszarka na pranie stojąca czarny,Laundry Room,591.37,16,5643502385036,1,2011-08-21
+118,Ceramiczny Zasłony blackout,Bedroom,529.74,130,572025909472,1,2011-08-21
+119,Elegancki Kosz wiklinowy z pokrywką brązowy M,Storage,411.36,127,5971072563661,1,2011-08-22
+120,Ekologiczny Organizer na klucze,Hallway,731.96,9,4262019712121,1,2011-08-24
+121,Lniany Dywanik do przedpokoju,Hallway,215.89,271,7509263223995,0,2011-08-26
+122,Minimalistyczny Szczotka do prania granatowy S,Laundry Room,253.25,230,7358662961942,0,2011-08-26
+123,Luksusowy Wąż ogrodowy,Garden,50.67,198,1006799006963,0,2011-08-27
+124,Rustykały Poduszka dla niemowląt,Nursery,139.92,134,9125652373416,1,2011-08-30
+125,Elegancki Korkociąg,Kitchen,852.63,476,476921053362,1,2011-09-16
+126,Wielofunkcyjny Skrzynka na kwiaty czarny M,Balcony,660.59,86,4462632514489,0,2011-09-17
+127,Składany Wąż ogrodowy kremowy,Garden,641.73,347,8479513711628,1,2011-09-23
+128,Boho Aromatyczna świeca,Bedroom,43.58,182,2245933441966,0,2011-09-25
+129,Skandynawski Lustro łazienkowe czarny M,Bathroom,778.75,170,6589635957087,1,2011-10-09
+130,Metalowy Organizer do szuflady biały,Storage,566.64,98,7379274907289,0,2011-10-14
+131,Minimalistyczny Lustro łazienkowe szary M,Bathroom,856.95,349,8946338915628,1,2011-10-15
+132,Szklany Kosz dekoracyjny zielony,Living Room,483.45,331,7609873126775,0,2011-10-17
+133,Rustykały Pojemnik na śruby,Garage,224.35,250,4926176475014,0,2011-11-08
+134,Składany Wanna składana zielony S,Bathroom,686.51,235,2450000001527,0,2011-11-08
+135,Nowoczesny Stojak wielofunkcyjny zielony XL,Storage,226.45,356,3410166687002,0,2011-11-09
+136,Skandynawski Roślinka sztuczna,Living Room,783.72,340,7660144485649,1,2011-11-12
+137,Dekoracyjny Wieszak na płaszcze zielony,Hallway,598.15,291,4549180172269,0,2011-11-14
+138,Premium Serwetnik drewniany,Dining Room,806.44,231,3634669254817,0,2011-11-20
+139,Lniany Poduszka ortopedyczna czarny,Bedroom,526.48,488,793597820716,1,2011-11-22
+140,Rustykały Lustro łazienkowe beżowy XL,Bathroom,796.95,421,1721314519512,1,2011-11-26
+141,Stylowy Wieszak za drzwi,Storage,449.92,166,2735454948087,0,2011-12-03
+142,Nowoczesny Mobilne nad łóżeczko naturalny,Nursery,84.39,40,8328569146307,0,2011-12-08
+143,Bambusowy Stolik kawowy biały,Living Room,131.48,436,7762534929297,0,2011-12-10
+144,Industrialny Wieszak na narzędzia biały,Garage,57.37,291,2300716950070,1,2011-12-11
+145,Ekologiczny Osłona balkonowa,Balcony,311.84,192,8299629145045,1,2011-12-13
+146,Elegancki Półka na buty,Hallway,260.83,485,9678274117673,1,2011-12-13
+147,Lniany Łopatka ogrodowa czarny S,Garden,501.06,441,2555989534391,1,2011-12-16
+148,Wielofunkcyjny Półka na buty brązowy,Hallway,827.7,43,5810213125125,0,2011-12-17
+149,Industrialny Mydelniczka antracytowy XL,Bathroom,38.81,308,5939172513559,0,2011-12-28
+150,Lniany Patelnia nieprzywierająca,Kitchen,866.78,461,2595327877476,0,2012-01-08
+151,Klasyczny Stojak na monitor zielony,Office,730.64,356,1773180632543,0,2012-01-14
+152,Boho Stojak na monitor,Office,747.6,462,8398225871393,1,2012-01-15
+153,Praktyczny Wanna składana antracytowy,Bathroom,163.19,428,7454930364689,1,2012-01-16
+154,Rustykały Pojemnik tekstylny naturalny,Storage,800.39,211,5766156545271,0,2012-01-18
+155,Ceramiczny Pojemnik na pieluchy,Nursery,719.22,300,6599949732034,0,2012-01-19
+156,Składany Naklejki ścienne brązowy,Nursery,873.09,335,9759230450185,1,2012-01-29
+157,Szklany Organizer na biurko antracytowy,Office,332.42,256,996132730345,1,2012-01-31
+158,Szklany Wieszak na obrazki kremowy M,Nursery,572.83,321,6671168457759,0,2012-02-03
+159,Rustykały Konewka metalowa,Garden,413.33,134,8714855245784,1,2012-03-01
+160,Lniany Mobilne nad łóżeczko szary M,Nursery,691.69,469,8120995765721,1,2012-03-04
+161,Nowoczesny Organizer na narzędzia zielony M,Garage,540.54,303,7954538179215,1,2012-03-07
+162,Vintage Pudełko kartonowe szary S,Storage,250.89,375,3691430753665,1,2012-03-14
+163,Klasyczny Waga kuchenna,Kitchen,441.69,59,1379956353157,0,2012-03-14
+164,Bambusowy Stojak na monitor zielony,Office,797.31,476,606853615301,1,2012-03-22
+165,Luksusowy Krzesło balkonowe czarny M,Balcony,812.04,94,5012495528933,0,2012-03-22
+166,Skandynawski Szufelka,Garage,296.67,75,1249985698478,1,2012-03-23
+167,Składany Pojemnik na śruby,Garage,278.13,41,2336132850724,1,2012-03-29
+168,Premium Kinkiet ścienny granatowy M,Hallway,222.53,196,3605766270284,1,2012-04-02
+169,Bawełniany Poduszka dla niemowląt granatowy,Nursery,233.74,61,3518233749896,1,2012-04-03
+170,Składany Wieszak na obrazki,Nursery,626.92,179,4100676267656,1,2012-04-10
+171,Klasyczny Organizer pralniany antracytowy,Laundry Room,707.15,270,7313797166983,1,2012-04-16
+172,Luksusowy Nawóz do roślin granatowy,Garden,622.57,367,5379538164931,0,2012-04-23
+173,Rustykały Lampka stojąca biały,Living Room,740.46,444,6945964883198,0,2012-04-23
+174,Bambusowy Chochla zielony,Kitchen,331.01,46,475412126783,1,2012-04-26
+175,Rustykały Mata balkonowa,Balcony,715.44,80,6145430796377,0,2012-05-04
+176,Luksusowy Mop z wiadrem,Garage,344.73,73,1223552165051,1,2012-05-09
+177,Wielofunkcyjny Koc polarowy kremowy,Bedroom,301.99,111,2501736542621,1,2012-05-16
+178,Praktyczny Lustro wejściowe brązowy M,Hallway,725.55,293,3214958702078,0,2012-05-17
+179,Boho Dziurkacz biały,Office,561.68,180,1562392090858,1,2012-05-27
+180,Kompaktowy Stojak wielofunkcyjny,Storage,138.2,12,615727682974,1,2012-06-01
+181,Industrialny Kabel zasilający biały M,Garage,187.09,245,4167872568628,0,2012-06-02
+182,Luksusowy Taśma klejąca beżowy M,Office,726.68,14,6235466226549,0,2012-06-07
+183,Szklany Organizer do szuflady biały,Storage,257.95,35,4586850142948,0,2012-06-07
+184,Boho Skrzynka na kwiaty,Balcony,220.74,273,6003044361995,1,2012-06-15
+185,Kompaktowy Dywan do salonu,Living Room,779.26,194,6843356708602,1,2012-06-20
+186,Dekoracyjny Dywanik do pokoju dziecięcego granatowy XL,Nursery,659.01,280,5700272063455,0,2012-06-26
+187,Bambusowy Wieszak na obrazki szary,Nursery,629.49,71,7790104328980,1,2012-06-29
+188,Premium Ręcznik do rąk,Bathroom,18.24,290,9154788728746,0,2012-07-11
+189,Bawełniany Ramka na certyfikat,Office,724.07,81,2261896288745,0,2012-07-17
+190,Premium Lampa solarna biały,Balcony,537.05,199,334191825532,1,2012-07-22
+191,Nowoczesny Wycieraczka wejściowa antracytowy L,Hallway,510.47,335,7550375899752,1,2012-07-23
+192,Wielofunkcyjny Dywanik łazienkowy,Bathroom,569.15,133,8629857973637,0,2012-07-30
+193,Ekologiczny Pojemnik na chleb granatowy,Kitchen,315.77,35,7680866281374,0,2012-08-02
+194,Elegancki Lampka nocna,Bedroom,829.59,30,5524728633302,0,2012-08-18
+195,Premium Konewka metalowa czarny,Garden,75.47,491,1366572240299,0,2012-08-18
+196,Premium Tabliczka korkowa brązowy M,Office,209.99,213,5049627322626,1,2012-08-20
+197,Wielofunkcyjny Pojemnik na watę beżowy XL,Bathroom,323.36,316,8217661912845,0,2012-08-24
+198,Elegancki Obrus bawełniany biały M,Dining Room,551.23,194,870662668210,1,2012-08-24
+199,Drewniany Poduszka dekoracyjna czarny S,Living Room,132.14,335,1534735528960,0,2012-08-28
+200,Stylowy Zraszacz,Garden,693.43,350,291617469025,0,2012-09-04
+201,Stylowy Stojak na rowery beżowy,Garage,738.37,214,8793741608988,0,2012-09-12
+202,Industrialny Mata balkonowa,Balcony,69.75,78,9181331708764,0,2012-09-24
+203,Ceramiczny Ramka na certyfikat antracytowy S,Office,818.05,469,936595201495,0,2012-10-06
+204,Premium Poduszka dla niemowląt,Nursery,181.55,426,3030705345783,1,2012-10-11
+205,Rustykały Zasłony do salonu beżowy L,Living Room,595.0,420,8926256609311,1,2012-10-17
+206,Ekologiczny Pokrowiec na deskę granatowy,Laundry Room,810.55,97,4060883561599,1,2012-10-17
+207,Metalowy Dywanik do przedpokoju czarny,Hallway,601.01,421,5027275164805,1,2012-10-26
+208,Ekologiczny Wieszak na rośliny beżowy,Balcony,110.91,242,1603988636538,1,2012-10-27
+209,Metalowy Drążek do zasłony naturalny XL,Bathroom,343.08,306,6309938425300,1,2012-11-01
+210,Minimalistyczny Nawóz do roślin,Garden,490.78,408,2102053950245,0,2012-11-04
+211,Składany Wieszak na narzędzia antracytowy,Garage,602.8,336,2102027588429,1,2012-11-05
+212,Stylowy Przedłużacz elektryczny beżowy S,Garage,122.6,321,203042322776,1,2012-11-07
+213,Kompaktowy Talerz głęboki kremowy,Dining Room,399.07,160,1221500141881,1,2012-11-09
+214,Stylowy Obrus bawełniany naturalny XL,Dining Room,602.2,394,9592323421088,0,2012-11-09
+215,Minimalistyczny Stojak wielofunkcyjny granatowy,Storage,95.9,57,4675361275150,1,2012-11-15
+216,Składany Deska do prasowania,Laundry Room,285.26,367,7866912517783,1,2012-11-17
+217,Ceramiczny Stojak na gazety brązowy,Living Room,211.5,451,4640882230957,1,2012-11-17
+218,Ekologiczny Doniczka balkonowa granatowy XL,Balcony,774.2,71,4461767929885,1,2012-11-26
+219,Vintage Szafka RTV,Living Room,338.09,5,2566212867162,0,2012-11-30
+220,Drewniany Suszarka na pranie,Bathroom,304.68,341,9787137529888,0,2012-12-06
+221,Metalowy Sekator naturalny,Garden,293.52,85,344765047154,0,2012-12-06
+222,Lniany Stojak na parasole czarny S,Hallway,391.01,170,200024539313,0,2012-12-10
+223,Szklany Dywan do salonu,Living Room,596.69,380,1649133424575,1,2012-12-14
+224,Metalowy Mata balkonowa antracytowy M,Balcony,358.65,330,376137918052,1,2012-12-17
+225,Klasyczny Koszyk na pieczywo granatowy,Dining Room,457.13,113,2067998136461,0,2012-12-18
+226,Bawełniany Organizer do szafy kremowy,Bedroom,103.13,429,7246301986428,1,2012-12-18
+227,Wielofunkcyjny Szafka na buty,Hallway,251.05,469,2028471901723,0,2012-12-20
+228,Bambusowy Mop z wiadrem,Garage,789.99,7,2164871206027,0,2012-12-20
+229,Premium Lampka stojąca czarny,Living Room,19.46,434,2119206136388,1,2012-12-20
+230,Boho Regał na książki granatowy,Living Room,126.47,330,4751079911839,1,2012-12-21
+231,Nowoczesny Pokrowiec na deskę biały XL,Laundry Room,588.74,458,5721514940976,1,2012-12-28
+232,Lniany Przedłużacz elektryczny zielony M,Garage,732.26,55,7722560531345,0,2012-12-31
+233,Vintage Organizer na zabawki zielony L,Nursery,110.86,345,7739260302991,0,2013-01-08
+234,Kompaktowy Półka ścienna kremowy,Living Room,605.29,408,6272980699015,1,2013-01-16
+235,Stylowy Ręcznik kąpielowy szary,Bathroom,749.14,363,9001635640723,0,2013-01-19
+236,Drewniany Lustro łazienkowe szary M,Bathroom,145.32,482,9634064686774,1,2013-01-20
+237,Luksusowy Magnes na lodówkę czarny S,Office,47.34,53,2135247871255,1,2013-02-02
+238,Kompaktowy Pojemnik na przyprawy beżowy M,Kitchen,698.61,91,2071511696660,1,2013-02-08
+239,Kompaktowy Wieszak na ręczniki szary XL,Bathroom,288.79,478,5756766708067,0,2013-02-25
+240,Industrialny Konewka plastikowa,Garden,665.58,404,4932966851616,0,2013-02-25
+241,Minimalistyczny Stolik kawowy granatowy L,Living Room,889.33,176,6258815371479,0,2013-02-28
+242,Stylowy Pojemnik na sezonowe ubrania,Storage,304.0,52,4084993231234,1,2013-03-03
+243,Praktyczny Etykiety samoprzylepne kremowy L,Storage,776.02,44,2996426033624,0,2013-03-04
+244,Dekoracyjny Obrus bawełniany,Dining Room,318.5,210,9741328348313,1,2013-03-08
+245,Lniany Mata balkonowa,Balcony,623.88,179,7059640165825,0,2013-03-15
+246,Vintage Dywanik do pokoju dziecięcego kremowy,Nursery,886.61,219,3175207167812,0,2013-03-20
+247,Klasyczny Osłona balkonowa brązowy S,Balcony,182.49,321,2192855445186,1,2013-03-23
+248,Industrialny Deska do prasowania,Laundry Room,166.19,463,7643387220543,0,2013-03-28
+249,Dekoracyjny Wieszak na narzędzia brązowy M,Garage,772.05,201,1259047292773,1,2013-04-01
+250,Stylowy Doniczka balkonowa naturalny,Balcony,622.78,460,8262925188122,1,2013-04-07
+251,Nowoczesny Dywan do sypialni brązowy M,Bedroom,90.43,500,1172400504552,1,2013-04-07
+252,Rustykały Kosz na brudne pranie,Laundry Room,24.57,116,7476775372605,0,2013-04-07
+253,Premium Kosz wiklinowy z pokrywką antracytowy,Storage,598.21,47,8696561308765,0,2013-04-08
+254,Stylowy Pojemnik plastikowy z pokrywką naturalny L,Storage,489.49,165,4494812604222,0,2013-04-13
+255,Industrialny Rękawice ogrodowe antracytowy,Garden,276.28,341,9268315893576,0,2013-04-15
+256,Bambusowy Dywan do sypialni zielony L,Bedroom,171.41,217,2494514754104,0,2013-04-15
+257,Premium Organizer pralniany,Laundry Room,788.4,88,9957047264265,0,2013-04-21
+258,Stylowy Stojak na rowery antracytowy,Garage,403.51,109,8721489513431,0,2013-04-22
+259,Praktyczny Stojak wielofunkcyjny beżowy,Storage,255.78,482,1726808081575,0,2013-04-28
+260,Lniany Grabie ogrodowe szary,Garden,644.63,344,4222946430390,1,2013-04-30
+261,Lniany Stojak na gazety zielony L,Living Room,154.89,242,7584466345330,1,2013-05-03
+262,Minimalistyczny Kołdra zimowa,Bedroom,346.32,325,5158482669132,1,2013-05-07
+263,Bambusowy Szczotka do zamiatania,Garage,654.52,175,7991366210383,1,2013-05-10
+264,Rustykały Blok na noże granatowy XL,Kitchen,705.18,378,6069409600352,1,2013-05-17
+265,Rustykały Ręcznik kąpielowy,Bathroom,598.11,421,7489690835728,0,2013-05-17
+266,Premium Sitko kuchenne czarny,Kitchen,337.12,153,2622189092751,0,2013-05-25
+267,Wielofunkcyjny Szafka na buty,Hallway,188.1,18,3397051958266,0,2013-06-01
+268,Wielofunkcyjny Poduszka na leżak kremowy,Garden,823.74,189,5609320489967,1,2013-06-02
+269,Wielofunkcyjny Kalkulator biurkowy naturalny,Office,106.14,128,7732010170260,1,2013-06-05
+270,Drewniany Szufelka,Garage,100.11,105,3688444310694,1,2013-06-12
+271,Industrialny Stojak na rowery,Garage,674.24,218,30835669103,1,2013-06-15
+272,Premium Latarka ręczna czarny M,Garage,897.56,92,8073741672432,1,2013-06-16
+273,Drewniany Grabie ogrodowe,Garden,211.61,70,2141888059297,1,2013-06-17
+274,Minimalistyczny Kabel zasilający kremowy L,Garage,761.89,487,5516874090382,0,2013-06-20
+275,Wielofunkcyjny Półka na buty kremowy,Hallway,511.11,216,1659266108570,0,2013-06-24
+276,Drewniany Stojak na przyprawy,Kitchen,805.93,137,2373334333396,1,2013-07-01
+277,Premium Ręcznik kąpielowy antracytowy,Bathroom,737.63,477,4120122759504,0,2013-07-17
+278,Luksusowy Pojemnik tekstylny beżowy L,Storage,281.78,392,8714939252363,0,2013-07-17
+279,Boho Szafka RTV,Living Room,187.53,310,7167433800546,1,2013-07-23
+280,Lniany Pojemnik plastikowy z pokrywką zielony,Storage,669.56,70,1190170756810,1,2013-07-24
+281,Boho Suszarka na pranie stojąca zielony XL,Laundry Room,483.89,262,1278686694328,0,2013-08-03
+282,Premium Organizer na narzędzia,Garage,274.7,440,2756041776562,0,2013-08-06
+283,Praktyczny Parasol ogrodowy brązowy L,Garden,316.47,361,6213721386580,0,2013-08-09
+284,Metalowy Etykiety samoprzylepne naturalny XL,Storage,848.91,260,9728454018228,1,2013-08-24
+285,Stylowy Kubek na szczoteczki granatowy XL,Bathroom,533.66,17,5150267551250,1,2013-08-26
+286,Wielofunkcyjny Szafka RTV granatowy,Living Room,297.28,163,2203684995152,1,2013-09-18
+287,Metalowy Nawóz do roślin,Garden,147.2,365,7489791776333,1,2013-09-24
+288,Bambusowy Pościel bawełniana granatowy XL,Bedroom,804.62,234,2521752500740,0,2013-10-13
+289,Ekologiczny Korkociąg szary M,Kitchen,277.08,201,2135415970995,1,2013-10-16
+290,Premium Naklejki ścienne biały,Nursery,30.22,479,8841333731252,1,2013-11-03
+291,Ekologiczny Otwieracz do butelek naturalny S,Kitchen,252.98,331,4760440907975,1,2013-11-24
+292,Drewniany Listwa LED biały L,Living Room,365.36,292,7561547055494,0,2013-11-28
+293,Rustykały Talerz głęboki antracytowy,Dining Room,866.88,239,7402588358680,0,2013-11-30
+294,Wielofunkcyjny Poduszka ortopedyczna,Bedroom,525.81,40,4985172444721,0,2013-11-30
+295,Ceramiczny Stojak na rowery naturalny M,Garage,82.04,450,5085016579059,1,2013-12-06
+296,Elegancki Szufelka szary XL,Garage,397.48,32,4351906698492,0,2013-12-06
+297,Vintage Łopatka silikonowa,Kitchen,206.25,306,34324451071,1,2013-12-10
+298,Bawełniany Deska do prasowania zielony,Laundry Room,229.09,113,6452577754789,0,2013-12-10
+299,Boho Taśma klejąca czarny,Office,352.73,94,1188241996265,1,2013-12-21
+300,Rustykały Lustro stojące,Bedroom,98.75,42,1786190254766,0,2013-12-22
+301,Skandynawski Szufelka granatowy,Garage,502.41,273,8107983342331,1,2013-12-24
+302,Luksusowy Kosz wiklinowy kremowy,Hallway,275.79,85,2758548596551,1,2013-12-27
+303,Kompaktowy Poduszka dla niemowląt antracytowy,Nursery,770.99,441,7403925199942,1,2013-12-30
+304,Ekologiczny Kołdra letnia,Bedroom,268.6,99,9500334234252,0,2014-01-02
+305,Rustykały Koc polarowy beżowy,Bedroom,104.85,218,9448695946363,1,2014-01-04
+306,Ekologiczny Półka na buty szary L,Hallway,167.46,225,2827090814410,1,2014-01-17
+307,Bambusowy Półka na buty kremowy,Hallway,762.37,188,1493689980944,0,2014-01-17
+308,Praktyczny Suszarka na pranie stojąca,Laundry Room,11.53,270,56409951238,1,2014-01-29
+309,Metalowy Szczotka do prania brązowy L,Laundry Room,275.52,132,5663113885039,1,2014-02-12
+310,Elegancki Mata antypoślizgowa czarny XL,Bathroom,380.98,147,6225223728171,0,2014-03-01
+311,Praktyczny Forma do pieczenia,Kitchen,62.43,179,8011950927110,1,2014-03-04
+312,Rustykały Kinkiet ścienny,Hallway,761.79,438,1559835411653,1,2014-03-06
+313,Klasyczny Łopatka silikonowa biały L,Kitchen,107.32,409,2382825867364,0,2014-03-07
+314,Vintage Pojemnik na chleb beżowy,Kitchen,748.59,493,4885102726142,0,2014-03-17
+315,Ekologiczny Linijka plastikowa naturalny,Office,421.12,237,920711523806,0,2014-03-29
+316,Szklany Wieszak na ręczniki,Bathroom,136.08,126,9469434606669,1,2014-04-02
+317,Vintage Stojak na rowery,Garage,94.4,200,7245307624846,0,2014-04-06
+318,Kompaktowy Rama łóżka czarny,Bedroom,852.87,331,2748467737821,1,2014-04-11
+319,Industrialny Deska do prasowania czarny M,Laundry Room,583.06,79,3081721436436,0,2014-04-14
+320,Drewniany Lustro stojące biały,Bedroom,614.07,470,5910245109107,0,2014-04-24
+321,Industrialny Pojemnik na detergent,Laundry Room,231.76,53,972021707544,1,2014-04-28
+322,Szklany Pojemnik tekstylny kremowy S,Storage,560.58,476,52812735854,1,2014-04-30
+323,Lniany Stolik balkonowy granatowy,Balcony,819.35,454,6194588707155,1,2014-05-04
+324,Dekoracyjny Pojemnik na narzędzia ogrodowe,Balcony,443.94,163,8772216417584,0,2014-05-05
+325,Praktyczny Wieszak na płaszcze,Hallway,856.94,250,8468509574439,0,2014-05-10
+326,Szklany Szczotka do zamiatania kremowy,Garage,58.97,328,3983430187183,1,2014-05-12
+327,Ceramiczny Półka łazienkowa szary,Bathroom,158.29,34,3190924876236,0,2014-05-20
+328,Bawełniany Kocyk dziecięcy,Nursery,608.97,85,4825544286798,1,2014-05-26
+329,Ekologiczny Grabie ogrodowe biały,Garden,685.05,221,8089812657420,0,2014-05-28
+330,Klasyczny Lampka biurkowa,Office,110.3,206,1220190725876,0,2014-06-10
+331,Praktyczny Zagłówek tapicerowany,Bedroom,353.84,230,8499121655855,0,2014-06-19
+332,Ceramiczny Nawóz do roślin,Garden,870.19,416,8601347789485,1,2014-06-20
+333,Premium Łopatka silikonowa,Kitchen,208.51,447,7157787112167,1,2014-06-23
+334,Stylowy Miska sałatkowa beżowy S,Dining Room,22.24,54,5372215566844,1,2014-07-10
+335,Metalowy Szafka nocna,Bedroom,668.22,124,9240514770537,0,2014-07-28
+336,Kompaktowy Etykiety samoprzylepne szary,Storage,814.7,264,2631281964828,1,2014-07-28
+337,Stylowy Rękawice ogrodowe,Garden,744.89,265,6449639243589,1,2014-08-02
+338,Praktyczny Klipsy do prania,Laundry Room,860.09,277,9098378018209,1,2014-08-13
+339,Wielofunkcyjny Taśma izolacyjna granatowy XL,Garage,806.31,47,2182097023167,1,2014-08-14
+340,Rustykały Klipsy do prania,Laundry Room,265.03,272,5714224109887,0,2014-08-20
+341,Bambusowy Obrus bawełniany,Dining Room,659.59,266,9363926495789,0,2014-08-21
+342,Rustykały Waga kuchenna beżowy,Kitchen,243.9,441,1713395962929,0,2014-08-23
+343,Praktyczny Organizer pralniany biały L,Laundry Room,430.89,389,6424809624405,1,2014-08-24
+344,Nowoczesny Wazon szklany,Living Room,310.02,98,1312206815586,0,2014-08-24
+345,Rustykały Tabliczka korkowa antracytowy S,Office,828.04,117,3974014890254,0,2014-08-25
+346,Boho Pudełko kartonowe kremowy M,Storage,877.91,203,3757914521189,0,2014-08-29
+347,Industrialny Pojemnik na przyprawy,Kitchen,708.43,254,3934835642081,1,2014-08-29
+348,Nowoczesny Lustro wejściowe granatowy M,Hallway,195.83,155,2643350271607,1,2014-09-05
+349,Metalowy Półka ścienna granatowy,Living Room,92.28,370,3046990139839,1,2014-09-08
+350,Ekologiczny Kocyk dziecięcy biały,Nursery,338.02,194,1681472145865,0,2014-09-09
+351,Boho Szczotka do prania szary XL,Laundry Room,891.5,113,6774620258250,1,2014-09-10
+352,Elegancki Kosz na brudne pranie granatowy,Laundry Room,723.68,373,7455534705748,0,2014-09-12
+353,Klasyczny Kosz na zabawki,Nursery,105.82,229,2214559376617,1,2014-09-15
+354,Dekoracyjny Dywanik do pokoju dziecięcego brązowy,Nursery,630.51,283,2366299468043,1,2014-09-18
+355,Drewniany Worek na śmieci,Garage,323.78,466,8189705916112,1,2014-09-29
+356,Elegancki Leżak ogrodowy,Garden,61.54,449,9117182278248,1,2014-10-02
+357,Rustykały Pompka do roweru kremowy L,Garage,37.72,188,429019358894,1,2014-10-27
+358,Vintage Szafka na buty kremowy M,Hallway,446.48,160,8598831030324,1,2014-10-30
+359,Stylowy Pojemnik tekstylny czarny,Storage,526.3,363,9660577980665,0,2014-11-05
+360,Klasyczny Koc polarowy kremowy,Bedroom,493.91,42,3176539705482,1,2014-11-10
+361,Luksusowy Organizer pralniany,Laundry Room,47.07,411,1339439457031,1,2014-11-12
+362,Klasyczny Krzesło balkonowe szary XL,Balcony,168.57,65,1425731609435,0,2014-11-18
+363,Skandynawski Organizer na biurko antracytowy M,Office,235.1,65,9291320330163,0,2014-11-22
+364,Ceramiczny Dozownik do mydła naturalny M,Bathroom,120.36,389,1325326949680,1,2014-11-23
+365,Kompaktowy Ściereczka kuchenna naturalny S,Kitchen,102.39,2,4823571558680,1,2014-11-30
+366,Stylowy Tarka ręczna granatowy,Kitchen,797.36,329,7242388496966,1,2014-12-02
+367,Luksusowy Wiadro plastikowe antracytowy M,Garage,310.28,353,2580010618177,1,2014-12-03
+368,Elegancki Kieliszki do wina,Dining Room,807.22,398,4078593213349,0,2014-12-03
+369,Klasyczny Pojemnik na narzędzia ogrodowe,Balcony,239.84,92,8699041379774,0,2014-12-03
+370,Rustykały Dywan do sypialni czarny L,Bedroom,549.8,439,5076283976207,1,2014-12-12
+371,Szklany Krzesło balkonowe,Balcony,864.85,242,9855241406026,0,2014-12-19
+372,Kompaktowy Koszyk na dokumenty czarny,Office,189.93,159,8131045025894,1,2014-12-22
+373,Vintage Pojemnik na pieluchy kremowy L,Nursery,277.16,87,8241724825131,1,2015-01-04
+374,Drewniany Osłona balkonowa,Balcony,823.41,175,6292693358955,0,2015-01-06
+375,Dekoracyjny Organizer do szuflady,Storage,234.21,98,4682394840026,1,2015-01-07
+376,Metalowy Ramka na zdjęcia szary,Living Room,894.08,14,2564347128714,1,2015-01-08
+377,Kompaktowy Ściereczka kuchenna brązowy,Kitchen,366.3,284,5790647715911,0,2015-01-10
+378,Ceramiczny Szufelka szary XL,Garage,515.44,468,2326487049478,1,2015-01-14
+379,Industrialny Organizer do szuflady granatowy,Storage,180.58,443,176464489887,0,2015-01-25
+380,Bambusowy Kosz na zabawki,Nursery,294.2,75,9671883977454,1,2015-01-25
+381,Minimalistyczny Koszyk na pieczywo,Dining Room,616.22,330,3131009431810,1,2015-01-30
+382,Metalowy Organizer na sztućce,Kitchen,752.97,242,5482145653283,1,2015-02-13
+383,Metalowy Taśma izolacyjna czarny,Garage,237.19,57,7006661554169,1,2015-02-22
+384,Drewniany Suszarka ścienna antracytowy S,Laundry Room,457.95,60,1729806865086,1,2015-02-23
+385,Metalowy Latarka ręczna kremowy S,Garage,198.76,327,9005329318394,0,2015-03-24
+386,Dekoracyjny Dzbanek do soku granatowy,Dining Room,465.9,172,6776657546027,1,2015-03-31
+387,Bawełniany Blok na noże granatowy L,Kitchen,269.3,136,9647598762203,0,2015-04-07
+388,Premium Osłona balkonowa granatowy S,Balcony,261.78,289,9080271122183,0,2015-04-10
+389,Premium Mata balkonowa szary S,Balcony,589.65,479,2192596790897,1,2015-04-11
+390,Praktyczny Stojak na parasole granatowy,Hallway,213.72,384,7079866177068,1,2015-04-17
+391,Klasyczny Donica ceramiczna beżowy XL,Living Room,296.25,226,171302321299,0,2015-04-20
+392,Industrialny Pojemnik plastikowy z pokrywką,Storage,185.21,168,4110760954317,1,2015-05-07
+393,Elegancki Uchwyt na papier toaletowy brązowy XL,Bathroom,649.98,217,8633752431062,0,2015-05-26
+394,Ceramiczny Roślinka sztuczna antracytowy,Living Room,658.31,413,2111978718090,0,2015-05-30
+395,Bambusowy Sztućce ze stali,Dining Room,831.82,306,7524508640351,1,2015-06-08
+396,Wielofunkcyjny Podstawka pod doniczkę antracytowy,Garden,85.71,256,6227837693890,0,2015-06-09
+397,Metalowy Roślinka sztuczna zielony,Living Room,248.33,79,1269428946423,0,2015-06-12
+398,Klasyczny Ochraniacz na materac,Bedroom,198.38,334,8782931027074,0,2015-06-12
+399,Składany Krzesło balkonowe,Balcony,101.38,304,1939284567970,0,2015-06-15
+400,Ekologiczny Blacha do pieczenia,Kitchen,663.07,494,4987769453147,1,2015-06-21
+401,Bambusowy Rękawice ogrodowe,Garden,162.93,494,6389021994715,0,2015-07-10
+402,Bawełniany Kieliszki do wina antracytowy XL,Dining Room,118.43,66,8455259710750,1,2015-07-10
+403,Dekoracyjny Stojak wielofunkcyjny,Storage,186.62,101,6955286209293,1,2015-07-10
+404,Rustykały Taśma klejąca,Office,893.29,63,6923645875069,1,2015-07-15
+405,Minimalistyczny Wąż ogrodowy kremowy,Garden,861.42,248,5983399140388,1,2015-07-27
+406,Wielofunkcyjny Kosz na brudne pranie szary XL,Laundry Room,392.16,219,7600835058301,0,2015-08-01
+407,Rustykały Pudełko kartonowe antracytowy,Storage,457.54,444,182422535848,0,2015-08-15
+408,Nowoczesny Pojemnik na śruby beżowy XL,Garage,340.09,378,2790833509020,1,2015-08-17
+409,Szklany Lampka nocna do pokoju dziecięcego brązowy L,Nursery,825.49,357,3768151185676,0,2015-09-02
+410,Ceramiczny Dywanik do pokoju dziecięcego biały S,Nursery,91.82,480,9391119269213,0,2015-09-07
+411,Boho Pojemnik na chleb,Kitchen,666.47,17,3718376452084,0,2015-09-07
+412,Praktyczny Dywanik do pokoju dziecięcego,Nursery,298.63,385,4223322280196,1,2015-09-10
+413,Skandynawski Tarka ręczna beżowy L,Kitchen,682.38,307,2361337605237,0,2015-09-16
+414,Szklany Parasol ogrodowy kremowy M,Garden,427.54,75,5812259095660,1,2015-09-18
+415,Industrialny Dywanik do pokoju dziecięcego czarny,Nursery,252.05,32,4917785079250,0,2015-09-21
+416,Vintage Stojak na parasole naturalny L,Hallway,702.67,125,3067458476099,1,2015-10-12
+417,Stylowy Stolik kawowy brązowy L,Living Room,29.44,395,1557325737559,0,2015-10-23
+418,Drewniany Organizer na sztućce antracytowy S,Kitchen,777.01,206,1939909169985,1,2015-11-07
+419,Minimalistyczny Narzuta na łóżko biały XL,Bedroom,652.17,43,6690632248150,1,2015-11-09
+420,Metalowy Dziurkacz brązowy XL,Office,101.05,261,5899441715452,1,2015-11-10
+421,Industrialny Suszarka na pranie stojąca antracytowy,Laundry Room,187.67,240,6604655866529,1,2015-11-13
+422,Elegancki Grabie ogrodowe beżowy S,Garden,899.61,245,3936385467855,1,2015-11-13
+423,Metalowy Kosz na zabawki granatowy S,Nursery,245.3,419,1027674783663,1,2015-11-22
+424,Drewniany Szczotka do WC naturalny,Bathroom,127.4,162,8624150274566,1,2015-11-27
+425,Ekologiczny Pojemnik na przyprawy kremowy L,Kitchen,276.83,11,452128991515,0,2015-12-05
+426,Elegancki Poduszka ortopedyczna czarny L,Bedroom,566.32,245,3103241714679,1,2015-12-11
+427,Bambusowy Szafka na buty,Hallway,509.13,52,6225936488201,0,2015-12-19
+428,Industrialny Zasłona prysznicowa granatowy S,Bathroom,279.84,283,8232553983581,1,2015-12-26
+429,Kompaktowy Kinkiet ścienny biały L,Hallway,879.95,8,8621182339843,1,2015-12-30
+430,Ekologiczny Lustro łazienkowe brązowy S,Bathroom,575.12,273,3276483503056,1,2016-01-03
+431,Klasyczny Świecznik na stół granatowy M,Dining Room,869.04,90,4089164983738,1,2016-01-11
+432,Kompaktowy Podkładka pod kubek,Living Room,429.17,248,623972652734,1,2016-01-19
+433,Bambusowy Poduszka puchowa,Bedroom,161.46,97,5800401041450,1,2016-01-21
+434,Elegancki Pojemnik na pieluchy biały S,Nursery,364.15,248,244033041665,0,2016-01-21
+435,Rustykały Karafka szklana,Dining Room,278.81,134,7310720113793,1,2016-01-22
+436,Szklany Klipsy do prania,Laundry Room,562.58,460,9406260787018,0,2016-01-23
+437,Szklany Podstawka pod doniczkę granatowy,Garden,752.02,360,4980841241182,0,2016-02-10
+438,Luksusowy Worek próżniowy,Storage,737.02,410,9240758181410,0,2016-02-13
+439,Nowoczesny Segregator A4,Office,428.99,142,2209124186210,0,2016-02-17
+440,Ceramiczny Uchwyt na papier toaletowy brązowy M,Bathroom,740.33,101,7189239231263,0,2016-02-22
+441,Nowoczesny Deska do krojenia,Kitchen,670.95,277,9219639456800,1,2016-02-24
+442,Stylowy Organizer do szuflady antracytowy,Storage,681.55,307,4725878444836,1,2016-03-05
+443,Ceramiczny Kosz na brudne pranie naturalny M,Laundry Room,122.46,193,9405396727578,1,2016-03-09
+444,Drewniany Wieszak za drzwi,Storage,47.97,40,6329451168683,1,2016-03-12
+445,Industrialny Kosz dekoracyjny granatowy M,Living Room,89.44,471,6148782455695,1,2016-03-13
+446,Skandynawski Półka na buty szary XL,Hallway,482.7,286,9579868727745,0,2016-03-21
+447,Lniany Zraszacz szary,Garden,847.94,454,2027061592730,1,2016-03-26
+448,Lniany Dywanik do przedpokoju,Hallway,731.54,72,9876989365291,1,2016-04-04
+449,Wielofunkcyjny Szczotka do prania biały,Laundry Room,138.02,311,6065307450549,1,2016-04-15
+450,Premium Świeczka do ogrodu,Garden,330.83,122,6597466986169,0,2016-04-15
+451,Kompaktowy Figurka dekoracyjna czarny S,Living Room,890.89,280,7233351040965,0,2016-04-16
+452,Szklany Nawóz do roślin czarny,Garden,438.59,488,1584776863421,0,2016-04-21
+453,Stylowy Organizer na biurko,Bedroom,67.98,347,6007676209014,1,2016-04-25
+454,Rustykały Kosz dekoracyjny,Living Room,659.52,222,5271727223972,0,2016-04-29
+455,Klasyczny Listwa LED biały XL,Living Room,639.79,429,9181589988680,0,2016-05-03
+456,Bambusowy Serwis obiadowy czarny,Dining Room,727.39,408,808509608587,1,2016-05-04
+457,Nowoczesny Taśma klejąca,Office,203.41,422,9107406500422,1,2016-05-09
+458,Skandynawski Wieszak na narzędzia,Garage,475.26,60,5454470229600,1,2016-05-11
+459,Nowoczesny Lustro wejściowe beżowy,Hallway,269.71,161,7702992959665,0,2016-05-14
+460,Klasyczny Stojak na parasole kremowy XL,Hallway,475.24,81,5546659051512,1,2016-05-16
+461,Lniany Konewka plastikowa czarny L,Garden,333.35,45,1274747219707,1,2016-06-06
+462,Rustykały Pojemnik na detergent antracytowy,Laundry Room,438.66,116,1745642400823,1,2016-06-07
+463,Industrialny Nawóz do roślin antracytowy L,Garden,617.76,465,3222739389929,0,2016-06-11
+464,Kompaktowy Roślinka sztuczna,Living Room,80.27,445,6937923747405,1,2016-06-14
+465,Dekoracyjny Parasol ogrodowy zielony L,Garden,29.51,84,5447241916502,0,2016-06-26
+466,Lniany Kabel zasilający,Garage,727.28,53,1096179817890,0,2016-07-02
+467,Vintage Podkładka pod mysz,Office,336.67,68,8506762515384,0,2016-07-04
+468,Industrialny Podkładka pod kubek beżowy XL,Living Room,767.79,72,2239431290874,0,2016-07-09
+469,Vintage Zszywacz biurowy brązowy S,Office,671.18,232,2154064176923,1,2016-07-12
+470,Bambusowy Nożyczki biurowe beżowy XL,Office,415.64,307,4209548149738,1,2016-07-15
+471,Ekologiczny Suszarka na pranie stojąca,Laundry Room,735.53,493,8876767721906,0,2016-07-20
+472,Minimalistyczny Pojemnik na narzędzia ogrodowe naturalny,Balcony,334.46,389,3121980418474,0,2016-07-29
+473,Stylowy Pojemnik na przyprawy granatowy L,Kitchen,59.66,248,9942489423,0,2016-07-30
+474,Praktyczny Ramka na certyfikat,Office,179.43,229,1844490295022,1,2016-08-05
+475,Ekologiczny Podstawka pod doniczkę zielony,Garden,278.56,69,2675289539268,1,2016-08-09
+476,Stylowy Organizer na klucze antracytowy,Hallway,729.38,267,1062003424428,0,2016-08-14
+477,Drewniany Teczka dokumentów antracytowy,Office,36.23,349,6253244720997,0,2016-08-14
+478,Drewniany Pojemnik na narzędzia ogrodowe kremowy L,Balcony,276.24,492,6474367136957,1,2016-08-15
+479,Vintage Lustro stojące szary XL,Bedroom,675.08,12,7726257016580,0,2016-08-26
+480,Lniany Taca do serwowania beżowy S,Dining Room,571.74,201,3480797050971,1,2016-09-10
+481,Praktyczny Dzbanek szklany granatowy,Kitchen,59.11,490,1585174328062,0,2016-09-14
+482,Praktyczny Kosz wiklinowy naturalny,Hallway,132.33,132,6728799160913,0,2016-09-22
+483,Bawełniany Stolik balkonowy czarny L,Balcony,438.5,169,198038287231,0,2016-09-30
+484,Bambusowy Dozownik do mydła,Bathroom,26.73,247,6031089071401,0,2016-10-07
+485,Bambusowy Doniczka plastikowa czarny XL,Garden,882.43,40,5466024161397,1,2016-10-19
+486,Klasyczny Sztućce ze stali naturalny L,Dining Room,119.43,407,7954107272842,0,2016-10-23
+487,Industrialny Dywan do salonu naturalny L,Living Room,138.22,346,5088210099682,0,2016-11-01
+488,Szklany Kosz na zabawki,Nursery,169.62,473,5634216073371,1,2016-11-05
+489,Dekoracyjny Taca do serwowania antracytowy XL,Dining Room,359.35,58,5579249912511,0,2016-11-06
+490,Premium Pokrowiec na deskę czarny M,Laundry Room,743.41,354,4732354940126,1,2016-11-06
+491,Skandynawski Segregator A4 szary,Office,287.29,185,2798524013221,0,2016-11-23
+492,Industrialny Mata balkonowa czarny,Balcony,101.67,32,7800681149219,1,2016-12-09
+493,Kompaktowy Dywanik do pokoju dziecięcego granatowy S,Nursery,191.16,211,4424936312307,0,2016-12-18
+494,Szklany Koszyk na dokumenty szary,Office,249.77,213,9137367850823,0,2016-12-23
+495,Elegancki Wazon szklany,Living Room,431.46,58,9374529912412,0,2016-12-30
+496,Vintage Poduszka dla niemowląt antracytowy,Nursery,309.99,354,7588914444989,0,2017-01-08
+497,Praktyczny Kosz dekoracyjny beżowy,Living Room,865.86,229,6004908240432,0,2017-01-23
+498,Składany Organizer na narzędzia,Garage,696.17,302,1128981231790,1,2017-02-08
+499,Stylowy Zamek do roweru szary XL,Garage,79.81,39,3989868180970,1,2017-02-09
+500,Bawełniany Talerz płytki brązowy,Dining Room,746.55,103,1325936781366,1,2017-02-12
+501,Dekoracyjny Stojak na gazety zielony,Living Room,253.64,179,1579197111213,0,2017-02-13
+502,Praktyczny Kołdra zimowa granatowy,Bedroom,680.39,491,217741743046,0,2017-02-22
+503,Skandynawski Lustro stojące,Bedroom,749.86,373,2545738757171,1,2017-02-25
+504,Drewniany Solniczka i pieprzniczka naturalny S,Dining Room,292.07,176,2578284106728,1,2017-03-08
+505,Ceramiczny Obraz dekoracyjny szary M,Living Room,501.93,176,827681722577,1,2017-03-13
+506,Stylowy Szczotka do włosów czarny,Bathroom,631.59,425,2846398554743,0,2017-03-19
+507,Metalowy Dywanik do przedpokoju szary XL,Hallway,522.15,461,6454655358513,0,2017-03-20
+508,Składany Serwetki lniane zielony L,Dining Room,827.93,353,8277181298263,1,2017-04-03
+509,Bambusowy Kosz na pranie,Bathroom,283.04,208,2095200461520,1,2017-04-09
+510,Elegancki Kosz na zabawki,Nursery,415.99,87,9111799313651,1,2017-04-10
+511,Bawełniany Serwetki lniane,Dining Room,514.02,205,1201836675250,1,2017-04-11
+512,Premium Mata antypoślizgowa granatowy M,Bathroom,535.95,401,6958321971995,1,2017-04-19
+513,Bawełniany Pokrowiec na deskę granatowy XL,Laundry Room,877.05,69,4593752654790,0,2017-04-23
+514,Ceramiczny Ręcznik do rąk kremowy,Bathroom,824.46,84,7117595749887,1,2017-04-28
+515,Praktyczny Lampka nocna do pokoju dziecięcego,Nursery,486.13,64,2764579389703,0,2017-04-29
+516,Skandynawski Zestaw noży kuchennych szary,Kitchen,371.79,274,5374741124901,0,2017-05-09
+517,Składany Worek na śmieci zielony,Garage,625.93,188,8416169284519,0,2017-05-10
+518,Ekologiczny Ręcznik kąpielowy,Bathroom,559.1,448,3652037583093,1,2017-05-14
+519,Luksusowy Dywanik do pokoju dziecięcego biały XL,Nursery,199.93,338,8413685283064,0,2017-05-17
+520,Rustykały Deska do prasowania czarny S,Laundry Room,704.71,272,2819793164770,0,2017-05-30
+521,Metalowy Doniczka plastikowa,Garden,644.04,37,3739900631409,0,2017-06-02
+522,Składany Poduszka na krzesło balkonowe,Balcony,554.47,47,4983074820735,1,2017-06-02
+523,Bambusowy Pojemnik plastikowy z pokrywką,Storage,845.34,307,18513279721,1,2017-06-10
+524,Drewniany Dywanik łazienkowy zielony,Bathroom,440.96,39,5437993712408,1,2017-06-14
+525,Industrialny Organizer pralniany szary,Laundry Room,312.48,403,8404499727875,1,2017-06-16
+526,Praktyczny Stojak na rowery,Garage,195.74,13,915618298032,1,2017-06-27
+527,Elegancki Rękawice ogrodowe naturalny XL,Garden,235.41,7,2116673290452,1,2017-06-29
+528,Skandynawski Lampka stojąca,Living Room,464.81,121,3595616420597,1,2017-07-07
+529,Lniany Obraz dekoracyjny kremowy S,Living Room,487.19,472,9241956252575,0,2017-07-08
+530,Elegancki Koszyk na dokumenty brązowy S,Office,528.37,21,1380698477599,1,2017-07-20
+531,Wielofunkcyjny Stojak wielofunkcyjny,Storage,144.86,237,1133228898575,0,2017-08-09
+532,Nowoczesny Karafka szklana czarny,Dining Room,766.43,205,1963990767690,0,2017-08-14
+533,Składany Doniczka balkonowa czarny,Balcony,430.79,244,2095799270794,1,2017-08-15
+534,Klasyczny Kieliszki do wina brązowy,Dining Room,107.6,79,1377306260421,0,2017-08-17
+535,Wielofunkcyjny Pojemnik na watę,Bathroom,568.42,405,6916697848013,1,2017-08-18
+536,Luksusowy Chochla czarny L,Kitchen,753.62,124,3117030376375,0,2017-08-20
+537,Luksusowy Kosz na brudne pranie,Laundry Room,511.91,290,6856218501631,0,2017-08-22
+538,Szklany Mata balkonowa szary XL,Balcony,729.71,98,1901302056988,0,2017-08-23
+539,Dekoracyjny Stojak na parasole biały,Hallway,536.02,193,9545009025599,0,2017-08-27
+540,Stylowy Wieszak na rośliny biały,Balcony,70.11,324,3356588043418,1,2017-09-02
+541,Drewniany Ściereczka kuchenna brązowy L,Kitchen,288.3,378,1100225579417,1,2017-09-08
+542,Stylowy Zamek do roweru naturalny M,Garage,524.9,374,2169958669344,1,2017-09-09
+543,Metalowy Mata balkonowa,Balcony,726.82,410,9652074466605,0,2017-09-12
+544,Luksusowy Lampa solarna,Balcony,97.75,113,8889937567983,0,2017-09-26
+545,Luksusowy Koc polarowy czarny M,Bedroom,41.31,279,1079649673790,1,2017-09-28
+546,Boho Pojemnik pod łóżko naturalny,Bedroom,798.34,358,8455048926737,1,2017-09-29
+547,Lniany Obrus bawełniany brązowy,Dining Room,437.02,286,4419866524043,0,2017-10-08
+548,Szklany Stojak na parasole kremowy,Hallway,520.32,481,1212110187802,0,2017-10-10
+549,Vintage Podkładka pod nadgarstek beżowy XL,Office,344.89,237,3162526546961,0,2017-10-12
+550,Boho Stojak wielofunkcyjny granatowy L,Storage,292.1,40,9324268774185,1,2017-10-23
+551,Vintage Skrzynka na kwiaty brązowy XL,Balcony,27.84,399,722903494464,1,2017-10-27
+552,Vintage Ręcznik kąpielowy czarny,Bathroom,658.98,371,832004879784,1,2017-11-01
+553,Vintage Taśma klejąca,Office,137.9,458,9456255770174,0,2017-11-19
+554,Szklany Organizer na klucze zielony,Hallway,550.33,435,1163319422686,1,2017-11-23
+555,Bambusowy Dzbanek do soku zielony L,Dining Room,497.54,160,8333945228850,0,2017-11-25
+556,Wielofunkcyjny Lampa solarna brązowy XL,Balcony,410.61,158,1636560450062,0,2017-12-01
+557,Składany Wieszak na rośliny,Balcony,39.9,306,8839205302143,1,2017-12-02
+558,Elegancki Zasłona prysznicowa,Bathroom,110.89,231,5188781794150,0,2017-12-03
+559,Boho Rękawice ogrodowe brązowy S,Garden,386.93,181,6078327488355,1,2017-12-10
+560,Ekologiczny Organizer na zabawki beżowy,Nursery,305.07,497,2790504043334,0,2017-12-18
+561,Boho Kabel zasilający,Garage,333.69,101,5396136749940,1,2017-12-27
+562,Klasyczny Linijka plastikowa antracytowy,Office,310.33,151,842456075405,0,2018-01-05
+563,Dekoracyjny Ręcznik do rąk kremowy S,Bathroom,319.08,440,2718750036917,1,2018-02-10
+564,Bambusowy Pojemnik na sezonowe ubrania zielony XL,Storage,452.41,273,7883619689315,0,2018-02-11
+565,Stylowy Sztućce ze stali,Dining Room,721.11,500,5375137651582,0,2018-02-15
+566,Elegancki Krzesło balkonowe czarny XL,Balcony,741.53,470,2211587184528,0,2018-02-19
+567,Skandynawski Konewka plastikowa,Garden,828.75,327,3379337563623,0,2018-02-20
+568,Rustykały Pojemnik na śruby brązowy S,Garage,544.69,349,6433853247256,0,2018-03-07
+569,Premium Wieszak na płaszcze naturalny L,Hallway,560.47,441,5931034131642,1,2018-03-08
+570,Drewniany Latarka ręczna,Garage,768.58,83,6642147649250,0,2018-03-30
+571,Drewniany Organizer na zabawki,Nursery,664.51,452,7536596807851,0,2018-04-07
+572,Bawełniany Łopatka ogrodowa beżowy,Garden,553.61,499,5510762091840,0,2018-04-07
+573,Minimalistyczny Lustro wejściowe czarny XL,Hallway,278.94,209,1200471138267,1,2018-04-28
+574,Drewniany Dywanik łazienkowy,Bathroom,486.57,465,959481526922,1,2018-04-29
+575,Metalowy Taśma klejąca,Office,220.0,222,5024916300974,0,2018-05-01
+576,Składany Stolik balkonowy biały L,Balcony,374.72,309,8560125625318,0,2018-05-03
+577,Ekologiczny Pojemnik na narzędzia ogrodowe,Balcony,874.06,336,2961803324268,0,2018-05-05
+578,Szklany Ręcznik kąpielowy,Bathroom,120.97,315,5679756491575,1,2018-05-06
+579,Skandynawski Uchwyt na długopisy brązowy,Office,269.19,47,3684748836076,1,2018-05-12
+580,Składany Naklejki ścienne,Nursery,491.72,139,3768550789673,0,2018-05-14
+581,Ekologiczny Dywan do sypialni,Bedroom,601.28,43,8518888806703,1,2018-05-17
+582,Stylowy Wieszak na narzędzia,Garage,858.84,249,6769459196637,1,2018-05-22
+583,Ekologiczny Kubek na szczoteczki beżowy S,Bathroom,483.74,226,816470900630,0,2018-05-28
+584,Elegancki Poduszka puchowa,Bedroom,746.6,348,1147165609453,1,2018-05-30
+585,Klasyczny Magnes na lodówkę granatowy S,Office,871.9,324,4498926659185,1,2018-06-10
+586,Bambusowy Etykiety samoprzylepne,Storage,297.76,458,287675481383,1,2018-06-18
+587,Metalowy Dywanik do pokoju dziecięcego kremowy M,Nursery,637.11,331,5989334721223,0,2018-06-18
+588,Kompaktowy Wieszak na płaszcze brązowy M,Hallway,185.8,217,2934497347158,1,2018-06-22
+589,Elegancki Deska do krojenia,Kitchen,560.1,278,1960275233437,0,2018-06-25
+590,Industrialny Taca do serwowania beżowy,Dining Room,408.39,113,9283199529809,0,2018-07-04
+591,Bambusowy Lampka biurkowa granatowy,Office,894.82,19,8580623504052,1,2018-07-18
+592,Minimalistyczny Stół ogrodowy,Garden,887.26,266,3644089268707,1,2018-07-20
+593,Lniany Dzbanek do soku,Dining Room,306.57,366,7323008576661,1,2018-08-13
+594,Boho Szafka nocna,Bedroom,454.02,17,4496410496704,1,2018-08-18
+595,Szklany Lampka biurkowa naturalny L,Office,493.81,10,184186203032,1,2018-08-24
+596,Bawełniany Stolik balkonowy,Balcony,298.33,246,836821444880,1,2018-08-27
+597,Ekologiczny Talerz głęboki biały,Dining Room,597.88,279,7177546199246,0,2018-08-31
+598,Drewniany Półka na buty,Hallway,23.25,117,2001867661005,1,2018-08-31
+599,Drewniany Kubek na szczoteczki antracytowy M,Bathroom,661.47,480,5037314530386,1,2018-09-15
+600,Bawełniany Pudełko kartonowe zielony,Storage,345.04,386,8733427086686,0,2018-09-17
+601,Praktyczny Tabliczka korkowa kremowy,Office,350.87,214,3838065787591,1,2018-09-17
+602,Boho Leżak ogrodowy,Garden,211.7,218,1850761087081,0,2018-09-23
+603,Metalowy Wieszak na ręczniki brązowy S,Bathroom,725.88,406,1122528837506,1,2018-09-24
+604,Elegancki Podkładka pod nadgarstek,Office,691.61,408,4930853686631,0,2018-09-28
+605,Klasyczny Mobilne nad łóżeczko szary M,Nursery,841.64,115,276420865677,1,2018-10-12
+606,Premium Ręcznik kąpielowy kremowy L,Bathroom,456.66,363,3624186236908,0,2018-10-19
+607,Industrialny Teczka dokumentów czarny,Office,633.27,364,4692632967620,0,2018-10-29
+608,Vintage Miska sałatkowa,Dining Room,823.34,306,7203859340157,0,2018-11-06
+609,Boho Pompka do roweru granatowy XL,Garage,410.44,413,4523219416807,0,2018-11-10
+610,Ceramiczny Kubek termiczny granatowy L,Kitchen,425.22,385,8205829582924,0,2018-11-21
+611,Składany Serwetnik biały,Kitchen,416.29,490,6324241541523,0,2018-11-21
+612,Metalowy Stojak wielofunkcyjny brązowy,Storage,727.24,458,5225013948841,0,2018-12-05
+613,Minimalistyczny Kocyk dziecięcy naturalny S,Nursery,107.28,233,388608680344,1,2018-12-05
+614,Klasyczny Pojemnik na detergent czarny M,Laundry Room,336.02,196,9092755719284,1,2018-12-05
+615,Ceramiczny Wieszak za drzwi,Storage,629.43,229,2311127128521,1,2018-12-07
+616,Klasyczny Zszywacz biurowy,Office,209.37,481,4465124189387,1,2018-12-15
+617,Elegancki Organizer na zabawki biały,Nursery,72.62,213,4819807704600,1,2018-12-17
+618,Kompaktowy Organizer do szuflady antracytowy,Storage,570.94,340,5888636774725,0,2018-12-22
+619,Składany Mop z wiadrem,Garage,54.97,253,9748016245657,0,2018-12-26
+620,Bawełniany Szufelka,Garage,833.55,4,6221224276772,1,2018-12-31
+621,Dekoracyjny Mobilne nad łóżeczko czarny,Nursery,702.43,262,9178390847008,1,2019-01-04
+622,Wielofunkcyjny Wieszak na rośliny,Balcony,138.51,326,2642506420760,0,2019-01-09
+623,Boho Stojak na rowery,Garage,102.63,491,4170646255402,0,2019-01-17
+624,Bawełniany Pojemnik na sezonowe ubrania szary M,Storage,722.32,118,448818984844,0,2019-01-20
+625,Rustykały Zraszacz szary,Garden,286.86,345,7046226817155,0,2019-01-27
+626,Praktyczny Wieszak na ręczniki,Bathroom,363.38,379,607159696643,0,2019-02-01
+627,Luksusowy Segregator A4 granatowy,Office,735.39,78,6705514377696,0,2019-02-03
+628,Szklany Nożyczki biurowe,Office,407.58,136,5499045301749,0,2019-02-04
+629,Minimalistyczny Doniczka balkonowa beżowy,Balcony,677.19,20,1348087354371,0,2019-02-20
+630,Skandynawski Cukiernica beżowy M,Dining Room,531.56,252,8861405786171,0,2019-02-21
+631,Wielofunkcyjny Pudełko kartonowe,Storage,645.04,120,4558122362316,1,2019-02-22
+632,Vintage Sitko kuchenne antracytowy S,Kitchen,741.05,295,278742967176,1,2019-02-28
+633,Szklany Taśma izolacyjna,Garage,826.68,143,1034699673312,0,2019-03-01
+634,Minimalistyczny Wieszak na rośliny,Balcony,516.7,423,2836929445510,0,2019-03-01
+635,Kompaktowy Poduszka dla niemowląt,Nursery,645.06,97,4476263934363,0,2019-03-01
+636,Składany Wiadro plastikowe brązowy,Garage,516.07,30,9133412328125,0,2019-03-01
+637,Vintage Ramka na zdjęcia granatowy S,Living Room,704.04,68,8975267722335,0,2019-03-02
+638,Stylowy Poduszka dekoracyjna,Living Room,621.22,255,1912602213216,1,2019-03-14
+639,Minimalistyczny Suszarka ścienna biały S,Laundry Room,742.06,135,2620370878214,0,2019-03-19
+640,Skandynawski Kubek na szczoteczki kremowy,Bathroom,621.85,101,7399205222991,0,2019-03-29
+641,Skandynawski Pościel bawełniana,Bedroom,792.86,41,21946723242,1,2019-03-30
+642,Industrialny Kinkiet ścienny czarny S,Hallway,292.18,159,8640104246243,1,2019-03-30
+643,Kompaktowy Dywanik do pokoju dziecięcego granatowy L,Nursery,271.7,435,1709991738167,1,2019-04-08
+644,Industrialny Dziurkacz beżowy M,Office,251.3,287,4219933083301,0,2019-04-09
+645,Vintage Łopatka ogrodowa czarny,Garden,627.36,147,6807154516807,1,2019-04-09
+646,Luksusowy Suszarka na pranie stojąca biały M,Laundry Room,343.32,41,3432406424291,1,2019-04-15
+647,Szklany Taśma izolacyjna,Garage,184.04,240,1576605384443,1,2019-04-21
+648,Stylowy Pojemnik tekstylny,Storage,774.22,6,3075622086357,0,2019-05-03
+649,Bawełniany Kosz na brudne pranie kremowy XL,Laundry Room,249.74,477,4745245557464,1,2019-05-11
+650,Dekoracyjny Pościel bawełniana brązowy,Bedroom,312.87,466,2132833898887,0,2019-05-12
+651,Skandynawski Leżak ogrodowy szary,Garden,591.06,450,7734540193801,0,2019-05-17
+652,Klasyczny Kosz na brudne pranie beżowy,Laundry Room,315.99,499,3315377959958,1,2019-05-23
+653,Skandynawski Wieszak na biżuterię biały,Bedroom,405.43,63,8472304618496,0,2019-05-25
+654,Ceramiczny Zamek do roweru czarny L,Garage,662.32,8,4290257252048,1,2019-05-30
+655,Drewniany Taca do serwowania szary L,Dining Room,798.07,143,17882247317,0,2019-06-01
+656,Elegancki Doniczka ceramiczna,Garden,664.1,73,6086982210532,0,2019-06-02
+657,Drewniany Podkładka pod nadgarstek kremowy XL,Office,522.6,222,6734595764033,0,2019-06-11
+658,Praktyczny Garnek ze stali nierdzewnej czarny,Kitchen,351.5,47,4038453198070,1,2019-06-12
+659,Kompaktowy Mobilne nad łóżeczko czarny,Nursery,800.76,243,3715869886494,1,2019-07-01
+660,Klasyczny Zasłony do salonu granatowy,Living Room,605.38,109,8299737631164,1,2019-07-02
+661,Stylowy Zamek do roweru zielony,Garage,859.45,394,1091043006844,1,2019-07-02
+662,Boho Mop z wiadrem beżowy,Garage,371.79,160,1113129014878,0,2019-07-06
+663,Dekoracyjny Suszarka na pranie stojąca,Laundry Room,812.47,275,138759271256,1,2019-07-07
+664,Szklany Wieszak na ubrania naturalny,Bedroom,513.42,395,7881914858078,0,2019-07-15
+665,Kompaktowy Podkładka pod kubek naturalny M,Living Room,433.71,364,7701436349574,1,2019-07-18
+666,Bawełniany Podstawka pod doniczkę,Garden,400.42,436,8052924075536,1,2019-07-20
+667,Szklany Teczka dokumentów zielony M,Office,393.66,26,4085095493056,1,2019-08-04
+668,Elegancki Organizer do szuflady szary,Storage,367.12,55,3303033467718,0,2019-08-06
+669,Dekoracyjny Ramka na certyfikat beżowy S,Office,862.21,416,5050573976917,1,2019-08-07
+670,Ceramiczny Figurka dekoracyjna,Living Room,92.07,478,428860505372,1,2019-08-13
+671,Szklany Worek próżniowy,Storage,383.63,406,9711798089320,1,2019-08-18
+672,Minimalistyczny Etykiety samoprzylepne,Storage,681.44,25,1476797643819,1,2019-08-23
+673,Drewniany Podkładka pod nadgarstek granatowy,Office,664.31,177,6296575427869,1,2019-09-07
+674,Ekologiczny Stojak na rowery antracytowy,Garage,829.14,57,6701450899353,0,2019-09-16
+675,Industrialny Garnek ze stali nierdzewnej,Kitchen,528.64,494,7519102312117,0,2019-09-17
+676,Ceramiczny Dzbanek do soku beżowy,Dining Room,154.97,65,5010587525686,0,2019-09-28
+677,Skandynawski Pojemnik na detergent naturalny,Laundry Room,44.32,7,7126158388210,1,2019-10-02
+678,Luksusowy Osłona balkonowa naturalny,Balcony,389.59,13,8213711842544,1,2019-10-14
+679,Metalowy Organizer do szafy biały,Bedroom,840.69,263,6874034505411,1,2019-10-20
+680,Ceramiczny Dywan do sypialni czarny,Bedroom,689.37,310,251762983340,1,2019-10-25
+681,Rustykały Patelnia nieprzywierająca granatowy,Kitchen,832.0,56,7215622949382,0,2019-10-31
+682,Ekologiczny Deska do prasowania,Laundry Room,221.96,47,9036890030101,0,2019-11-02
+683,Vintage Kosz na zabawki kremowy,Nursery,706.44,120,7280512927665,0,2019-11-15
+684,Luksusowy Chochla,Kitchen,607.85,216,5535590425971,0,2019-11-18
+685,Szklany Szafka RTV,Living Room,640.13,64,4008427109470,1,2019-11-18
+686,Vintage Dzbanek do soku czarny,Dining Room,626.07,341,5421406650449,0,2019-11-19
+687,Luksusowy Grabie ogrodowe biały,Garden,415.76,85,9284222231058,0,2019-11-21
+688,Ceramiczny Skrzynka na kwiaty granatowy XL,Balcony,337.28,157,900348645188,0,2019-12-04
+689,Bawełniany Pojemnik plastikowy z pokrywką,Storage,403.28,243,3189397490964,0,2019-12-06
+690,Boho Stojak na rowery,Garage,310.15,441,2594795074073,0,2019-12-08
+691,Industrialny Wiadro plastikowe biały,Garage,658.1,409,1333872624739,0,2019-12-10
+692,Minimalistyczny Nożyczki biurowe naturalny S,Office,331.34,75,6565045547810,0,2019-12-19
+693,Vintage Narzuta na łóżko brązowy S,Bedroom,849.9,409,1359989897217,0,2019-12-20
+694,Praktyczny Kosz dekoracyjny brązowy L,Living Room,458.0,280,4253646280558,0,2019-12-29
+695,Rustykały Wycieraczka wejściowa brązowy L,Hallway,343.12,198,2394535461473,0,2019-12-29
+696,Metalowy Fartuch kuchenny zielony M,Kitchen,447.92,73,8639174101194,1,2020-01-01
+697,Kompaktowy Wieszak na ubrania,Bedroom,87.64,449,5768321021924,0,2020-01-03
+698,Nowoczesny Doniczka balkonowa brązowy M,Balcony,330.34,131,8352680648600,1,2020-01-17
+699,Dekoracyjny Wiadro plastikowe,Garage,645.71,270,695814671791,1,2020-01-21
+700,Premium Kinkiet ścienny zielony,Hallway,630.26,123,4155999101576,1,2020-02-02
+701,Klasyczny Lampka biurkowa beżowy,Office,112.82,462,6664505730363,0,2020-02-03
+702,Luksusowy Miska sałatkowa czarny,Dining Room,189.71,338,7784858800618,1,2020-02-05
+703,Kompaktowy Ściereczka kuchenna granatowy,Kitchen,236.4,343,5446083851798,0,2020-02-07
+704,Ekologiczny Stolik balkonowy,Balcony,78.96,392,5564091969394,1,2020-02-11
+705,Ekologiczny Blok na noże szary,Kitchen,540.81,294,6627828274228,1,2020-02-12
+706,Skandynawski Pokrowiec na deskę szary S,Laundry Room,405.53,257,2749680491873,0,2020-02-18
+707,Szklany Sekator czarny,Garden,470.78,467,8144739473123,0,2020-02-21
+708,Skandynawski Stojak wielofunkcyjny,Storage,179.22,326,7913787655307,0,2020-02-28
+709,Składany Pojemnik na chleb antracytowy,Kitchen,579.59,453,9649668349604,1,2020-02-29
+710,Drewniany Organizer na narzędzia biały M,Garage,760.18,215,1123126163240,1,2020-02-29
+711,Stylowy Pudełko kartonowe beżowy L,Storage,386.23,258,1054851017495,0,2020-03-01
+712,Elegancki Miska do mieszania,Kitchen,333.08,432,1976093201268,1,2020-03-12
+713,Minimalistyczny Solniczka i pieprzniczka,Dining Room,195.84,312,9129710248173,0,2020-03-14
+714,Skandynawski Pudełko kartonowe,Storage,834.46,434,3267736026064,1,2020-03-16
+715,Klasyczny Drążek do zasłony,Bathroom,603.62,429,9451016224996,0,2020-03-19
+716,Metalowy Naklejki ścienne,Nursery,218.98,229,96873045194,1,2020-03-26
+717,Ekologiczny Serwis obiadowy granatowy M,Dining Room,594.81,53,9520585277228,0,2020-04-07
+718,Ceramiczny Stojak na rowery,Garage,465.85,472,4983922501427,1,2020-04-15
+719,Drewniany Wieszak na ubrania naturalny S,Bedroom,74.41,150,5184894769733,1,2020-04-16
+720,Metalowy Doniczka balkonowa granatowy M,Balcony,773.71,339,3774604067208,0,2020-04-16
+721,Składany Taśma izolacyjna,Garage,631.33,174,4235116155948,0,2020-04-21
+722,Szklany Organizer na zabawki,Nursery,457.96,213,5064630059376,1,2020-04-23
+723,Kompaktowy Szafka RTV szary L,Living Room,190.64,366,7430271693855,1,2020-04-27
+724,Luksusowy Komoda drewniana,Bedroom,229.07,255,1504165915203,0,2020-04-28
+725,Ceramiczny Szczotka do włosów biały,Bathroom,706.97,206,6907826333739,1,2020-05-07
+726,Stylowy Serwis obiadowy zielony,Dining Room,682.48,247,1824989808803,1,2020-05-10
+727,Boho Mydelniczka,Bathroom,375.65,346,3794738347359,1,2020-05-10
+728,Bawełniany Pojemnik na pieluchy,Nursery,194.23,236,7397327819525,0,2020-05-14
+729,Industrialny Mata balkonowa szary,Balcony,247.67,348,7017320865236,1,2020-05-19
+730,Składany Mata antypoślizgowa,Bathroom,739.44,406,7066149828243,1,2020-05-26
+731,Luksusowy Sztućce ze stali antracytowy,Dining Room,801.2,279,4473647102769,1,2020-06-01
+732,Luksusowy Kinkiet ścienny naturalny XL,Hallway,659.62,72,698042043941,0,2020-06-05
+733,Stylowy Świecznik na stół zielony,Dining Room,249.18,128,9014954277075,0,2020-06-18
+734,Dekoracyjny Klipsy do prania granatowy,Laundry Room,665.8,251,2870320320748,0,2020-06-23
+735,Drewniany Koszyk na pieczywo szary S,Dining Room,506.16,384,3854540064452,1,2020-06-24
+736,Vintage Wanna składana antracytowy,Bathroom,447.1,466,1224890567088,1,2020-06-25
+737,Boho Dywan do salonu,Living Room,882.03,206,6614590110793,1,2020-06-25
+738,Industrialny Deska do prasowania szary,Laundry Room,675.25,89,3285884247452,0,2020-07-03
+739,Premium Stół ogrodowy beżowy,Garden,25.86,401,9074260880505,0,2020-07-16
+740,Elegancki Ziemia do kwiatów granatowy,Garden,17.88,220,7318826170245,0,2020-07-22
+741,Kompaktowy Parasol ogrodowy antracytowy,Garden,182.13,55,4644936999517,1,2020-08-01
+742,Elegancki Pokrowiec na deskę,Laundry Room,516.67,241,1509688327533,0,2020-08-04
+743,Metalowy Kosz na zabawki beżowy,Nursery,420.15,338,7392013546211,0,2020-08-16
+744,Wielofunkcyjny Poduszka na krzesło balkonowe,Balcony,156.34,67,9907756085811,1,2020-08-16
+745,Drewniany Pojemnik na pieluchy,Nursery,305.61,233,2076502412090,1,2020-08-17
+746,Wielofunkcyjny Dywanik do przedpokoju czarny XL,Hallway,557.24,85,8685787255878,1,2020-08-17
+747,Minimalistyczny Organizer pod umywalkę,Bathroom,80.36,143,1158488600805,0,2020-08-23
+748,Klasyczny Parasol ogrodowy,Garden,776.5,443,369656666832,0,2020-08-26
+749,Industrialny Mobilne nad łóżeczko,Nursery,105.05,109,4764907851580,1,2020-08-26
+750,Boho Worek na delikatne pranie,Laundry Room,314.53,495,8841834374019,0,2020-08-28
+751,Składany Zraszacz,Garden,505.42,440,4276246719785,1,2020-09-03
+752,Stylowy Dywanik do pokoju dziecięcego czarny L,Nursery,519.21,144,8491025625880,1,2020-09-11
+753,Metalowy Szafka na buty,Hallway,262.26,90,6078197543734,1,2020-09-11
+754,Minimalistyczny Etykiety samoprzylepne biały,Storage,542.34,313,1872401078358,1,2020-09-17
+755,Dekoracyjny Karmnik dla ptaków naturalny,Garden,318.62,320,8870715238676,1,2020-09-17
+756,Industrialny Mata balkonowa zielony S,Balcony,94.7,109,7129387005163,0,2020-09-18
+757,Industrialny Koc dekoracyjny szary,Living Room,402.24,467,9121416141505,0,2020-09-19
+758,Boho Skrzynka na kwiaty brązowy,Balcony,277.24,281,5015569902356,1,2020-09-29
+759,Wielofunkcyjny Cukiernica beżowy L,Dining Room,616.37,439,9162022328836,1,2020-10-10
+760,Bambusowy Lustro stojące biały,Bedroom,144.92,168,6908776618303,1,2020-10-24
+761,Ekologiczny Lampion ogrodowy antracytowy S,Garden,816.34,197,320203265090,1,2020-11-07
+762,Ceramiczny Suszarka na pranie stojąca granatowy,Laundry Room,560.42,87,5298585672872,0,2020-11-08
+763,Dekoracyjny Organizer do szuflady zielony L,Storage,584.98,167,7988774924247,0,2020-11-10
+764,Klasyczny Roślinka sztuczna biały S,Living Room,628.08,383,7656360041257,1,2020-11-15
+765,Elegancki Pojemnik na pieluchy kremowy M,Nursery,225.17,431,8314727601221,1,2020-11-17
+766,Elegancki Organizer na klucze,Hallway,378.84,75,9991191485640,1,2020-11-21
+767,Premium Parasol ogrodowy kremowy,Garden,313.12,177,7277382646093,0,2020-11-29
+768,Vintage Suszarka na pranie,Bathroom,504.24,438,6322702672885,1,2020-11-30
+769,Stylowy Pojemnik na narzędzia ogrodowe,Balcony,279.42,40,8095217558514,1,2020-11-30
+770,Skandynawski Pojemnik plastikowy z pokrywką kremowy M,Storage,556.18,318,3056164840850,1,2020-12-01
+771,Składany Organizer na biurko antracytowy,Office,516.78,426,6050166799847,0,2020-12-07
+772,Składany Parasol ogrodowy zielony,Garden,356.62,394,9096705466884,0,2020-12-13
+773,Drewniany Ziemia do kwiatów naturalny XL,Garden,81.2,3,5943897607400,0,2020-12-24
+774,Ekologiczny Stojak na gazety brązowy,Living Room,457.96,156,2104478985628,1,2020-12-29
+775,Wielofunkcyjny Wieszak na narzędzia antracytowy M,Garage,168.51,214,4969357824348,1,2020-12-29
+776,Premium Pokrowiec na deskę,Laundry Room,630.49,154,9190586518509,1,2020-12-29
+777,Kompaktowy Szafka RTV antracytowy XL,Living Room,557.16,21,7075504768162,1,2020-12-30
+778,Ekologiczny Pokrowiec na deskę szary M,Laundry Room,293.01,377,5905992937844,0,2020-12-31
+779,Drewniany Organizer pralniany kremowy M,Laundry Room,148.16,313,5786718153522,0,2021-01-03
+780,Ceramiczny Solniczka i pieprzniczka granatowy,Dining Room,806.63,93,5347491627,1,2021-01-07
+781,Ceramiczny Mata balkonowa biały,Balcony,542.95,200,2072662925081,0,2021-01-14
+782,Szklany Organizer pralniany,Laundry Room,587.14,291,1073228360842,0,2021-01-18
+783,Ekologiczny Kołdra letnia naturalny,Bedroom,20.97,211,6183982622447,1,2021-01-22
+784,Boho Dziurkacz antracytowy,Office,27.25,25,8021442703122,0,2021-01-26
+785,Vintage Worek próżniowy,Storage,568.41,326,9117911244216,0,2021-01-31
+786,Stylowy Poduszka dekoracyjna biały L,Living Room,311.46,383,571219881921,1,2021-02-01
+787,Lniany Taca do serwowania,Dining Room,636.61,12,962588576691,1,2021-02-16
+788,Praktyczny Pojemnik na pieluchy szary S,Nursery,640.42,274,5193583749079,1,2021-02-24
+789,Luksusowy Doniczka ceramiczna,Garden,67.41,137,164818804424,1,2021-03-07
+790,Stylowy Dywan do sypialni zielony M,Bedroom,532.84,6,3091436391029,1,2021-03-09
+791,Szklany Półka na buty,Hallway,729.93,123,1158760545763,1,2021-03-14
+792,Rustykały Suszarka ścienna,Laundry Room,370.44,165,3060119875613,1,2021-03-25
+793,Nowoczesny Suszarka ścienna brązowy M,Laundry Room,120.47,236,8522823052483,0,2021-03-27
+794,Stylowy Regał na książki,Living Room,482.35,20,3736060148860,0,2021-04-03
+795,Stylowy Tabliczka korkowa,Office,629.39,301,569659171351,1,2021-04-11
+796,Elegancki Pojemnik na śruby kremowy XL,Garage,681.28,281,8687859964862,0,2021-04-14
+797,Luksusowy Pojemnik na śruby kremowy M,Garage,479.42,485,4765704120091,0,2021-04-15
+798,Industrialny Świecznik biały S,Living Room,320.29,445,679497567923,0,2021-04-28
+799,Industrialny Stojak wielofunkcyjny czarny M,Storage,884.96,214,7024103865710,0,2021-05-03
+800,Minimalistyczny Drążek do zasłony kremowy,Bathroom,57.51,362,4542185457058,1,2021-05-06
+801,Luksusowy Donica ceramiczna szary,Living Room,348.59,39,9177987682992,1,2021-05-06
+802,Boho Karafka szklana,Dining Room,274.06,495,980500978828,0,2021-05-23
+803,Drewniany Forma do pieczenia granatowy L,Kitchen,792.36,195,3308334447049,1,2021-05-29
+804,Nowoczesny Lampka nocna antracytowy M,Bedroom,289.14,24,8004635806886,0,2021-05-30
+805,Drewniany Ochraniacz na materac,Bedroom,398.66,54,3696816453528,0,2021-06-13
+806,Bambusowy Pojemnik plastikowy z pokrywką granatowy S,Storage,220.48,347,5690674471630,0,2021-06-20
+807,Rustykały Organizer na klucze,Hallway,803.37,301,4278816580399,0,2021-07-13
+808,Szklany Szczotka do zamiatania granatowy,Garage,565.46,117,5340018167780,1,2021-07-14
+809,Drewniany Latarka ręczna,Garage,25.25,120,7638821458415,1,2021-08-02
+810,Praktyczny Świeczka do ogrodu,Garden,359.61,240,1874960335828,1,2021-08-10
+811,Klasyczny Ręcznik do rąk brązowy XL,Bathroom,864.16,386,5498227495450,0,2021-08-11
+812,Praktyczny Dywanik do przedpokoju czarny,Hallway,477.31,47,4458220673232,0,2021-08-14
+813,Klasyczny Zegar ścienny granatowy,Living Room,548.83,483,2439920116696,0,2021-08-18
+814,Stylowy Lampka biurkowa zielony,Office,177.58,239,140052781059,1,2021-08-23
+815,Metalowy Pojemnik na przyprawy naturalny S,Kitchen,129.01,428,1239204910603,0,2021-08-27
+816,Skandynawski Suszarka na pranie stojąca antracytowy,Laundry Room,654.42,309,4695489952993,1,2021-08-28
+817,Luksusowy Wieszak za drzwi zielony,Storage,129.15,244,3149864300981,0,2021-08-28
+818,Premium Stojak wielofunkcyjny antracytowy,Storage,563.76,11,8726176072345,0,2021-08-30
+819,Luksusowy Sztućce ze stali naturalny,Dining Room,863.92,120,5778811616202,0,2021-08-30
+820,Industrialny Szczotka do WC granatowy S,Bathroom,716.05,372,1528547815066,0,2021-09-10
+821,Drewniany Organizer na zabawki,Nursery,798.09,253,2872866041644,1,2021-09-20
+822,Klasyczny Konewka plastikowa,Garden,366.62,37,9022941318694,0,2021-09-20
+823,Ekologiczny Zszywacz biurowy brązowy M,Office,279.05,57,5031780782355,1,2021-09-29
+824,Szklany Stolik kawowy zielony,Living Room,500.06,483,5477725228722,0,2021-10-02
+825,Składany Stojak na parasole brązowy,Hallway,10.63,326,8620959351866,0,2021-10-03
+826,Skandynawski Lampka nocna,Bedroom,899.78,411,3962746662157,0,2021-10-07
+827,Kompaktowy Pojemnik na sezonowe ubrania,Storage,782.53,487,6442121461478,1,2021-10-08
+828,Boho Pojemnik na narzędzia ogrodowe brązowy,Balcony,557.01,112,2727956878337,0,2021-10-14
+829,Klasyczny Kołdra letnia,Bedroom,478.53,0,5932525002922,0,2021-10-21
+830,Vintage Wieszak na płaszcze naturalny,Hallway,579.75,185,5423401636114,0,2021-10-22
+831,Składany Nawóz do roślin beżowy,Garden,397.26,42,7071587964743,0,2021-10-31
+832,Vintage Poduszka puchowa naturalny,Bedroom,65.71,28,1683113950012,1,2021-11-02
+833,Wielofunkcyjny Kołdra letnia,Bedroom,694.38,392,6567661825129,1,2021-11-11
+834,Vintage Pokrowiec na deskę,Laundry Room,336.05,310,1037170586507,1,2021-11-12
+835,Industrialny Suszarka na pranie stojąca czarny,Laundry Room,85.14,260,671307351043,1,2021-11-26
+836,Dekoracyjny Wieszak na płaszcze,Hallway,757.6,113,358929880853,0,2021-11-27
+837,Składany Wieszak na płaszcze,Hallway,542.44,350,9657013290228,1,2021-12-01
+838,Industrialny Pojemnik pod łóżko czarny S,Bedroom,764.93,183,8144914766071,0,2021-12-19
+839,Luksusowy Lampa solarna brązowy L,Balcony,30.67,402,225999966360,0,2021-12-27
+840,Klasyczny Nożyczki biurowe,Office,716.84,285,1934667665069,0,2021-12-30
+841,Bawełniany Lustro wejściowe naturalny S,Hallway,533.79,160,9772168800532,1,2021-12-31
+842,Drewniany Pojemnik plastikowy z pokrywką szary XL,Storage,414.67,248,6604641978571,1,2021-12-31
+843,Ceramiczny Naklejki ścienne szary XL,Nursery,638.47,319,6996489971846,0,2022-01-02
+844,Praktyczny Wanna składana beżowy,Bathroom,124.35,318,6184462671467,0,2022-01-08
+845,Ceramiczny Dywan do sypialni brązowy S,Bedroom,179.1,425,1284033399778,0,2022-01-16
+846,Stylowy Wieszak za drzwi szary S,Storage,653.23,149,3395275367499,1,2022-01-20
+847,Elegancki Skrzynka na kwiaty,Balcony,689.04,333,2496718325821,0,2022-01-21
+848,Ceramiczny Wazon szklany beżowy,Living Room,630.82,135,1759558720968,0,2022-01-24
+849,Bawełniany Nawóz do roślin zielony,Garden,65.07,274,3665528993165,0,2022-01-27
+850,Składany Konewka metalowa granatowy S,Garden,129.01,472,970026876814,0,2022-01-30
+851,Elegancki Łopatka ogrodowa,Garden,141.54,348,8486899936071,1,2022-01-31
+852,Metalowy Pojemnik plastikowy z pokrywką,Storage,703.49,298,7013712436589,1,2022-02-07
+853,Minimalistyczny Świecznik antracytowy M,Living Room,454.89,486,1456083318195,1,2022-02-08
+854,Ceramiczny Łopatka silikonowa,Kitchen,266.74,469,4913421388205,0,2022-02-09
+855,Drewniany Obraz dekoracyjny,Living Room,285.91,149,2463104379683,1,2022-02-12
+856,Industrialny Koszyk na dokumenty brązowy M,Office,137.4,266,9802714872710,1,2022-02-16
+857,Dekoracyjny Koszyk na dokumenty kremowy,Office,785.12,496,2174596158655,1,2022-02-19
+858,Klasyczny Organizer na klucze kremowy,Hallway,511.87,286,7406403910657,0,2022-02-20
+859,Praktyczny Serwetnik zielony,Kitchen,338.76,228,477434902116,1,2022-02-22
+860,Stylowy Stojak na gazety kremowy,Living Room,534.1,251,562608564112,0,2022-02-25
+861,Dekoracyjny Serwetki lniane czarny,Dining Room,375.23,180,8685127652893,0,2022-03-05
+862,Skandynawski Pojemnik plastikowy z pokrywką zielony L,Storage,422.51,293,9842673204412,0,2022-03-05
+863,Nowoczesny Poduszka na krzesło balkonowe brązowy,Balcony,662.84,320,1108099693086,1,2022-03-11
+864,Elegancki Miska do mieszania granatowy,Kitchen,893.93,288,7470002687647,1,2022-03-21
+865,Elegancki Stolik balkonowy,Balcony,665.45,346,8196001338906,0,2022-03-23
+866,Ceramiczny Garnek ze stali nierdzewnej,Kitchen,391.27,259,9411849135999,0,2022-03-27
+867,Wielofunkcyjny Suszarka na pranie stojąca,Laundry Room,738.83,290,4388221145776,1,2022-03-29
+868,Wielofunkcyjny Pojemnik na pieluchy,Nursery,710.83,383,9025561844420,0,2022-03-29
+869,Minimalistyczny Serwetki lniane szary XL,Dining Room,789.57,411,9234268344144,1,2022-03-30
+870,Nowoczesny Sekator antracytowy,Garden,196.66,407,1484685366498,1,2022-04-13
+871,Drewniany Magnes na lodówkę granatowy M,Office,101.6,418,1581487696393,0,2022-04-16
+872,Praktyczny Wieszak za drzwi czarny XL,Storage,737.96,469,9497089058366,1,2022-04-19
+873,Bawełniany Worek na delikatne pranie granatowy M,Laundry Room,133.28,459,8040561299651,0,2022-04-27
+874,Praktyczny Solniczka i pieprzniczka brązowy,Dining Room,147.72,292,529187683160,0,2022-04-28
+875,Drewniany Karafka szklana,Dining Room,420.24,54,1307240787548,0,2022-05-06
+876,Drewniany Organizer na biurko kremowy,Office,90.25,165,2111751868929,1,2022-05-06
+877,Dekoracyjny Lampka nocna antracytowy XL,Bedroom,403.41,26,3482477109320,1,2022-05-10
+878,Klasyczny Kosz na pranie granatowy,Bathroom,125.44,203,7111483753741,1,2022-05-15
+879,Industrialny Pojemnik tekstylny beżowy S,Storage,514.23,5,1594463339993,1,2022-05-25
+880,Boho Pojemnik na chleb granatowy S,Kitchen,53.79,107,5832863425561,0,2022-05-27
+881,Elegancki Komoda drewniana naturalny L,Bedroom,482.15,155,2537337773126,1,2022-05-28
+882,Premium Otwieracz do butelek kremowy M,Kitchen,310.75,387,6091779827084,0,2022-05-30
+883,Nowoczesny Kubek na szczoteczki granatowy S,Bathroom,492.52,456,4225831323708,1,2022-06-05
+884,Drewniany Poduszka dla niemowląt biały XL,Nursery,737.53,401,8718981312921,0,2022-06-11
+885,Klasyczny Lampka nocna do pokoju dziecięcego beżowy,Nursery,446.03,381,2055543840468,0,2022-06-13
+886,Bambusowy Donica ceramiczna,Living Room,751.58,112,3373204309772,1,2022-06-24
+887,Składany Lustro łazienkowe beżowy,Bathroom,146.25,149,8132357071395,1,2022-06-28
+888,Ceramiczny Pojemnik plastikowy z pokrywką,Storage,561.87,200,2291316708058,1,2022-07-01
+889,Praktyczny Półka na buty,Hallway,418.58,410,9717751701667,0,2022-07-01
+890,Premium Aromatyczna świeca zielony L,Bedroom,726.77,499,7403344505669,1,2022-07-08
+891,Dekoracyjny Kosz na zabawki naturalny L,Nursery,435.74,192,5278585497330,1,2022-07-08
+892,Drewniany Lampion ogrodowy,Garden,287.53,96,3187510979211,1,2022-07-17
+893,Nowoczesny Krzesło balkonowe,Balcony,26.97,444,6368157981233,1,2022-07-30
+894,Boho Sztućce ze stali beżowy L,Dining Room,444.78,463,164005242787,1,2022-07-31
+895,Nowoczesny Wieszak na rośliny,Balcony,693.15,130,5506882691770,1,2022-08-04
+896,Dekoracyjny Pojemnik na sezonowe ubrania szary S,Storage,151.83,278,8615335554399,1,2022-08-04
+897,Praktyczny Drążek do zasłony biały S,Bathroom,67.96,265,8092550213063,0,2022-08-15
+898,Premium Mobilne nad łóżeczko kremowy XL,Nursery,366.71,259,6805891135299,0,2022-08-19
+899,Luksusowy Ramka na certyfikat beżowy,Office,623.37,169,7494902284034,1,2022-08-22
+900,Dekoracyjny Stolik balkonowy naturalny,Balcony,657.36,419,2312432921272,1,2022-08-24
+901,Ceramiczny Stolik balkonowy czarny,Balcony,327.84,343,3149135775944,0,2022-09-08
+902,Bambusowy Poduszka puchowa,Bedroom,591.88,457,4627301471955,1,2022-09-08
+903,Boho Mata balkonowa beżowy,Balcony,42.74,252,9303614987288,0,2022-09-09
+904,Premium Kosz na zabawki,Nursery,634.24,339,9179202521314,0,2022-10-07
+905,Dekoracyjny Uchwyt na papier toaletowy szary,Bathroom,411.82,447,2429543165263,1,2022-10-17
+906,Praktyczny Zegar ścienny antracytowy L,Bedroom,462.3,417,1864482217580,0,2022-10-23
+907,Vintage Kabel zasilający brązowy,Garage,452.77,25,5642045657754,0,2022-10-24
+908,Wielofunkcyjny Nóż kucharski,Kitchen,772.64,414,477425859177,1,2022-10-24
+909,Drewniany Klipsy do prania naturalny,Laundry Room,429.49,313,5527636556473,0,2022-10-25
+910,Luksusowy Etykiety samoprzylepne szary XL,Storage,356.56,391,759889786535,0,2022-10-28
+911,Kompaktowy Lampion ogrodowy brązowy,Garden,331.7,388,304687506351,0,2022-10-29
+912,Nowoczesny Szczotka do prania zielony XL,Laundry Room,581.46,287,6334141115939,0,2022-11-06
+913,Kompaktowy Półka łazienkowa,Bathroom,403.89,394,811556260608,0,2022-11-20
+914,Premium Lampa solarna beżowy S,Balcony,636.21,470,1848955439372,1,2022-11-23
+915,Skandynawski Zasłony do salonu biały XL,Living Room,608.09,446,306738302844,0,2022-12-03
+916,Nowoczesny Zegar ścienny czarny M,Bedroom,96.43,371,3863383928869,0,2022-12-07
+917,Skandynawski Pojemnik tekstylny kremowy S,Storage,862.6,434,7595794728467,0,2022-12-08
+918,Praktyczny Ława szklana szary L,Living Room,484.79,257,2992299590011,0,2022-12-08
+919,Rustykały Teczka dokumentów kremowy M,Office,419.94,442,8576084958800,0,2022-12-14
+920,Kompaktowy Deska do krojenia granatowy M,Kitchen,63.37,489,8851656049453,0,2022-12-18
+921,Rustykały Donica ceramiczna,Living Room,474.09,121,9121870629328,0,2022-12-19
+922,Praktyczny Ochraniacz na materac kremowy XL,Bedroom,816.38,293,5654420949408,1,2022-12-20
+923,Bambusowy Pojemnik na pieluchy kremowy,Nursery,640.37,302,5031006493409,0,2022-12-26
+924,Klasyczny Stojak na przyprawy biały,Kitchen,818.31,310,9004896465289,0,2023-01-08
+925,Vintage Serwetki lniane czarny,Dining Room,604.24,200,6176620471965,0,2023-01-08
+926,Skandynawski Stojak na parasole brązowy,Hallway,378.18,434,1359266486981,0,2023-01-18
+927,Ekologiczny Wieszak za drzwi,Storage,700.55,312,9553024530127,0,2023-01-18
+928,Stylowy Podstawki pod garnki,Kitchen,690.15,303,2511426258275,0,2023-01-20
+929,Premium Pompka do roweru czarny,Garage,265.11,25,7794332562383,1,2023-01-27
+930,Dekoracyjny Etykiety samoprzylepne,Storage,29.09,471,515532341595,1,2023-02-01
+931,Luksusowy Kosz na zabawki kremowy,Nursery,125.49,432,8885622586604,1,2023-02-02
+932,Wielofunkcyjny Wieszak na narzędzia kremowy L,Garage,509.15,234,7121513422844,0,2023-02-02
+933,Dekoracyjny Poduszka na leżak naturalny,Garden,736.01,188,5169409749936,0,2023-02-02
+934,Kompaktowy Pojemnik na watę biały,Bathroom,613.85,492,8018569454419,1,2023-02-07
+935,Ekologiczny Pompka do roweru,Garage,109.61,376,8189847139158,1,2023-02-08
+936,Nowoczesny Wieszak na ręczniki antracytowy,Bathroom,599.57,66,3445655743136,0,2023-02-11
+937,Ekologiczny Szczotka do zamiatania granatowy,Garage,398.29,228,6164534547227,0,2023-02-18
+938,Metalowy Dywanik do pokoju dziecięcego antracytowy S,Nursery,695.26,168,4308952312025,0,2023-02-23
+939,Nowoczesny Ochraniacz na materac brązowy,Bedroom,863.27,256,3565215681828,0,2023-03-04
+940,Rustykały Pudełko kartonowe szary,Storage,373.7,301,5100307620545,1,2023-03-13
+941,Luksusowy Wieszak na narzędzia szary XL,Garage,737.25,138,2968827697040,0,2023-03-17
+942,Nowoczesny Zasłony blackout czarny M,Bedroom,45.54,142,6475489547874,1,2023-03-23
+943,Boho Poszewka na poduszkę,Bedroom,536.06,340,4178996986090,0,2023-03-30
+944,Industrialny Ramka na zdjęcia,Living Room,478.79,87,55778487287,0,2023-04-03
+945,Elegancki Dywanik do pokoju dziecięcego,Nursery,831.51,313,9106227236268,1,2023-04-07
+946,Klasyczny Suszarka na pranie brązowy,Bathroom,441.43,64,8144294440196,0,2023-04-10
+947,Drewniany Pojemnik na sezonowe ubrania antracytowy,Storage,189.56,325,1834404963918,0,2023-04-11
+948,Industrialny Wazon szklany biały L,Living Room,771.96,52,2662015720182,1,2023-04-24
+949,Premium Organizer pralniany,Laundry Room,131.95,170,7872982595262,1,2023-04-26
+950,Drewniany Konewka metalowa,Garden,657.17,67,3098215064891,0,2023-04-28
+951,Kompaktowy Miska do mieszania szary XL,Kitchen,393.45,170,745106634369,0,2023-04-29
+952,Vintage Zasłony blackout szary,Bedroom,543.17,499,5133053194978,1,2023-05-09
+953,Ekologiczny Stojak na monitor,Office,732.55,132,8067571236919,1,2023-05-12
+954,Luksusowy Lampka nocna do pokoju dziecięcego granatowy,Nursery,404.26,478,4231220994992,0,2023-05-18
+955,Ekologiczny Ramka na zdjęcia,Living Room,804.44,63,9237245018489,0,2023-06-04
+956,Skandynawski Poduszka dla niemowląt granatowy M,Nursery,540.21,75,8788486999699,0,2023-06-07
+957,Kompaktowy Łopatka silikonowa kremowy S,Kitchen,789.5,134,8281489325286,0,2023-06-08
+958,Praktyczny Serwis obiadowy kremowy M,Dining Room,817.47,196,9666309329986,0,2023-06-13
+959,Industrialny Regał na książki zielony XL,Living Room,754.36,115,2798623984712,1,2023-06-15
+960,Szklany Roślinka sztuczna,Living Room,424.64,266,2754801571648,1,2023-06-20
+961,Rustykały Wanna składana beżowy S,Bathroom,44.26,350,8795083044059,0,2023-06-21
+962,Boho Szafka na buty czarny XL,Hallway,683.01,162,5330770461172,0,2023-06-28
+963,Industrialny Ramka na certyfikat szary M,Office,123.13,364,7288137702858,0,2023-06-30
+964,Premium Nawóz do roślin,Garden,524.27,491,4215226557672,1,2023-07-01
+965,Premium Roślinka sztuczna granatowy,Living Room,799.57,3,8272318432220,1,2023-07-03
+966,Ekologiczny Talerz płytki czarny,Dining Room,834.67,50,1150835354447,0,2023-07-20
+967,Praktyczny Dozownik do mydła,Bathroom,266.73,446,2201027621263,1,2023-07-23
+968,Minimalistyczny Poduszka puchowa brązowy,Bedroom,855.83,405,1052769819873,0,2023-07-28
+969,Klasyczny Półka na buty,Hallway,744.26,149,5269694439168,1,2023-07-30
+970,Minimalistyczny Szczotka do zamiatania,Garage,122.91,470,509386948420,1,2023-08-02
+971,Premium Kosz wiklinowy z pokrywką czarny L,Storage,269.36,428,8194217942818,1,2023-08-09
+972,Industrialny Pojemnik na narzędzia ogrodowe kremowy XL,Balcony,619.75,346,8160930685387,0,2023-08-16
+973,Lniany Przedłużacz elektryczny zielony,Garage,875.4,385,4434414916996,0,2023-08-17
+974,Boho Świeczka do ogrodu,Garden,499.46,258,5289755855669,1,2023-08-25
+975,Bawełniany Lampka nocna do pokoju dziecięcego szary L,Nursery,22.6,340,6601382412708,1,2023-08-26
+976,Składany Pojemnik na śruby beżowy XL,Garage,603.61,139,9269326573273,1,2023-09-10
+977,Ceramiczny Otwieracz do butelek biały L,Kitchen,219.99,393,8194905315207,1,2023-09-11
+978,Premium Zasłona prysznicowa zielony,Bathroom,624.0,244,6212021697976,0,2023-09-17
+979,Ceramiczny Doniczka balkonowa brązowy S,Balcony,882.21,421,3810595518425,1,2023-09-19
+980,Ceramiczny Pojemnik plastikowy z pokrywką,Storage,68.85,474,7975736609656,1,2023-09-19
+981,Stylowy Wieszak na obrazki kremowy,Nursery,321.28,82,8276364315940,1,2023-09-21
+982,Ekologiczny Segregator A4,Office,703.25,329,9295014374839,0,2023-09-24
+983,Wielofunkcyjny Zagłówek tapicerowany czarny XL,Bedroom,81.25,373,8478189137183,1,2023-10-02
+984,Składany Wieszak na biżuterię granatowy XL,Bedroom,328.58,90,175370304536,0,2023-10-05
+985,Vintage Taśma izolacyjna kremowy,Garage,216.97,408,8628950905910,0,2023-10-08
+986,Skandynawski Podkładka pod nadgarstek granatowy S,Office,805.89,78,2216107051847,0,2023-10-09
+987,Praktyczny Szafka RTV,Living Room,355.68,235,838688891784,1,2023-10-12
+988,Ceramiczny Kosz wiklinowy z pokrywką zielony,Storage,141.86,452,2389743260055,1,2023-10-17
+989,Lniany Wycieraczka wejściowa biały,Hallway,193.64,484,6576927789433,0,2023-10-29
+990,Ceramiczny Taśma izolacyjna zielony M,Garage,690.43,465,9448463122418,1,2023-11-09
+991,Dekoracyjny Worek próżniowy granatowy L,Storage,53.6,158,2960807063364,1,2023-11-12
+992,Metalowy Lustro łazienkowe zielony,Bathroom,662.76,227,6755562833330,0,2023-11-18
+993,Luksusowy Zestaw noży kuchennych,Kitchen,713.7,7,4817549651374,0,2023-11-24
+994,Nowoczesny Poszewka na poduszkę szary,Bedroom,528.42,75,6204505331582,1,2023-12-03
+995,Drewniany Koszyk na pieczywo czarny M,Dining Room,642.87,138,83850765978,1,2023-12-12
+996,Industrialny Worek na delikatne pranie,Laundry Room,383.11,89,8225120734655,1,2023-12-13
+997,Elegancki Mobilne nad łóżeczko szary,Nursery,316.01,118,8395972466575,0,2023-12-13
+998,Bambusowy Łopatka silikonowa beżowy XL,Kitchen,132.32,424,5854218808799,0,2023-12-20
+999,Bambusowy Ściereczka kuchenna,Kitchen,423.26,78,1885666954138,0,2023-12-23
+1000,Szklany Pościel bawełniana,Bedroom,154.16,286,9466527523322,0,2023-12-27

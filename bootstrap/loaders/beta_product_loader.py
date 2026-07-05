@@ -5,7 +5,7 @@ from pathlib import Path
 from config.loader import load_config
 from domain.models.product import BetaProduct, PriceEntry, StockDetail, ProductVariant
 from generator.stores.beta.mappers.product import model_to_document
-from ingestion.loaders.base_product_loader import BaseProductSeedLoader
+from bootstrap.loaders.base_product_loader import BaseProductSeedLoader
 
 
 class BetaProductSeedLoader(BaseProductSeedLoader):

@@ -26,3 +26,6 @@ pipeline_config:
     email: 0.
   duplication_rate: 0.02
   legacy_rate: 0.08
+
+async_generators:
+  - users

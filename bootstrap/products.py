@@ -1,5 +1,5 @@
 from infrastructure.core.db_service import DBService
-from ingestion.loaders.base_product_loader import BaseProductSeedLoader
+from bootstrap.loaders.base_product_loader import BaseProductSeedLoader
 
 
 class ProductSeeder:

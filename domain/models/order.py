@@ -1,11 +1,13 @@
 from dataclasses import dataclass
+from datetime import date
 from decimal import Decimal
 from typing import Optional
 
 from domain.enums import (
-    StoreId, OrderEventType, Currency
+    StoreId, OrderEventType, Currency, OrderStatus
 )
 from domain.models.product import Product
+from domain.models.promotion import Promotion
 from domain.models.user import User
 
 
@@ -59,3 +61,29 @@ class OrderEvent:
     store_id: StoreId
     order: Order
     failure_reason: Optional[str]
+
+
+@dataclass
+class GammaOrder:
+    id: str
+    user: User
+    order_date: date
+    status: OrderStatus
+    products: list[Product]
+    promotion: Promotion | None
+    city: str
+    currency: Currency
+    _shipping_cost: Decimal = Decimal(10)
+
+    @property
+    def total_amount(self) -> Decimal:
+        gross_amount = Decimal(sum((p.price for p in self.products)))
+        if self.promotion:
+            if not self.promotion.is_free_shipping:
+                gross_amount += self._shipping_cost
+
+            gross_amount *= (1 - self.promotion.discount_percentage / 100)
+
+            gross_amount -= self.promotion.discount_fixed
+
+        return gross_amount

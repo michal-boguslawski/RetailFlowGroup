@@ -25,11 +25,11 @@ from sinks.kafka import KafkaSink
 
 
 class BetaBuilder:
-    def build_mongo_sink(self, config: StoreConfig):
+    def _build_mongo_sink(self, config: StoreConfig):
         db_service = build_beta_db_service()
         return MongoSink(db_service)
 
-    def build_kafka_sink(self, config: StoreConfig) -> KafkaSink:
+    def _build_kafka_sink(self, config: StoreConfig) -> KafkaSink:
         kafka_config = build_kafka_config(config.store_id)
         kafka_client = KafkaProducerClient(kafka_config)
         serializer = AvroSerializerService(kafka_config.schema_registry_url, config.store_id)
@@ -39,8 +39,8 @@ class BetaBuilder:
 
     def build_router(self, config: StoreConfig) -> BetaRouter:
         # --- sinks ---
-        kafka_sink = self.build_kafka_sink(config)
-        mongo_sink = self.build_mongo_sink(config)
+        kafka_sink = self._build_kafka_sink(config)
+        mongo_sink = self._build_mongo_sink(config)
 
         # --- router ---
         return BetaRouter(kafka_sink, mongo_sink)
