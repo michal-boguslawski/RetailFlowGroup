@@ -30,6 +30,6 @@ class NullifyStep(PipelineStep):
             setattr(event, field, None)
 
     def process(self, event: GeneratedRecord) -> list[GeneratedRecord]:
-        for field, value in self.null_rates.model_dump().items():
+        for field, value in self.null_rates.rates.items():
             self._nullify_field(event, field, value)
         return [event]

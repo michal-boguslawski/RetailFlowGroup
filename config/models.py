@@ -1,9 +1,12 @@
 # config/models.py
 
 from pydantic import BaseModel, Field
-from typing import Literal, Optional
+from typing import Literal, Optional, Annotated
 
 from domain.enums import StoreId
+
+
+Percentage = Annotated[float, Field(ge=0, le=1)]
 
 
 class IdFormat(BaseModel):
@@ -24,13 +27,7 @@ class IdConfig(BaseModel):
 
 
 class NullRates(BaseModel):
-    user: float = Field(default=0.0, ge=0, le=1)
-    session_id: float = Field(default=0.0, ge=0, le=1)
-    phone: float = Field(default=0.0, ge=0, le=1)
-    # tax_amount: float = Field(default=0.0, ge=0, le=1)
-    date_of_birth: float = Field(default=0.0, ge=0, le=1)
-    email_hash: float = Field(default=0.0, ge=0, le=1)
-    phone_hash: float = Field(default=0.0, ge=0, le=1)
+    rates: dict[str, Percentage] = Field(default_factory=dict)
 
 
 class FieldCorruptRates(BaseModel):
