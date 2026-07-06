@@ -14,12 +14,14 @@ clock_drift_seconds: 100
 
 pipeline_config:
   null_rates:
-    user: 0.12
-    session_id: 0.08
-    phone: 0.4
-    date_of_birth: 0.3
-  field_corrupt_rates:
-    email: 0.05
+    rates:
+      user: 0.12
+      session_id: 0.08
+      phone: 0.4
+      date_of_birth: 0.3
+  field_case_corrupt_rates:
+    rates:
+      email: 0.05
   duplication_rate: 0.02
   legacy_rate: 0.15
 

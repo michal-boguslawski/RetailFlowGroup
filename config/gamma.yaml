@@ -1,24 +1,29 @@
 store_id: gamma
 ids:
   user_id:
-    style: uuid
+    style: integer
+  return_id:
+    style: integer
+    prefix: RET-YYYYMMDD-
   order_id:
     style: integer
   product_id:
-    style: uuid
+    style: integer
 
 minio_bucket_name: raw-ingestion
 
 state_path: data/state/gamma_generator_state.json
-clock_drift_seconds: 100
 
 pipeline_config:
   null_rates:
-    user: 0.12
-    session_id: 0.08
-    phone: 0.4
-    date_of_birth: 0.3
-  field_corrupt_rates:
-    email: 0.05
-  duplication_rate: 0.02
-  legacy_rate: 0.15
+    rates:
+      user: 0.25
+      stock_count: 0.03
+      created_date: 0.05
+  field_case_corrupt_rates:
+    rates:
+      discount_code: 0.2
+  trailing_spaces_corrupt_rates:
+    rates:
+      promo_code: 0.1
+      discount_code: 0.1

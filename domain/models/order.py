@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 from decimal import Decimal
 from typing import Optional
@@ -73,8 +73,12 @@ class GammaOrder:
     promotion: Promotion | None
     city: str
     currency: Currency
-    discount_code: str = ""
     _shipping_cost: Decimal = Decimal(10)
+
+    discount_code: str | None = field(init=False)
+
+    def __post_init__(self):
+        self.discount_code = self.promotion.promo_code if self.promotion else None
 
     @property
     def total_amount(self) -> Decimal:

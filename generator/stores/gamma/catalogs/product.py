@@ -26,7 +26,7 @@ class ProductCatalog:
         else:
             raise ValueError("Unsupported format")
 
-        df["created_at"] = pd.to_datetime(df["created_at"])
+        df["created_date"] = pd.to_datetime(df["created_date"])
 
         return df
 

@@ -18,12 +18,14 @@ clock_drift_seconds: 100
 
 pipeline_config:
   null_rates:
-    user: 0.18
-    email_hash: 0.05
-    phone_hash: 0.4
-    loyalty_points: 0.05
-  field_corrupt_rates:
-    email: 0.
+    rates:
+      user: 0.18
+      email_hash: 0.05
+      phone_hash: 0.4
+      loyalty_points: 0.05
+  field_case_corrupt_rates:
+    rates:
+      email: 0.
   duplication_rate: 0.02
   legacy_rate: 0.08
 

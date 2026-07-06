@@ -15,6 +15,6 @@ def model_to_dict(order: GammaOrder, formatter: Formatter) -> dict[str, Any]:
         formatter.column_naming_variants.product_ids:
             "|".join(p.id for p in order.products),
         formatter.column_naming_variants.discount_code:
-            order.promotion.promo_code if order.promotion else None,
+            order.discount_code,
         formatter.column_naming_variants.city: order.city,
     }

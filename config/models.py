@@ -30,13 +30,18 @@ class NullRates(BaseModel):
     rates: dict[str, Percentage] = Field(default_factory=dict)
 
 
-class FieldCorruptRates(BaseModel):
-    email: float = Field(default=0.0, ge=0, le=1)
+class FieldCaseCorruptRates(BaseModel):
+    rates: dict[str, Percentage] = Field(default_factory=dict)
+
+
+class TrailingSpacesCorruptRates(BaseModel):
+    rates: dict[str, Percentage] = Field(default_factory=dict)
 
 
 class PipelineConfig(BaseModel):
     null_rates: NullRates
-    field_corrupt_rates: FieldCorruptRates
+    field_case_corrupt_rates: FieldCaseCorruptRates
+    trailing_spaces_corrupt_rates: TrailingSpacesCorruptRates | None = None
     duplication_rate: float = 0.
     legacy_rate: float = 0.
 

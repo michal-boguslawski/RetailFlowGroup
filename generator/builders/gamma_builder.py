@@ -19,7 +19,8 @@ from sinks.postgres import PostgresSink
 
 
 class GammaBuilder:
-    db_service = build_gamma_db_service()
+    def __init__(self):
+        self.db_service = build_gamma_db_service()
 
     def _build_file_sink(self, config: StoreConfig) -> FileSink:
         file_service = build_minio_service()

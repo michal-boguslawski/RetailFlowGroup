@@ -3,14 +3,14 @@ from faker import Faker
 
 from domain.types import GeneratedRecord
 from generator.core.fake import make_faker
-from config.models import FieldCaseCorruptRates
+from config.models import TrailingSpacesCorruptRates
 from generator.pipeline.base import PipelineStep
 
 
-class FieldCaseCorruptionStep(PipelineStep):
+class TrailingSpacesCorruptionStep(PipelineStep):
 
-    def __init__(self, field_case_corrupt_rates: FieldCaseCorruptRates, faker: Faker | None = None, *args, **kwargs):
-        self.field_case_corrupt_rates = field_case_corrupt_rates
+    def __init__(self, trailing_spaces_corrupt_rates: TrailingSpacesCorruptRates, faker: Faker | None = None, *args, **kwargs):
+        self.trailing_spaces_corrupt_rates = trailing_spaces_corrupt_rates
         self.faker = faker or make_faker()
 
     def applies_to(self, event: GeneratedRecord) -> bool:
@@ -22,25 +22,12 @@ class FieldCaseCorruptionStep(PipelineStep):
             if not isinstance(field_value, str):
                 return
 
-            chars = list(field_value)
-
-            indices = self.faker.random_elements(
-                elements=range(len(chars)),
-                length=len(chars) // 2,
-                unique=True,
-            )
-
-            for i in indices:
-                chars[i] = chars[i].upper()
-
-            field_value = "".join(chars)
-            setattr(event, field, field_value)
-            
+            setattr(event, field, field_value + " " * self.faker.random_int(min=1, max=5))
 
     def process(self, event: GeneratedRecord) -> list[GeneratedRecord]:
         event = copy.deepcopy(event)
 
-        for field, value in self.field_case_corrupt_rates.rates.items():
+        for field, value in self.trailing_spaces_corrupt_rates.rates.items():
             self._corrupt_field(event, field, value)
 
         return [event]
