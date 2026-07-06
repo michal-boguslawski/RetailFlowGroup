@@ -30,20 +30,24 @@ class GammaEventHandler:
 
     def _on_next_day(self) -> Formatter | None:
         self.current_date += timedelta(days=1)
+        print(f"Current date is {self.current_date.isoformat()} in day {self.current_date.isoweekday()}")
 
         products = self.db_service.get_at_date("products", date_ = self.current_date)
+        
+        if products:
+            self._pending_products = (
+                p for p in products
+                if isinstance(p, GammaProduct)
+            )
 
-        self._pending_products = (
-            p for p in products
-            if isinstance(p, GammaProduct)
-        )
-        if self.current_date.isoweekday == 7:
+        if self.current_date.isoweekday() == 7:
+            print(f"Formatter created")
             formatter = self.store_factory.make_one("formatters", date_=self.current_date)
             if not isinstance(formatter, Formatter):
                 raise TypeError
             return formatter
 
-    def step(self) -> User | GammaOrder | GammaProduct | OrderReturn | Promotion | Formatter:
+    def step(self) -> User | GammaOrder | GammaProduct | OrderReturn | Promotion | Formatter | None:
         # First emit any pending products
         try:
             return next(self._pending_products)
@@ -51,7 +55,7 @@ class GammaEventHandler:
             pass
 
         # Maybe advance to the next day
-        if random.random() < 0.01:
+        if random.random() < 0.005:
             formatter = self._on_next_day()
             if formatter is not None:
                 return formatter
@@ -65,7 +69,7 @@ class GammaEventHandler:
         # Otherwise generate a normal event
         return self._generate_random_event()
 
-    def _generate_random_event(self) -> User | GammaOrder | OrderReturn | Promotion:
+    def _generate_random_event(self) -> User | GammaOrder | OrderReturn | Promotion | None:
         event_name, event_model = random.choices([
             ("users", User),
             ("orders", GammaOrder),
@@ -76,6 +80,8 @@ class GammaEventHandler:
         
         if event_name == "end_promotion" or event_model is None:
             promotion = self.db_service.get_random("promotions", date_=self.current_date)
+            if promotion is None:
+                return
             if not isinstance(promotion, Promotion):
                 raise TypeError(
                     f"Expected Promotion, got {type(promotion)}"

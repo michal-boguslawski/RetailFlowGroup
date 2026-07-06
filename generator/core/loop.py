@@ -2,6 +2,7 @@ from collections import defaultdict
 from threading import Event
 from typing import Callable
 
+from domain.models import Product
 from domain.types import GeneratedRecord
 from generator.stores.base import BaseRouter
 from generator.pipeline.base import Pipeline
@@ -11,7 +12,7 @@ from sinks.base import BaseSink
 class GeneratorLoop:
     def __init__(
         self,
-        step: Callable[[], GeneratedRecord],   # could be make_one for user, or step for session, where step handles transitons
+        step: Callable[[], GeneratedRecord | None],   # could be make_one for user, or step for session, where step handles transitons
         breaktime_generator: Callable[[], float],
         router: BaseRouter,
         pipeline: Pipeline | None = None,
@@ -57,11 +58,17 @@ class GeneratorLoop:
 
     def bootstrap(self, n: int):
         records = [self.step() for _ in range(n)]
+        records = [r for r in records if r is not None]
 
         self._process_records(records)
 
-    def tick(self) -> None:
+    def tick(self) -> bool:
         record = self.step()
+
+        if record is None:
+            return False
+
+        to_wait = not isinstance(record, Product)
 
         records = self._process_records([record])
 
@@ -69,15 +76,17 @@ class GeneratorLoop:
 
         if self.record_count % 100 == 0:
             print(f"{self.record_count} records processed")
+        return to_wait
 
     def run(self):
         while not self.stop_event.is_set():
-            self.tick()
+            _to_wait = self.tick()
 
-            breaktime = self.breaktime_generator()
-            print(f"Wait for {breaktime} seconds...")
+            if _to_wait:
+                breaktime = self.breaktime_generator()
+                print(f"Wait for {breaktime} seconds...")
 
-            self.stop_event.wait(breaktime)
+                self.stop_event.wait(breaktime)
 
     def stop(self):
         self.stop_event.set()

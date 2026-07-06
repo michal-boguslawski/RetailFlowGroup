@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Any, Hashable
 
 from domain.models import GammaProduct, Formatter
@@ -5,10 +6,10 @@ from domain.models import GammaProduct, Formatter
 
 def row_to_model(row: dict[Hashable, Any]) -> GammaProduct:
     return GammaProduct(
-        id = row["id"],
+        id = str(row["id"]),
         name = row["name"],
         category = row["category"],
-        _price = row["price"],
+        _price = Decimal(row["price"]),
         stock_count = row["stock_count"],
         ean_barcode = row["ean_barcode"],
         active = row["active"],

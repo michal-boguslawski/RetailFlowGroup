@@ -10,7 +10,7 @@ ids:
   product_id:
     style: integer
 
-minio_bucket_name: raw-ingestion
+minio_bucket_name: retailflow-landing
 
 state_path: data/state/gamma_generator_state.json
 

@@ -8,11 +8,7 @@ def build_minio_service(
 ) -> S3Service:
     settings = minio_settings or S3Settings()
     client = MinioClient(
-        endpoint_url=settings.endpoint_url,
-        access_key=settings.access_key,
-        secret_key=settings.secret_key,
-        region_name=settings.region_name,
-        secure=settings.secure,
+        minio_settings=settings
     )
 
     return S3Service(client.client)

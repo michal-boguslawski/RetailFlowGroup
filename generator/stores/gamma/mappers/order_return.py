@@ -17,6 +17,6 @@ def model_to_dict(order_return: OrderReturn, formatter: Formatter) -> dict[str, 
         ),
     }
     if order_return.refund_amount:
-        dict_["refund_amount"] = order_return.refund_amount
+        dict_["refund_amount"] = round(order_return.refund_amount, 2)
     
     return dict_

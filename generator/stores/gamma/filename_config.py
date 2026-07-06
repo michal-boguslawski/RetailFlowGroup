@@ -17,7 +17,7 @@ def _get_filename_catalog_template(date_: date, *args, **kwargs) -> tuple[str, s
 
 
 def _get_filename_promotion_template(*args, **kwargs) -> tuple[str, str]:
-    return "promotions_weekly", "json"
+    return "promotions_weekly", "csv"
 
 
 class FileNamingConfig:

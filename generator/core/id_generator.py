@@ -75,7 +75,7 @@ class IdGenerator:
                 with self._lock:
                     value = next(self._get_counter(id_type))
                     self._save_offset(id_type, value)
-                return f"{fmt.prefix}{value}"
+                return f"{fmt.prefix}{str(value)}"
             case "ret_prefixed":
                 with self._lock:
                     value = next(self._get_counter(id_type))

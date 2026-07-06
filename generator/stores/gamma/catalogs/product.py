@@ -1,4 +1,5 @@
 from datetime import date
+from decimal import Decimal
 import pandas as pd
 
 from domain.enums import Currency
@@ -7,9 +8,9 @@ from generator.stores.gamma.mappers.product import row_to_model
 
 
 CONVERSION_RATES = {
-    Currency.PLN: 1,
-    Currency.GBP: 0.20,
-    Currency.EUR: 0.23,
+    Currency.PLN: Decimal(1),
+    Currency.GBP: Decimal(0.20),
+    Currency.EUR: Decimal(0.23),
 }
 
 
@@ -40,7 +41,7 @@ class ProductCatalog:
 
     def find_random(self, date_: date, currency: Currency) -> GammaProduct:
         candidates = self._products_df[
-            self._products_df["created_at"] <= pd.Timestamp(date_)
+            self._products_df["created_date"] <= pd.Timestamp(date_)
         ].dropna()
 
         if candidates.empty:
@@ -49,19 +50,19 @@ class ProductCatalog:
         product = candidates.sample(n=1).iloc[0].to_dict()
         return self._process_dict_to_model(product, currency)
 
-    def find_by_date(self, date_: date | None = None, from_date: date | None = None, to_date: date | None = None) -> list[GammaProduct]:
+    def find_by_date(self, date_: date | None = None, from_date: date | None = None, to_date: date | None = None) -> list[GammaProduct] | None:
         candidates = self._products_df
         if date_:
-            candidates = candidates[candidates["created_at"] == pd.Timestamp(date_)].dropna()
+            candidates = candidates[candidates["created_date"] == pd.Timestamp(date_)].dropna()
 
         if from_date:
-            candidates = candidates[candidates["created_at"] >= pd.Timestamp(from_date)].dropna()
+            candidates = candidates[candidates["created_date"] >= pd.Timestamp(from_date)].dropna()
 
         if to_date:
-                candidates = candidates[candidates["created_at"] <= pd.Timestamp(to_date)].dropna()
+                candidates = candidates[candidates["created_date"] <= pd.Timestamp(to_date)].dropna()
 
         if candidates.empty:
-            raise ValueError(f"No products available on {date_}")
+            return
 
         return [
             self._process_dict_to_model(product)

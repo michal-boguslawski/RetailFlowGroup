@@ -16,6 +16,9 @@ bootstrap_users:
 	python -m bootstrap.users alpha --users 100
 	python -m bootstrap.users beta --users 100
 
+initialize_buckets:
+	python -m bootstrap.minio --store-id gamma
+
 run_generator:
 	python -m generator.runner alpha
 	python -m generator.runner beta

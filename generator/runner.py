@@ -1,4 +1,5 @@
 import argparse
+from datetime import date
 from numpy.random import gamma
 from threading import Thread
 
@@ -9,6 +10,22 @@ from generator.session.handlers.loader import load_handlers
 
 
 def run_stream(context: StoreContext) -> None:
+    users_on_start_loop = GeneratorLoop(
+        step=lambda: context.factory.make_one("users"),
+        breaktime_generator=lambda: 1,
+        router=context.router,
+        pipeline=context.pipeline,
+    )
+    users_on_start_loop.bootstrap(100)
+
+    promotions_on_start_loop = GeneratorLoop(
+        step=lambda: context.factory.make_one("promotions", date_=date(2023, 1, 1)),
+        breaktime_generator=lambda: 1,
+        router=context.router,
+        pipeline=context.pipeline,
+    )
+    promotions_on_start_loop.bootstrap(5)
+    
     loops = [
         GeneratorLoop(
             step=lambda: context.event_handler.step(),

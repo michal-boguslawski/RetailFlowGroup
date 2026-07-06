@@ -62,7 +62,7 @@ class FileSink(BaseSink):
     def __init__(self, s3_service: S3Service, naming_config: FileNamingConfig, bucket_name: str):
         self.s3_service = s3_service
         self.naming_config = naming_config
-        self.buffer: WriteBuffer
+        self.buffer: WriteBuffer = WriteBuffer()
         self.bucket_name = bucket_name
 
 
@@ -78,6 +78,7 @@ class FileSink(BaseSink):
                 self.buffer.promotions.append(record)
             case Formatter():
                 self.flush(record)
+        print(f"Received {type(record).__name__}")
 
     def bulk_write(self, records: list[GeneratedRecord]):
         for record in records:

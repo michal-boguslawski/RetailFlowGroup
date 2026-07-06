@@ -24,7 +24,7 @@ class PostgresSink(BaseSink):
             case Promotion():
                 self.service.save("promotions", record)
 
-        print(f"Saved to Postgres: {record} of type {type(record).__name__}")
+        # print(f"Saved to Postgres: {record} of type {type(record).__name__}")
 
     def bulk_write(self, records: list[GeneratedRecord]) -> None:
         if not records:
@@ -47,7 +47,7 @@ class PostgresSink(BaseSink):
             case Promotion():
                 self.service.bulk_save("promotions", records)
 
-        print(f"Saved {len(records)} records to Postgres")
+        # print(f"Saved {len(records)} records to Postgres")
 
     def flush(self) -> None:
         pass

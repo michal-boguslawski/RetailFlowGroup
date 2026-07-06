@@ -19,10 +19,10 @@ DATE_FORMATTERS: list[Callable[[date], str]] = [
 
 
 AMOUNT_FORMATTERS: list[Callable[[GammaOrder], str]] = [
-    lambda o: str(o.total_amount),
+    lambda o: f"{o.total_amount:.2f}",
     lambda o: f"{o.total_amount:.2f}",
     lambda o: f"{o.currency.value}{o.total_amount:.2f}",
-    lambda o: f"{o.total_amount} {o.currency.value}",
+    lambda o: f"{o.total_amount:.2f} {o.currency.value}",
 ]
 
 
