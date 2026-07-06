@@ -11,7 +11,7 @@ from generator.session.handlers.loader import load_handlers
 def run_stream(context: StoreContext) -> None:
     loops = [
         GeneratorLoop(
-            step=lambda: context.generator_handler.step(),
+            step=lambda: context.event_handler.step(),
             breaktime_generator=lambda: gamma(0.5, 0.5),
             router=context.router,
             pipeline=context.pipeline,

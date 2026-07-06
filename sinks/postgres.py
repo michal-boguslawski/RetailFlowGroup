@@ -2,7 +2,7 @@
 from sinks.base import BaseSink
 from infrastructure.core.db_service import DBService
 from domain.types import GeneratedRecord
-from domain.models import User, OrderEvent, Product
+from domain.models import User, OrderEvent, Product, OrderReturn, GammaOrder, Promotion
 
 
 class PostgresSink(BaseSink):
@@ -17,6 +17,12 @@ class PostgresSink(BaseSink):
                 self.service.save("orders", record.order)
             case Product():
                 self.service.save("products", record)
+            case OrderReturn():
+                self.service.save("order_returns", record)
+            case GammaOrder():
+                self.service.save("orders", record)
+            case Promotion():
+                self.service.save("promotions", record)
 
         print(f"Saved to Postgres: {record} of type {type(record).__name__}")
 
@@ -34,6 +40,12 @@ class PostgresSink(BaseSink):
                 )
             case Product():
                 self.service.bulk_save("products", records)
+            case OrderReturn():
+                self.service.bulk_save("order_returns", records)
+            case GammaOrder():
+                self.service.bulk_save("orders", records)
+            case Promotion():
+                self.service.bulk_save("promotions", records)
 
         print(f"Saved {len(records)} records to Postgres")
 

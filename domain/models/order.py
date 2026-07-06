@@ -66,13 +66,14 @@ class OrderEvent:
 @dataclass
 class GammaOrder:
     id: str
-    user: User
+    user: User | None
     order_date: date
     status: OrderStatus
     products: list[Product]
     promotion: Promotion | None
     city: str
     currency: Currency
+    discount_code: str = ""
     _shipping_cost: Decimal = Decimal(10)
 
     @property

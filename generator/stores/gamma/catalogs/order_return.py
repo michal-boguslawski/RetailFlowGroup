@@ -19,5 +19,5 @@ class OrderReturnCatalog:
                 return o
         return None
 
-    def find_by_date(self, date_: date) -> list[OrderReturn]:
+    def find_by_date(self, date_: date, *args, **kwargs) -> list[OrderReturn]:
         return [o for o in self._order_returns if o.return_ts.date() == date_]

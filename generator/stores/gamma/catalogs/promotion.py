@@ -33,7 +33,7 @@ class PromotionCatalog:
     def find_by_id(self, id_: str) -> Promotion | None:
         return self._promotions.get(id_, None)
 
-    def find_by_date(self, date_: date) -> list[Promotion]:
+    def find_by_date(self, date_: date, *args, **kwargs) -> list[Promotion]:
         return [
             p for p in self._promotions.values()
             if p.valid_from == date_

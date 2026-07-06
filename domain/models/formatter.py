@@ -27,6 +27,7 @@ class ColumnNamingVariant:
 
 @dataclass
 class Formatter:
+    current_date: date
     order_date_formattter_fn: Callable[[date], str]
     amount_formatter_fn: Callable[[GammaOrder], str]
     discount_value_formatter_fn: Callable[[Decimal], Decimal]

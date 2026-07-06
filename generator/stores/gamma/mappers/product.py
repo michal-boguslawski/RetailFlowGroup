@@ -1,6 +1,6 @@
 from typing import Any, Hashable
 
-from domain.models.product import GammaProduct
+from domain.models import GammaProduct, Formatter
 
 
 def row_to_model(row: dict[Hashable, Any]) -> GammaProduct:
@@ -14,4 +14,17 @@ def row_to_model(row: dict[Hashable, Any]) -> GammaProduct:
         active = row["active"],
         created_date = row["created_date"],
     )
-    
+
+
+def model_to_dict(product: GammaProduct, formatter: Formatter) -> dict[str, Any]:
+    return {
+        "id": product.id,
+        "name": product.name,
+        "category": product.category,
+        "price": product.price,
+        "stock_count": product.stock_count,
+        "ean_barcode": product.ean_barcode,
+        "active": product.active,
+        "created_date": product.created_date.strftime("%Y%M%d"),
+    }
+

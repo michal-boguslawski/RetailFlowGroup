@@ -49,10 +49,16 @@ class ProductCatalog:
         product = candidates.sample(n=1).iloc[0].to_dict()
         return self._process_dict_to_model(product, currency)
 
-    def find_by_date(self, date_: date) -> list[GammaProduct]:
-        candidates = self._products_df[
-            self._products_df["created_at"] <= pd.Timestamp(date_)
-        ].dropna()
+    def find_by_date(self, date_: date | None = None, from_date: date | None = None, to_date: date | None = None) -> list[GammaProduct]:
+        candidates = self._products_df
+        if date_:
+            candidates = candidates[candidates["created_at"] == pd.Timestamp(date_)].dropna()
+
+        if from_date:
+            candidates = candidates[candidates["created_at"] >= pd.Timestamp(from_date)].dropna()
+
+        if to_date:
+                candidates = candidates[candidates["created_at"] <= pd.Timestamp(to_date)].dropna()
 
         if candidates.empty:
             raise ValueError(f"No products available on {date_}")

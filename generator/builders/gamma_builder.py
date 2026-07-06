@@ -4,6 +4,7 @@ from config.models import StoreConfig
 from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
 from generator.stores.factory import StoreFactory
+from generator.stores.gamma.filename_config import FileNamingConfig
 from generator.stores.gamma.factory import build_gamma_db_service
 from generator.stores.gamma.factories.order import GammaOrderFactory
 from generator.stores.gamma.factories.user import GammaUserFactory
@@ -14,33 +15,45 @@ from generator.stores.gamma.generator_handler import GammaEventHandler
 from generator.stores.gamma.router import GammaRouter
 from infrastructure.minio.factory import build_minio_service
 from sinks.file import FileSink
+from sinks.postgres import PostgresSink
 
 
 class GammaBuilder:
+    db_service = build_gamma_db_service()
+
     def _build_file_sink(self, config: StoreConfig) -> FileSink:
         file_service = build_minio_service()
-        return FileSink(file_service)
+        filename_config = FileNamingConfig()
+        return FileSink(file_service, filename_config, config.minio_bucket_name or "tmp")
+
+    def _build_db_sink(self, config: StoreConfig) -> PostgresSink:
+        return PostgresSink(self.db_service)
 
     def build_router(self, config: StoreConfig) -> GammaRouter:
         # --- sinks ---
         file_sink = self._build_file_sink(config)
+        db_sink = self._build_db_sink(config)
 
         # --- router ---
-        return GammaRouter(file_sink)
+        return GammaRouter(file_sink, db_sink)
 
     def build_factory(self, config: StoreConfig) -> StoreFactory:
         faker = make_faker(locale="en_US")
         state_path = Path(config.state_path) if config.state_path else None
         ids = IdGenerator(config.store_id, config.ids, state_path=state_path)
-        db_service = build_gamma_db_service()
+        
         gamma_factories = {
             "users": GammaUserFactory(ids),
-            "orders": GammaOrderFactory(ids, db_service, faker),
-            "order_returns": GammaOrderReturnFactory(ids, db_service, faker),
+            "orders": GammaOrderFactory(ids, self.db_service, faker),
+            "order_returns": GammaOrderReturnFactory(ids, self.db_service, faker),
             "promotions": GammaPromotionFactory(faker),
             "formatters": GammaFormatterFactory(faker),
         }
         return StoreFactory(gamma_factories)
 
     def build_handler(self, config: StoreConfig) -> GammaEventHandler:
-        pass
+        store_factory = self.build_factory(config)
+        return GammaEventHandler(
+            store_factory,
+            self.db_service,
+        )

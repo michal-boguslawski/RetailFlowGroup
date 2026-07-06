@@ -3,6 +3,7 @@ import random
 from typing import Iterator
 
 from domain.models import GammaOrder, GammaProduct, OrderReturn, Promotion, User
+from domain.models.formatter import Formatter
 from generator.stores.factory import StoreFactory
 from infrastructure.core.db_service import DBService
 
@@ -20,19 +21,29 @@ class GammaEventHandler:
         self.current_date = start_date
 
         # Iterator over products that must be emitted before anything else
-        self._pending_products: Iterator[GammaProduct] = iter(())
 
-    def _on_next_day(self):
+        products = self.db_service.get_at_date("products", to_date = self.current_date)
+        self._pending_products: Iterator[GammaProduct] = (
+            p for p in products
+            if isinstance(p, GammaProduct)
+        )
+
+    def _on_next_day(self) -> Formatter | None:
         self.current_date += timedelta(days=1)
 
-        products = self.db_service.get_at_date("products", self.current_date)
+        products = self.db_service.get_at_date("products", date_ = self.current_date)
 
         self._pending_products = (
             p for p in products
             if isinstance(p, GammaProduct)
         )
+        if self.current_date.isoweekday == 7:
+            formatter = self.store_factory.make_one("formatters", date_=self.current_date)
+            if not isinstance(formatter, Formatter):
+                raise TypeError
+            return formatter
 
-    def step(self) -> User | GammaOrder | GammaProduct | OrderReturn | Promotion:
+    def step(self) -> User | GammaOrder | GammaProduct | OrderReturn | Promotion | Formatter:
         # First emit any pending products
         try:
             return next(self._pending_products)
@@ -41,7 +52,9 @@ class GammaEventHandler:
 
         # Maybe advance to the next day
         if random.random() < 0.01:
-            self._on_next_day()
+            formatter = self._on_next_day()
+            if formatter is not None:
+                return formatter
 
             # If the new day has products, emit the first one immediately
             try:
@@ -78,5 +91,5 @@ class GammaEventHandler:
                 f"Expected {event_model}, got {type(event)}"
             )
         
-        self.db_service.save(event_name, event)
+        # self.db_service.save(event_name, event)
         return event

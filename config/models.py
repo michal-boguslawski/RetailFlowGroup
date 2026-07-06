@@ -49,7 +49,7 @@ class StoreConfig(BaseModel):
 
     ids: IdConfig
 
-    minio_ingestion: str | None = None
+    minio_bucket_name: str | None = None
 
     state_path: Optional[str] = None
 

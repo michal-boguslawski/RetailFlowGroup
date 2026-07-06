@@ -12,7 +12,8 @@ class MongoSink(BaseSink):
     def write(self, record: GeneratedRecord) -> None:
         match record:
             case BetaUser():
-                self.service.save("users", user_model_to_document(record))
+                document = user_model_to_document(record)
+                self.service.save("users", document)
 
         print(f"Saved to MongoDB: {record} of type {type(record).__name__}")
 

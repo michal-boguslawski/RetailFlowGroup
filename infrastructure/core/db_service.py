@@ -13,7 +13,14 @@ class Repository(Protocol[T]):
     def bulk_upsert(self, records: Sequence[T]) -> None: ...
     def find_by_id(self, id_: str, *args, **kwargs) -> Optional[T]: ...
     def find_random(self, *args, **kwargs) -> Optional[T]: ...
-    def find_by_date(self, date_: date, *args, **kwargs) -> Sequence[T]: ...
+    def find_by_date(
+        self,
+        date_: date | None = None,
+        from_date: date | None = None,
+        to_date: date | None = None,
+        *args,
+        **kwargs
+    ) -> Sequence[T]: ...
 
 
 class DBService:
@@ -53,6 +60,14 @@ class DBService:
         repo = self._get_repo(entity_name)
         return repo.find_random(*args, **kwargs)
 
-    def get_at_date(self, entity_name: str, date_: date, *args, **kwargs) -> Sequence[GeneratedRecord]:
+    def get_at_date(
+        self,
+        entity_name: str,
+        date_: date | None = None,
+        from_date: date | None = None,
+        to_date: date | None = None,
+        *args,
+        **kwargs
+    ) -> Sequence[GeneratedRecord]:
         repo = self._get_repo(entity_name)
-        return repo.find_by_date(date_, *args, **kwargs)
+        return repo.find_by_date(date_=date_, from_date=from_date, to_date=to_date, *args, **kwargs)

@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
+from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
@@ -126,7 +127,7 @@ class GammaProduct(Product):
     stock_count: int
     ean_barcode: str
     active: int
-    created_date: str
+    created_date: datetime
 
     @property
     def net_price(self) -> Decimal:

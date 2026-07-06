@@ -15,7 +15,7 @@ class OrderCatalog:
     def bulk_upsert(self, orders: list[GammaOrder]):
         self._orders.extend(orders)
 
-    def find_by_date(self, date_ = date) -> list[GammaOrder]:
+    def find_by_date(self, date_ = date, *args, **kwargs) -> list[GammaOrder]:
         return [o for o in self._orders if o.order_date == date_]
 
     def find_by_id(self, id_: str) -> GammaOrder | None:

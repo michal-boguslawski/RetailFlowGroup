@@ -49,8 +49,9 @@ class GammaFormatterFactory(BaseFactory[Formatter]):
     def __init__(self, fake: Faker | None = None):
         self.fake = fake or make_faker()
 
-    def make_one(self, *args, **kwargs) -> Formatter:
+    def make_one(self, date_: date, *args, **kwargs) -> Formatter:
         return Formatter(
+            current_date=date_,
             order_date_formattter_fn=self.fake.random_element(DATE_FORMATTERS),
             amount_formatter_fn=self.fake.random_element(AMOUNT_FORMATTERS),
             discount_value_formatter_fn=self.fake.random_element(
