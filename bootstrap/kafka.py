@@ -2,7 +2,6 @@ from argparse import ArgumentParser
 
 from domain.enums import StoreId
 from infrastructure.config.settings import KafkaSettings
-from infrastructure.config.kafka_config import KafkaConfig
 from infrastructure.kafka.admin import KafkaAdminClient
 from infrastructure.kafka.topics import load_store_topics, load_infrastructure_topics
 

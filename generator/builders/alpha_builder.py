@@ -16,7 +16,7 @@ from generator.stores.alpha.factories.user import AlphaUserFactory
 from generator.stores.alpha.mappers.clickstream import clickstream_renderer
 from generator.stores.alpha.mappers.order import order_renderer
 from generator.stores.factory import StoreFactory
-from infrastructure.kafka.factory import build_kafka_config
+from infrastructure.config.settings import KafkaSettings
 from infrastructure.kafka.serializer import AvroSerializerService
 from infrastructure.kafka.producer import KafkaProducerClient
 from infrastructure.postgres.factory import build_alpha_db_service
@@ -30,9 +30,9 @@ class AlphaBuilder:
         return PostgresSink(db_service)
 
     def _build_kafka_sink(self, config: StoreConfig) -> KafkaSink:
-        kafka_config = build_kafka_config(config.store_id)
-        kafka_client = KafkaProducerClient(kafka_config)
-        serializer = AvroSerializerService(kafka_config.schema_registry_url, config.store_id)
+        kafka_settings = KafkaSettings()
+        kafka_client = KafkaProducerClient(kafka_settings, config.store_id)
+        serializer = AvroSerializerService(kafka_settings.schema_registry_url, config.store_id)
         serializer.register_serializer("clickstreams", ClickstreamEvent, clickstream_renderer)
         serializer.register_serializer("orders", OrderEvent, order_renderer)
         return KafkaSink(kafka_client, serializer)

@@ -1,19 +1,20 @@
 from confluent_kafka import Producer
 from logging import Logger
 
-from infrastructure.config.kafka_config import KafkaConfig
+from domain.enums import StoreId
+from infrastructure.config.settings import KafkaSettings
 
 
 logger = Logger(__file__)
 
 
 class KafkaProducerClient:
-    def __init__(self, kafka_config: KafkaConfig):
-        self.kafka_config = kafka_config
-        self.store_id = kafka_config.store_id
+    def __init__(self, kafka_settings: KafkaSettings, store_id: StoreId):
+        self.kafka_settings = kafka_settings
+        self.store_id = store_id
         self.producer = Producer(
             {
-                'bootstrap.servers': kafka_config.bootstrap_servers,
+                'bootstrap.servers': kafka_settings.bootstrap_servers,
             }
         )
         self._counter = 0

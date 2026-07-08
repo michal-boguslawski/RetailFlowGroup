@@ -16,8 +16,8 @@ from generator.stores.beta.factories.user import BetaUserFactory
 from generator.stores.beta.factories.clickstream import BetaClickstreamFactory
 from generator.stores.beta.factories.order import BetaOrderFactory
 from generator.stores.factory import StoreFactory
+from infrastructure.config.settings import KafkaSettings
 from infrastructure.mongo.factory import build_beta_db_service
-from infrastructure.kafka.factory import build_kafka_config
 from infrastructure.kafka.serializer import AvroSerializerService
 from infrastructure.kafka.producer import KafkaProducerClient
 from sinks.mongo import MongoSink
@@ -30,9 +30,9 @@ class BetaBuilder:
         return MongoSink(db_service)
 
     def _build_kafka_sink(self, config: StoreConfig) -> KafkaSink:
-        kafka_config = build_kafka_config(config.store_id)
-        kafka_client = KafkaProducerClient(kafka_config)
-        serializer = AvroSerializerService(kafka_config.schema_registry_url, config.store_id)
+        kafka_settings = KafkaSettings()
+        kafka_client = KafkaProducerClient(kafka_settings, config.store_id)
+        serializer = AvroSerializerService(kafka_settings.schema_registry_url, config.store_id)
         serializer.register_serializer("clickstreams", ClickstreamEvent, clickstream_renderer)
         serializer.register_serializer("orders", OrderEvent, order_renderer)
         return KafkaSink(kafka_client, serializer)

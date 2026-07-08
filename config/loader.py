@@ -1,7 +1,7 @@
 from pathlib import Path
 import yaml
 
-from config.models import StoreConfig, LakeConfig
+from config.models import StoreConfig
 
 
 def load_config(store_id: str) -> StoreConfig:
@@ -9,12 +9,6 @@ def load_config(store_id: str) -> StoreConfig:
     with open(path) as f:
         data = yaml.safe_load(f)
     return StoreConfig(**data)
-
-
-def load_lake_config(path: Path = Path("infrastructure/config/lake.yaml")) -> LakeConfig:
-    with path.open("r", encoding="utf-8") as f:
-        raw = yaml.safe_load(f)
-    return LakeConfig.model_validate(raw)
 
 
 if __name__ == "__main__":

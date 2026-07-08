@@ -1,4 +1,4 @@
-from config.loader import load_lake_config
+from infrastructure.lake.config import load_lake_config
 from infrastructure.minio.client import MinioClient
 from infrastructure.minio.service import S3Service
 

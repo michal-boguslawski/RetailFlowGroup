@@ -148,11 +148,48 @@ retailflow/
 │   ├── mongo_sink.py                # MongoSink — uses MongoService, bulk_write buffer
 │   └── file_sink.py                 # FileSink — CSV or JSON writer, encoding-aware, BOM injection, MinIO upload
 │
-├── ingestion/                       # Week 2-3 — PySpark jobs
-│   ├── streaming/
-│   ├── jdbc/
-│   ├── mongo/
-│   └── filewatcher/
+├── ingestion/
+│   │
+│   ├── connectors/
+│   │   ├── kafka.py
+│   │   ├── jdbc.py
+│   │   ├── mongo.py
+│   │   └── files.py
+│   │
+│   ├── jobs/
+│   │   ├── kafka_to_bronze.py
+│   │   ├── postgres_to_bronze.py
+│   │   ├── mongo_to_bronze.py
+│   │   └── files_to_bronze.py
+│   │
+│   └── writers/
+│       └── parquet.py
+│
+├── lake/
+│   └── (documentation/contracts only)
+│
+├── processing/
+│   ├── bronze_to_silver/
+│   │   ├── clickstream.py              # dedup on event_id, watermark, session boundary detection
+│   │   ├── orders.py                   # ID namespacing, v1/v2 reconciliation, currency tagging
+│   │   ├── users.py                    # PII hashing, legacy ID normalisation, GDPR gating
+│   │   ├── products.py                 # MongoDB archetype detection, tag dedup, image URL validation
+│   │   ├── returns.py                  # reason_code + condition mapping, timezone → UTC
+│   │   └── promotions.py               # column name resolver, date parser, discount normaliser
+│   ├── entity_resolution/
+│   │   ├── user_resolver.py            # email_hash → phone_hash → probabilistic, confidence scoring
+│   │   ├── product_resolver.py         # EAN exact match → name TF-IDF similarity
+│   │   └── id_mapping.py              # persists store_id → global_id mapping table to Delta
+│   ├── silver_to_gold/
+│   │   ├── unified_orders.py           # cross-store consolidation, PLN normalisation via fx_rates
+│   │   ├── user_features.py            # cross-store LTV, purchase freq, category affinity, abandon rate
+│   │   ├── training_dataset.py         # label: purchased within 24h of session — versioned snapshots
+│   │   └── business_metrics.py         # GMV, conversion rate, return rate per store per period
+│   └── common/                         # shared Spark helpers
+│       ├── spark_session.py            # SparkSession factory with Delta + MinIO S3A config
+│       ├── delta_writer.py             # merge/append/overwrite wrappers with partition management
+│       ├── fx_rates.py                 # daily EUR/GBP→PLN rates from MinIO reference table
+│       └── pii.py                      # SHA-256 helpers, IP masking, field exclusion
 │
 ├── silver/                          # Week 3-4
 ├── gold/                            # Week 5-6

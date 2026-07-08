@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from config.models import StoreConfig
-from config.loader import load_lake_config
 from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
 from generator.stores.factory import StoreFactory
@@ -14,6 +13,7 @@ from generator.stores.gamma.factories.promotion import GammaPromotionFactory
 from generator.stores.gamma.factories.formatter import GammaFormatterFactory
 from generator.stores.gamma.generator_handler import GammaEventHandler
 from generator.stores.gamma.router import GammaRouter
+from infrastructure.lake.config import load_lake_config
 from infrastructure.minio.factory import build_minio_service
 from sinks.file import FileSink
 from sinks.postgres import PostgresSink
