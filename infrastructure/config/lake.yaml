@@ -1,0 +1,13 @@
+# infrastructure/config/lake.yaml
+landing:
+  bucket: retailflow-landing
+
+bronze:
+  bucket: retailflow-lake
+  path_template: "bronze/{store}/{entity}/dt={date}"
+  format: parquet
+
+silver:
+  bucket: retailflow-lake
+  path_template: "silver/{entity}/dt={date}"
+  format: parquet

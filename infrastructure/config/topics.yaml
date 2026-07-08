@@ -16,3 +16,10 @@ beta:
         name: beta.clickstreams
         partitions: 3
         replication_factor: 1
+
+infrastructure:
+    minio_notifications:
+        landing:
+            name: minio.landing.events
+            partitions: 3
+            replication_factor: 1

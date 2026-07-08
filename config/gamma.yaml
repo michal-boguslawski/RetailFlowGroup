@@ -10,9 +10,17 @@ ids:
   product_id:
     style: integer
 
-minio_bucket_name: retailflow-landing
-
 state_path: data/state/gamma_generator_state.json
+
+breaktime_config:
+  shape: 0.5
+  scale: 0.5
+
+on_start_build:
+  - event_name: users
+    num_objects: 100
+  - event_name: promotions
+    num_objects: 10
 
 pipeline_config:
   null_rates:

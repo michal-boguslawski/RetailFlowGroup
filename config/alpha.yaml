@@ -26,4 +26,7 @@ pipeline_config:
   legacy_rate: 0.15
 
 async_generators:
-  - users
+  - name: users
+    breaktime_config:
+      shape: 12
+      scale: 5

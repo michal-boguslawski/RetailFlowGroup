@@ -1,35 +1,20 @@
-from argparse import ArgumentParser
-
-from config.loader import load_config
-from domain.enums import StoreId
+from config.loader import load_lake_config
 from infrastructure.minio.client import MinioClient
 from infrastructure.minio.service import S3Service
 
 
-def init_minio_buckets(store_id: StoreId):
-    config = load_config(store_id)
+def init_minio_buckets():
     client = MinioClient()
     service = S3Service(client.client)
 
-    bucket = config.minio_bucket_name
-    if bucket and not service.bucket_exists(bucket):
-        service.create_bucket(bucket)
+    lake_config = load_lake_config()
 
-def parse_args():
-    parser = ArgumentParser(
-        description="Reset Kafka topics for a store."
-    )
-
-    parser.add_argument(
-        "--store-id",
-        required=True,
-        choices=[store.value for store in StoreId],
-        help="Store identifier",
-    )
-
-    return parser.parse_args()
+    for _, layer in lake_config:
+        bucket = layer.bucket
+        if bucket and not service.bucket_exists(bucket):
+            service.create_bucket(bucket)
+            print(f"Created bucket: {bucket}")
 
 
 if __name__ == "__main__":
-    args = parse_args()
-    init_minio_buckets(StoreId(args.store_id))
+    init_minio_buckets()

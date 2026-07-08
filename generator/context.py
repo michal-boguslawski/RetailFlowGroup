@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Protocol, Any
 
 from config.loader import load_config
+from config.models import OnStartBuildConfig, BreaktimeConfig, AsyncGenerationConfig
 from generator.builders.base import StoreBuilder
 from generator.stores.base import BaseRouter
 from generator.stores.factory import StoreFactory
@@ -18,7 +19,9 @@ class StoreContext:
     factory: StoreFactory
     router: BaseRouter
     event_handler: EventHandler
-    async_generators: list[str] | None = None
+    breaktime_config: BreaktimeConfig
+    on_start_build: list[OnStartBuildConfig] | None = None
+    async_generators: list[AsyncGenerationConfig] | None = None
     pipeline: Pipeline | None = None
 
     @classmethod
@@ -32,6 +35,8 @@ class StoreContext:
             factory=builder.build_factory(config),
             router=builder.build_router(config),
             event_handler=builder.build_handler(config),
+            breaktime_config=config.breaktime_config,
+            on_start_build=config.on_start_build,
             async_generators=config.async_generators,
             pipeline=pipeline,
         )

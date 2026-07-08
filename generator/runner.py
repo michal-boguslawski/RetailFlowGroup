@@ -10,26 +10,23 @@ from generator.session.handlers.loader import load_handlers
 
 
 def run_stream(context: StoreContext) -> None:
-    users_on_start_loop = GeneratorLoop(
-        step=lambda: context.factory.make_one("users"),
-        breaktime_generator=lambda: 1,
-        router=context.router,
-        pipeline=context.pipeline,
-    )
-    users_on_start_loop.bootstrap(100)
-
-    promotions_on_start_loop = GeneratorLoop(
-        step=lambda: context.factory.make_one("promotions", date_=date(2023, 1, 1)),
-        breaktime_generator=lambda: 1,
-        router=context.router,
-        pipeline=context.pipeline,
-    )
-    promotions_on_start_loop.bootstrap(5)
+    if context.on_start_build:
+        for obj in context.on_start_build:
+            loop = GeneratorLoop(
+                step=lambda: context.factory.make_one(obj.event_name, date_=date(2023, 1, 1)),
+                breaktime_generator=lambda: 1,
+                router=context.router,
+                pipeline=context.pipeline,
+            )
+            loop.bootstrap(obj.num_objects)
     
     loops = [
         GeneratorLoop(
             step=lambda: context.event_handler.step(),
-            breaktime_generator=lambda: gamma(0.5, 0.5),
+            breaktime_generator=lambda: gamma(
+                context.breaktime_config.shape,
+                context.breaktime_config.scale
+            ),
             router=context.router,
             pipeline=context.pipeline,
         ),
@@ -38,12 +35,17 @@ def run_stream(context: StoreContext) -> None:
     if context.async_generators:
         loops.extend(
             GeneratorLoop(
-                step=lambda: context.factory.make_one(generator_name),
-                breaktime_generator=lambda: gamma(12, 5),
+                step=lambda: context.factory.make_one(
+                    generator.name
+                ),
+                breaktime_generator=lambda: gamma(
+                    generator.breaktime_config.shape,
+                    generator.breaktime_config.scale
+                ),
                 router=context.router,
                 pipeline=context.pipeline,
             )
-            for generator_name in context.async_generators
+            for generator in context.async_generators
         )
 
     threads = [Thread(target=loop.run, daemon=True) for loop in loops]

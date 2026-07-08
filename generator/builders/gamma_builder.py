@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from config.models import StoreConfig
+from config.loader import load_lake_config
 from generator.core.fake import make_faker
 from generator.core.id_generator import IdGenerator
 from generator.stores.factory import StoreFactory
@@ -21,11 +22,12 @@ from sinks.postgres import PostgresSink
 class GammaBuilder:
     def __init__(self):
         self.db_service = build_gamma_db_service()
+        self.lake_config = load_lake_config()
 
     def _build_file_sink(self, config: StoreConfig) -> FileSink:
         file_service = build_minio_service()
         filename_config = FileNamingConfig()
-        return FileSink(file_service, filename_config, config.minio_bucket_name or "tmp")
+        return FileSink(file_service, filename_config, self.lake_config.landing.bucket)
 
     def _build_db_sink(self, config: StoreConfig) -> PostgresSink:
         return PostgresSink(self.db_service)

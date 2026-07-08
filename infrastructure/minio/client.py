@@ -29,3 +29,31 @@ class MinioClient:
     @property
     def client(self) -> BaseClient:
         return self._client
+
+    def set_bucket_kafka_notification(
+        self,
+        *,
+        bucket: str,
+        queue_arn: str,
+        events: list[str],
+        config_id: str = "landing-events",
+    ) -> None:
+        """Attach a Kafka notification target to a bucket.
+
+        `queue_arn` must already be registered server-side (e.g. via
+        docker-compose MINIO_NOTIFY_KAFKA_* env vars) — this call only
+        wires the bucket to an existing target, it does not create one.
+        """
+        print(f"Setting bucket {bucket} notification config to ARN {queue_arn}")
+        print(self._client.put_bucket_notification_configuration(
+            Bucket=bucket,
+            NotificationConfiguration={
+                "QueueConfigurations": [
+                    {
+                        "Id": config_id,
+                        "QueueArn": queue_arn,
+                        "Events": events,
+                    }
+                ]
+            },
+        ))
