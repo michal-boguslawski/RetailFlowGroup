@@ -8,6 +8,15 @@ from generator.stores.factory import StoreFactory
 from infrastructure.core.db_service import DBService
 
 
+_EVENTS_CHOICES: dict[str, type[User | GammaOrder | Promotion | OrderReturn] | None] = {
+    "users": User,
+    "orders": GammaOrder,
+    "promotions": Promotion,
+    "order_returns": OrderReturn,
+    "end_promotion": None,
+}
+
+
 class GammaEventHandler:
     def __init__(
         self,
@@ -47,7 +56,7 @@ class GammaEventHandler:
                 raise TypeError
             return formatter
 
-    def step(self) -> User | GammaOrder | GammaProduct | OrderReturn | Promotion | Formatter | None:
+    def step(self, event_type: str | None = None) -> User | GammaOrder | GammaProduct | OrderReturn | Promotion | Formatter | None:
         # First emit any pending products
         try:
             return next(self._pending_products)
@@ -67,16 +76,18 @@ class GammaEventHandler:
                 pass
 
         # Otherwise generate a normal event
-        return self._generate_random_event()
+        return self._generate_random_event(event_type)
 
-    def _generate_random_event(self) -> User | GammaOrder | OrderReturn | Promotion | None:
-        event_name, event_model = random.choices([
-            ("users", User),
-            ("orders", GammaOrder),
-            ("promotions", Promotion),
-            ("order_returns", OrderReturn),
-            ("end_promotion", None),
-        ], weights=[2, 94, 1, 2, 1])[0]
+    def _generate_random_event(self, event_type: str | None = None) -> User | GammaOrder | OrderReturn | Promotion | None:
+        if event_type:
+            event_name = event_type
+            event_model = _EVENTS_CHOICES[event_type]
+        else:
+            event_name = random.choices(
+                list(_EVENTS_CHOICES.keys()),
+                weights=[2, 94, 1, 2, 1],
+            )[0]
+            event_model = _EVENTS_CHOICES[event_name]
         
         if event_name == "end_promotion" or event_model is None:
             promotion = self.db_service.get_random("promotions", date_=self.current_date)
@@ -99,3 +110,9 @@ class GammaEventHandler:
         
         # self.db_service.save(event_name, event)
         return event
+
+    def flush(self) -> Formatter:
+        formatter = self.store_factory.make_one("formatters", date_=self.current_date)
+        if not isinstance(formatter, Formatter):
+            raise TypeError
+        return formatter

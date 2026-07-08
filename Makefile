@@ -23,6 +23,9 @@ initialize-buckets:
 init-landing-notifications: init-kafka-topics init-buckets
 	python -m bootstrap.notifications
 
+generate-orders:
+	python -m bootstrap.generate gamma --event_type orders --num 10000
+
 run-generator:
 	python -m generator.runner alpha
 	python -m generator.runner beta

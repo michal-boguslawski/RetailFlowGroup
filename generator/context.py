@@ -10,7 +10,8 @@ from generator.pipeline.builder import build_pipeline, Pipeline
 
 
 class EventHandler(Protocol):
-    def step(self) -> Any: ...
+    def step(self, *args, **kwargs) -> Any: ...
+    def flush(self, *args, **kwargs) -> Any: ...
 
 
 @dataclass

@@ -67,3 +67,6 @@ class StateMachine:
         return next_state_handler.handle(
             self.session
         )
+
+    def flush(self) -> None:
+        return

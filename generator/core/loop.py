@@ -16,12 +16,14 @@ class GeneratorLoop:
         breaktime_generator: Callable[[], float],
         router: BaseRouter,
         pipeline: Pipeline | None = None,
+        flush: Callable[[], GeneratedRecord | None] | None = None,
     ):
         self.step = step
         self.breaktime_generator = breaktime_generator
         self.pipeline = pipeline
         self.router = router
         self.record_count = 0
+        self.flush_fn = flush
 
         self.stop_event = Event()
 
@@ -56,11 +58,30 @@ class GeneratorLoop:
 
         return processed
 
-    def bootstrap(self, n: int):
-        records = [self.step() for _ in range(n)]
-        records = [r for r in records if r is not None]
+    def flush(self):
+        if self.flush_fn:
+            r = self.flush_fn()
+            if r:
+                self._process_records([r])
 
-        self._process_records(records)
+    def bootstrap(self, n: int, batch_size: int = 1000):
+        batch = []
+
+        for _ in range(n):
+            record = self.step()
+
+            if record is not None:
+                batch.append(record)
+
+            if len(batch) >= batch_size:
+                self._process_records(batch)
+                batch.clear()
+
+        # Process remaining records
+        if batch:
+            self._process_records(batch)
+
+        self.flush()
 
     def tick(self) -> bool:
         record = self.step()
@@ -78,11 +99,20 @@ class GeneratorLoop:
             print(f"{self.record_count} records processed")
         return to_wait
 
-    def run(self):
-        while not self.stop_event.is_set():
-            _to_wait = self.tick()
+    def run(self, max_steps: int | None = None):
+        steps = 0
+        
+        while True:
+            if self.stop_event.is_set():
+                break
 
-            if _to_wait:
+            if max_steps is not None and steps >= max_steps:
+                break
+        
+            should_wait = self.tick()
+            steps += 1
+
+            if should_wait:
                 breaktime = self.breaktime_generator()
                 print(f"Wait for {breaktime} seconds...")
 
