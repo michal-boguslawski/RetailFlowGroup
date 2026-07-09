@@ -24,6 +24,7 @@ class PostgresSettings(BaseSettings):
 class KafkaSettings(BaseSettings):
     bootstrap_servers: str = ""
     schema_registry_url: str = ""
+    bootstrap_servers_docker: str = ""
 
     model_config = SettingsConfigDict(
         env_prefix="KAFKA_",
@@ -58,9 +59,21 @@ class S3Settings(BaseSettings):
     secret_key: str = ""
     region_name: str = "us-east-1"
     secure: bool = True
+    endpoint_docker: str = ""
 
     model_config = SettingsConfigDict(
         env_prefix="S3_",
+        env_file=ENV_PATH,
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
+
+class SparkSettings(BaseSettings):
+    master_url: str = ""
+
+    model_config = SettingsConfigDict(
+        env_prefix="SPARK_",
         env_file=ENV_PATH,
         env_file_encoding="utf-8",
         extra="ignore",

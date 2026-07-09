@@ -27,3 +27,17 @@ def silver_path(*, entity: str, dt: date) -> str:
             date=dt.isoformat(),
         )
     )
+
+
+def checkpoint_path(*, store: str, entity: str) -> str:
+    layer = lake_config.checkpoint
+
+    return (
+        f"s3a://{layer.bucket}/"
+        + layer.resolve(
+            store=store,
+            entity=entity,
+            date="",
+        )
+    )
+

@@ -11,3 +11,7 @@ silver:
   bucket: retailflow-lake
   path_template: "silver/{entity}/dt={date}"
   format: parquet
+
+checkpoint:
+  bucket: retailflow-lake
+  path_template: "checkpoint/{store}/{entity}"

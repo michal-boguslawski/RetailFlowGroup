@@ -48,5 +48,6 @@ class LakeConfig(BaseModel):
     model_config = ConfigDict(frozen=True)
 
     landing: BucketConfig
+    checkpoint: LayerConfig
     bronze: LayerConfig
     silver: LayerConfig

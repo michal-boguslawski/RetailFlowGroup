@@ -1,15 +1,37 @@
 from pyspark.sql import SparkSession
-from infrastructure.spark.config import spark_config
+
+from infrastructure.config.settings import SparkSettings
 
 
-def create_spark_session():
+def create_spark_session(
+    app_name: str,
+    spark_settings: SparkSettings | None = None,
+    shuffle_partitions: int = 2,
+    packages: list[str] | None = None,
+) -> SparkSession:
+    spark_settings = spark_settings or SparkSettings()
+    builder = SparkSession.builder
 
-    return (
-        SparkSession.builder
-        .appName(spark_config.app_name)
+    if not isinstance(builder, SparkSession.Builder):
+        raise TypeError(
+            "Unexpected type of `builder`. "
+            f"Expected `SparkSession.Builder`, found `{type(builder)}`."
+        )
+
+    builder = (
+        builder
+        .appName(app_name)
+        .master(spark_settings.master_url)
         .config(
             "spark.sql.shuffle.partitions",
-            spark_config.shuffle_partitions
+            shuffle_partitions,
         )
-        .getOrCreate()
     )
+
+    if packages:
+        builder = builder.config(
+            "spark.jars.packages",
+            ",".join(packages),
+        )
+
+    return builder.getOrCreate()

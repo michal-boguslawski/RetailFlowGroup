@@ -30,7 +30,7 @@ def load_store_topics(store_id: StoreId, path: str = _DEFAULT_TOPICS_PATH) -> di
     raw = _load_yaml(path)
     return {
         EntityType(name.lower()): TopicConfig(**data)
-        for name, data in raw["stores"][store_id.value].items()
+        for name, data in raw[store_id.value].items()
     }
 
 

@@ -1,6 +1,7 @@
 job:
-  name: alpha_orders_bronze
+  app_name: alpha_orders_bronze
   source: kafka
   store: alpha
   entity: orders
   target: bronze
+  shuffle_partitions: 2

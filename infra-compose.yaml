@@ -19,7 +19,6 @@ services:
 
       - KAFKA_CFG_LISTENERS=INTERNAL://:9092,CONTROLLER://:19092,EXTERNAL://:29092
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
-      # - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-1:9092,EXTERNAL://localhost:29092
       - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-1:9092,EXTERNAL://localhost:29092
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
       - KAFKA_CFG_NUM_PARTITIONS=2
@@ -47,7 +46,6 @@ services:
 
       - KAFKA_CFG_LISTENERS=INTERNAL://:9092,CONTROLLER://:19092,EXTERNAL://:29093
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
-      # - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-2:9092,EXTERNAL://localhost:29093
       - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-2:9092,EXTERNAL://localhost:29093
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
       - KAFKA_CFG_NUM_PARTITIONS=2
@@ -147,13 +145,66 @@ services:
       MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY}
       MINIO_NOTIFY_KAFKA_ENABLE_LANDING_EVENTS: on
       MINIO_NOTIFY_KAFKA_BROKERS_LANDING_EVENTS: kafka-1:9092,kafka-2:9092
-      MINIO_NOTIFY_KAFKA_TOPIC_LANDING_EVENTS: ${S3_KAFKA_TARGET}
+      MINIO_NOTIFY_KAFKA_TOPIC_LANDING_EVENTS: ${MINIO_NOTIFY_KAFKA_TOPIC_LANDING_EVENTS}
     networks:
       - retailflow
     depends_on:
       - kafka-1
       - kafka-2
 
+# spark
+  spark-master:
+    image: spark:3.5.6-scala2.12-java17-python3-ubuntu
+    ports:
+      - "8084:8080"   # Web UI
+      - "7077:7077"   # Spark master
+    volumes:
+      - ./:/opt/retailflow
+    command: >
+      /opt/spark/bin/spark-class
+      org.apache.spark.deploy.master.Master
+    networks:
+      - retailflow
+
+  spark-worker-1:
+    image: spark:3.5.6-scala2.12-java17-python3-ubuntu
+    volumes:
+      - ./:/opt/retailflow
+    command: >
+      /opt/spark/bin/spark-class
+      org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077
+    depends_on:
+      - spark-master
+    networks:
+      - retailflow
+
+  spark-worker-2:
+    image: spark:3.5.6-scala2.12-java17-python3-ubuntu
+    volumes:
+      - ./:/opt/retailflow
+    command: >
+      /opt/spark/bin/spark-class
+      org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077
+    depends_on:
+      - spark-master
+    networks:
+      - retailflow
+
+  spark-submit:
+    image: spark:3.5.6-scala2.12-java17-python3-ubuntu
+    volumes:
+      - ./:/opt/retailflow
+    environment:
+      HOME: /tmp
+      UV_CACHE_DIR: /tmp/uv-cache
+      UV_DATA_DIR: /tmp/uv-data
+      UV_PYTHON_INSTALL_DIR: /tmp/uv-python
+    working_dir: /opt/retailflow
+    command: tail -f /dev/null
+    networks:
+      - retailflow
 
 volumes:
   kafka_data_1:
