@@ -1,13 +1,13 @@
 from argparse import ArgumentParser
 
 from domain.enums import StoreId
-from infrastructure.config.settings import KafkaSettings
+from infrastructure.kafka.config import KafkaConfig
 from infrastructure.kafka.admin import KafkaAdminClient
 from infrastructure.kafka.topics import load_store_topics, load_infrastructure_topics
 
 
 def initialize_store_topics(store_id: StoreId):
-    settings = KafkaSettings()
+    settings = KafkaConfig()
     topics = load_store_topics(store_id)
 
     admin_client = KafkaAdminClient(
@@ -18,7 +18,7 @@ def initialize_store_topics(store_id: StoreId):
 
 
 def initialize_infrastructure_topics() -> None:
-    settings = KafkaSettings()
+    settings = KafkaConfig()
     infra_topics = load_infrastructure_topics()  # InfrastructureTopics
     admin_client = KafkaAdminClient(
         settings.bootstrap_servers, infra_topics.minio_notifications

@@ -1,14 +1,14 @@
 # infrastructure/mongo/factory.py
 from domain.enums import Currency
 from infrastructure.core.db_service import DBService
-from infrastructure.config.settings import MongoDBSettings
+from infrastructure.mongo.config import MongoDBConfig
 from infrastructure.mongo.client import MongoClient
 from infrastructure.mongo.repositories.product import ProductRepository
 from infrastructure.mongo.repositories.profile import UserProfileRepository
 
 
 def build_beta_db_service() -> DBService:
-    settings = MongoDBSettings()
+    settings = MongoDBConfig()
     mongo_client = MongoClient(settings)
     database = mongo_client.get_database()
 

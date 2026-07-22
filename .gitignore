@@ -1,7 +1,8 @@
 __pycache__
 
 .env
-venv
+.venv/
+.spark-venv/
 
 data/state
 data/static/GeoLite2*

@@ -4,18 +4,18 @@ from sqlalchemy import create_engine, Engine
 from sqlalchemy.orm import sessionmaker, Session
 from typing import Generator
 
-from infrastructure.config.settings import PostgresSettings
+from infrastructure.postgres.config import PostgresConfig
 
 
-def create_engine_from_settings(settings: PostgresSettings | None = None) -> Engine:
-    s = settings or PostgresSettings()
+def create_engine_from_settings(settings: PostgresConfig | None = None) -> Engine:
+    s = settings or PostgresConfig()
     engine = create_engine(
         s.url,
     )
     return engine
 
 
-def create_session_factory(settings: PostgresSettings | None = None) -> sessionmaker:
+def create_session_factory(settings: PostgresConfig | None = None) -> sessionmaker:
     engine = create_engine_from_settings(settings)
     return sessionmaker(bind=engine, expire_on_commit=False)
 

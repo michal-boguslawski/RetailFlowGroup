@@ -16,6 +16,10 @@ ids:
 state_path: data/state/beta_generator_state.json
 clock_drift_seconds: 100
 
+breaktime_config:
+  shape: 0.5
+  scale: 0.5
+
 pipeline_config:
   null_rates:
     rates:

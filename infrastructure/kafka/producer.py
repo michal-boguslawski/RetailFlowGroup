@@ -2,14 +2,14 @@ from confluent_kafka import Producer
 from logging import Logger
 
 from domain.enums import StoreId
-from infrastructure.config.settings import KafkaSettings
+from infrastructure.kafka.config import KafkaConfig
 
 
 logger = Logger(__file__)
 
 
 class KafkaProducerClient:
-    def __init__(self, kafka_settings: KafkaSettings, store_id: StoreId):
+    def __init__(self, kafka_settings: KafkaConfig, store_id: StoreId):
         self.kafka_settings = kafka_settings
         self.store_id = store_id
         self.producer = Producer(

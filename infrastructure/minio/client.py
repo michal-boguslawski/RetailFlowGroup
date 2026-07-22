@@ -1,15 +1,15 @@
 from boto3 import client
 from botocore.client import BaseClient
 
-from infrastructure.config.settings import S3Settings
+from infrastructure.minio.config import S3Config
 
 
 class MinioClient:
     def __init__(
         self,
-        minio_settings: S3Settings | None = None,
+        minio_settings: S3Config | None = None,
     ):
-        settings = minio_settings or S3Settings()
+        settings = minio_settings or S3Config()
 
         protocol = "https" if settings.secure else "http"
 

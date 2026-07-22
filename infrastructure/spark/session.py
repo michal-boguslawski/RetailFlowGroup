@@ -1,15 +1,15 @@
 from pyspark.sql import SparkSession
 
-from infrastructure.config.settings import SparkSettings
+from infrastructure.spark.config import SparkConfig
 
 
 def create_spark_session(
     app_name: str,
-    spark_settings: SparkSettings | None = None,
+    spark_settings: SparkConfig | None = None,
     shuffle_partitions: int = 2,
     packages: list[str] | None = None,
 ) -> SparkSession:
-    spark_settings = spark_settings or SparkSettings()
+    spark_settings = spark_settings or SparkConfig()
     builder = SparkSession.builder
 
     if not isinstance(builder, SparkSession.Builder):
@@ -22,6 +22,7 @@ def create_spark_session(
         builder
         .appName(app_name)
         .master(spark_settings.master_url)
+        .config("spark.jars.ivy", "/tmp/spark-home/.ivy2")
         .config(
             "spark.sql.shuffle.partitions",
             shuffle_partitions,

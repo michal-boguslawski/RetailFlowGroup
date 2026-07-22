@@ -1,11 +1,11 @@
 # bootstrap/notifications.py
-from infrastructure.config.settings import S3Settings
+from infrastructure.minio.config import S3Config
 from infrastructure.minio.client import MinioClient
 from infrastructure.lake.config import lake_config
 
 
 def initialize_landing_notifications() -> None:
-    settings = S3Settings()
+    settings = S3Config()
     minio_client = MinioClient(settings)
 
     minio_client.set_bucket_kafka_notification(

@@ -1,0 +1,23 @@
+name: alpha_orders_bronze
+
+job:
+  app_name: alpha_orders_bronze
+
+runtime:
+  spark:
+    shuffle_partitions: 2
+
+dataset:
+  domain: retail
+  system: alpha
+  entity: orders
+
+source:
+  type: kafka
+  options:
+    topic: alpha.orders
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

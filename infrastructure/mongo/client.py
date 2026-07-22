@@ -3,12 +3,12 @@
 from pymongo import MongoClient as PyMongoClient
 from pymongo.errors import ConnectionFailure
 
-from infrastructure.config.settings import MongoDBSettings
+from infrastructure.mongo.config import MongoDBConfig
 
 
 class MongoClient:
-    def __init__(self, settings: MongoDBSettings | None = None):
-        self.settings = settings or MongoDBSettings()
+    def __init__(self, settings: MongoDBConfig | None = None):
+        self.settings = settings or MongoDBConfig()
         self.client = PyMongoClient(
             self.settings.uri,
             serverSelectionTimeoutMS=5000

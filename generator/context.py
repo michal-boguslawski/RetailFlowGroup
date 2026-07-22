@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Protocol, Any
+from typing import Protocol, Any, Self
 
 from config.loader import load_config
 from config.models import OnStartBuildConfig, BreaktimeConfig, AsyncGenerationConfig
@@ -26,7 +26,7 @@ class StoreContext:
     pipeline: Pipeline | None = None
 
     @classmethod
-    def build(cls, builder: StoreBuilder, store_id: str) -> "StoreContext":
+    def build(cls, builder: StoreBuilder, store_id: str) -> Self:
         config = load_config(store_id)
 
         pipeline = build_pipeline(config.pipeline_config) if config.pipeline_config else None

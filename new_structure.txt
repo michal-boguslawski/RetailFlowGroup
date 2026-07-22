@@ -150,20 +150,31 @@ retailflow/
 │
 ├── ingestion/
 │   │
+│   ├── contracts/
+│   │   ├── ingestion.py
+│   │   ├── source.py
+│   │   ├── dataset.py
+│   │   └── metadata.py
+│   │
 │   ├── connectors/
+│   │   ├── base.py
 │   │   ├── kafka.py
 │   │   ├── jdbc.py
 │   │   ├── mongo.py
 │   │   └── files.py
 │   │
-│   ├── jobs/
-│   │   ├── kafka_to_bronze.py
-│   │   ├── postgres_to_bronze.py
-│   │   ├── mongo_to_bronze.py
-│   │   └── files_to_bronze.py
+│   ├── metadata/
+│   │   ├── enricher.py
+│   │   └── factories.py
 │   │
-│   └── writers/
-│       └── parquet.py
+│   ├── pipelines/
+│   │   └── source_to_bronze.py
+│   │
+│   ├── writers/
+│   │   ├── base.py
+│   │   └── parquet.py
+│   │
+│   └── runner.py
 │
 ├── lake/
 │   └── (documentation/contracts only)
