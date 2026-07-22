@@ -5,6 +5,7 @@ from infrastructure.config.paths import ENV_PATH
 class KafkaConfig(BaseSettings):
     bootstrap_servers: str = ""
     schema_registry_url: str = ""
+    schema_registry_docker: str = ""
     bootstrap_servers_docker: str = ""
 
     model_config = SettingsConfigDict(

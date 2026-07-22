@@ -1,9 +1,9 @@
-from dataclasses import dataclass
+from pydantic import BaseModel, Field
+from typing import Any
 
 
-@dataclass(frozen=True)
-class TargetContract:
+class TargetContract(BaseModel):
     layer: str
     format: str
     mode: str
-    options: dict
+    options: dict[str, Any] = Field(default_factory=dict)

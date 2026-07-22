@@ -1,14 +1,14 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 from ingestion.contracts.source import SourceContract
 from ingestion.contracts.dataset import DatasetContract
 from ingestion.contracts.target import TargetContract
 from ingestion.contracts.job import JobContract
 
-@dataclass(frozen=True)
-class IngestionContract:
+
+class IngestionContract(BaseModel):
     name: str
     job: JobContract
-    source: SourceContract
     dataset: DatasetContract
+    source: SourceContract
     target: TargetContract

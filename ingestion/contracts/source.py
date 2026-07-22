@@ -1,7 +1,7 @@
-from dataclasses import dataclass
+from pydantic import BaseModel, Field
+from typing import Any
+    
 
-
-@dataclass(frozen=True)
-class SourceContract:
+class SourceContract(BaseModel):
     type: str
-    options: dict
+    options: dict[str, Any] = Field(default_factory=dict)

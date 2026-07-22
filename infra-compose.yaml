@@ -182,6 +182,20 @@ services:
     networks:
       - retailflow
 
+  control-db:
+    image: postgres:17.5-alpine3.22
+    container_name: retailflow-control-db
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=control
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=control_db
+    volumes:
+      - control_pg_data:/var/lib/postgresql/data
+    networks:
+      - retailflow
+
   mongo-db:
     image: mongo:8.2.11
     container_name: mongo-db
@@ -297,9 +311,12 @@ services:
     container_name: spark-submit
     volumes:
       - ./:/opt/retailflow
-    command: tail -f /dev/null
+    command: >
+      tail -f /dev/null
     environment:
       HOME: /tmp/spark-home
+      VIRTUAL_ENV: /opt/.spark-venv
+      PATH: /opt/.spark-venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     depends_on:
       spark-master:
         condition: service_healthy
@@ -314,6 +331,7 @@ volumes:
   kafka_data_1:
   kafka_data_2:
   alpha_pg_data:
+  control_pg_data:
   minio_data:
 
 networks:

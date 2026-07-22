@@ -1,18 +1,24 @@
+from dataclasses import dataclass
 from pyspark.sql import DataFrame
 from pyspark.sql.streaming.query import StreamingQuery
+from typing import Callable
 
 
-class ParquetWriter:
-    @staticmethod
+@dataclass
+class LakeWriter:
+    format: str = "parquet"
+    mode: str = "append"
+
     def write_batch(
+        self,
         df: DataFrame,
-        target_path: str,
+        path: str,
         partition_cols: list[str] | None = None,
     ) -> None:
         writer = (
             df.write
-            .mode("append")
-            .format("parquet")
+            .format(self.format)
+            .mode(self.mode)
             .option(
                 "compression",
                 "snappy",
@@ -22,27 +28,31 @@ class ParquetWriter:
         if partition_cols:
             writer = writer.partitionBy(*partition_cols)
 
-        writer.save(target_path)
+        writer.save(path)
 
-    @staticmethod
     def write_stream(
+        self,
         df: DataFrame,
-        target_path: str,
+        path: str,
         checkpoint_path: str,
+        process_batch: Callable[[DataFrame, int], None],
+        trigger_interval: str = "1 minute",
         partition_cols: list[str] | None = None,
     ) -> StreamingQuery:
         writer = (
             df.writeStream
-            .format("parquet")
+            .foreachBatch(process_batch)
+            # .format(self.format)
             .option(
                 "checkpointLocation",
                 checkpoint_path,
             )
-            .outputMode("append")
+            .trigger(processingTime=trigger_interval)
+            # .outputMode(self.mode)
         )
 
         if partition_cols:
             writer = writer.partitionBy(*partition_cols)
         
-        return writer.start(target_path)
+        return writer.start()
         

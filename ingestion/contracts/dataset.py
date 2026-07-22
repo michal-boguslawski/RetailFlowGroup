@@ -1,6 +1,8 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
-@dataclass(frozen=True)
-class DatasetContract:
-    system: str
-    entity: str
+from domain.enums import StoreId, EntityType
+
+
+class DatasetContract(BaseModel):
+    store: StoreId
+    entity: EntityType

@@ -1,11 +1,13 @@
 from argparse import ArgumentParser
 
 from infrastructure.postgres.admin import PostgresAdminClient
+from infrastructure.postgres.config import AlphaPostgresConfig
 from infrastructure.postgres.session import create_engine_from_settings
 
 
 def reset_postgres(mode: str):
-    engine = create_engine_from_settings()
+    config = AlphaPostgresConfig()
+    engine = create_engine_from_settings(config)
     admin = PostgresAdminClient(engine)
 
     match mode:

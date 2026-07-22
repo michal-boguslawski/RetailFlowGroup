@@ -31,7 +31,8 @@ class KafkaConnector:
 
     def read_stream(self,
                     spark: SparkSession,
-                    topic: str) -> DataFrame:
+                    topic: str,
+                    starting_offsets: str = "earliest") -> DataFrame:
         df = (
             spark.readStream
             .format("kafka")
@@ -40,6 +41,7 @@ class KafkaConnector:
                 self._kafka_config.bootstrap_servers_docker
             )
             .option("subscribe", topic)
+            .option("startingOffsets", starting_offsets)
             .load()
         )
         return df
