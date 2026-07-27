@@ -1,6 +1,9 @@
 from pyspark.sql import SparkSession, DataFrame
+from typing import Sequence
 
+from domain.models.metadata import KafkaOffsetRecord
 from infrastructure.kafka.config import KafkaConfig
+from ingestion.utils import parse_offsets
 
 
 class KafkaConnector:
@@ -13,8 +16,11 @@ class KafkaConnector:
     def read_batch(self,
                    spark: SparkSession,
                    topic: str,
-                   starting_offsets: str = "earliest",
-                   ending_offsets: str = "latest") -> DataFrame:
+                   starting_offsets: str | Sequence[KafkaOffsetRecord] | None = None,
+                   ending_offsets: str | Sequence[KafkaOffsetRecord] | None = None) -> DataFrame:
+        _starting_offsets = parse_offsets(starting_offsets or "earliest", topic)
+        _ending_offsets = parse_offsets(ending_offsets or "latest", topic)
+
         df = (
             spark.read
             .format("kafka")
@@ -23,8 +29,8 @@ class KafkaConnector:
                 self._kafka_config.bootstrap_servers_docker
             )
             .option("subscribe", topic)
-            .option("startingOffsets", starting_offsets)
-            .option("endingOffsets", ending_offsets)
+            .option("startingOffsets", _starting_offsets)
+            .option("endingOffsets", _ending_offsets)
             .load()
         )
         return df
@@ -32,7 +38,9 @@ class KafkaConnector:
     def read_stream(self,
                     spark: SparkSession,
                     topic: str,
-                    starting_offsets: str = "earliest") -> DataFrame:
+                    starting_offsets: str | Sequence[KafkaOffsetRecord] | None = None,
+                    ) -> DataFrame:
+        _starting_offsets = parse_offsets(starting_offsets or "earliest", topic)
         df = (
             spark.readStream
             .format("kafka")
@@ -41,7 +49,7 @@ class KafkaConnector:
                 self._kafka_config.bootstrap_servers_docker
             )
             .option("subscribe", topic)
-            .option("startingOffsets", starting_offsets)
+            .option("startingOffsets", _starting_offsets)
             .load()
         )
         return df

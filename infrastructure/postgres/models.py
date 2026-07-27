@@ -12,6 +12,8 @@ from sqlalchemy import (
     Text,
     Numeric,
     ForeignKey,
+    func,
+    UniqueConstraint,
 )
 from typing import Optional, List
 
@@ -185,3 +187,46 @@ class AlphaOrderItemORM(Base):
     product: Mapped[AlphaProductORM] = relationship(
         back_populates="order_items"
     )
+
+
+
+class MetadataBase(DeclarativeBase):
+    pass
+
+
+class KafkaOffset(MetadataBase):
+    __tablename__ = "kafka_offsets"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    topic: Mapped[str] = mapped_column(String(128), primary_key=True)
+    partition: Mapped[int] = mapped_column(Integer, primary_key=True)
+    offset: Mapped[int] = mapped_column(Integer, nullable=False)
+    last_writer: Mapped[str] = mapped_column(String(128), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP(timezone=True),
+        server_default=func.now(),
+        onupdate=func.now(),
+        nullable=False,
+    )
+
+    __table_args__ = (
+        UniqueConstraint("topic", "partition", name="uq_kafka_offsets_topic_partition"),
+    )
+
+
+class PipelineRun(MetadataBase):
+    __tablename__ = "pipeline_runs"
+    
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    job_name: Mapped[str] = mapped_column(String(128), nullable=False)
+    status: Mapped[str] = mapped_column(String(32), nullable=False)
+    started_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+    finished_at: Mapped[datetime] = mapped_column(
+        TIMESTAMP(timezone=True),
+        nullable=True,
+    )
+    records_read: Mapped[int] = mapped_column(Integer, nullable=True, server_default=text("0"))

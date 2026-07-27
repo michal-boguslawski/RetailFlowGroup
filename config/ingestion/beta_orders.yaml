@@ -1,0 +1,19 @@
+name: beta_orders_bronze
+
+job:
+  app_name: beta_orders_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: beta
+  entity: orders
+
+source:
+  type: kafka
+  options:
+    topic: beta.orders
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

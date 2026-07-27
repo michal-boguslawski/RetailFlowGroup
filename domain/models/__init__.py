@@ -5,9 +5,10 @@ from domain.models.promotion import Promotion
 from domain.models.order_return import OrderReturn
 from domain.models.user import User, AlphaUser, BetaUser
 from domain.models.formatter import Formatter
+from domain.models.metadata import KafkaOffsetRecord
 
 
 __all__ = [
     "ClickstreamEvent", "Order", "OrderEvent", "Product", "User", "AlphaProduct", "OrderLineItem", "BetaProduct", "AlphaUser", "BetaUser",
-    "GammaOrder", "GammaProduct", "Promotion", "OrderReturn", "Formatter"
+    "GammaOrder", "GammaProduct", "Promotion", "OrderReturn", "Formatter", "KafkaOffsetRecord"
 ]

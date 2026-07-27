@@ -137,6 +137,11 @@ class ConditionDE(StrEnum):
     REFURBISHED = "D"
 
 
+class OffsetWriter(StrEnum):
+    BATCH = "batch"
+    STREAMING = "streaming"
+
+
 COUNTRY_CURRENCY_MAP = {
     Country.PL: Currency.PLN,
     Country.DE: Currency.EUR,

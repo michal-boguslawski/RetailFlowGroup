@@ -8,10 +8,12 @@ init-kafka-topics:
 	python -m bootstrap.kafka infrastructure
 
 reset-postgres-schema:
-	python -m bootstrap.postgres --mode schema
+	python -m bootstrap.postgres --mode schema --store alpha
+	python -m bootstrap.postgres --mode schema --store metadata
 
 truncate-postgres-tables:
-	python -m bootstrap.postgres --mode truncate
+	python -m bootstrap.postgres --mode truncate --store alpha
+	python -m bootstrap.postgres --mode truncate --store metadata
 
 bootstrap-users:
 	python -m bootstrap.users alpha --users 100
@@ -30,3 +32,13 @@ run-generator:
 	python -m generator.runner alpha
 	python -m generator.runner beta
 	python -m generator.runner gamma
+
+alpha-bronze-ingestion:
+	python -m ingestion.runner --contract alpha_orders --mode batch
+	python -m ingestion.runner --contract alpha_clickstreams --mode batch
+
+beta-bronze-ingestion:
+	python -m ingestion.runner --contract beta_orders --mode batch
+	python -m ingestion.runner --contract beta_clickstreams --mode batch
+
+bronze-ingestion: alpha-bronze-ingestion beta-bronze-ingestion

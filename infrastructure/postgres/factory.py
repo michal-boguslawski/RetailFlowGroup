@@ -5,6 +5,7 @@ from infrastructure.postgres.session import create_session_factory
 from infrastructure.postgres.repositories.user import AlphaUserRepository
 from infrastructure.postgres.repositories.order import AlphaOrderRepository
 from infrastructure.postgres.repositories.product import AlphaProductRepository
+from infrastructure.postgres.repositories.kafka_offset import KafkaOffsetRepository
 
 
 def build_alpha_db_service() -> DBService:
@@ -21,13 +22,13 @@ def build_alpha_db_service() -> DBService:
 
 
 def build_control_db_service() -> DBService:
-    settings = ControlPostgresConfig()
+    settings = ControlPostgresConfig(local=False)
     session_factory = create_session_factory(settings)
 
     repos = {
-        # "users": AlphaUserRepository(session_factory),
+        "kafka_offsets": KafkaOffsetRepository(session_factory),
         # "orders": AlphaOrderRepository(session_factory),
         # "products": AlphaProductRepository(session_factory),
     }
 
-    return DBService(repos)
+    return DBService(repos) # pyright: ignore[reportArgumentType]

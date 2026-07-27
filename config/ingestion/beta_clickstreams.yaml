@@ -1,0 +1,19 @@
+name: beta_clickstreams_bronze
+
+job:
+  app_name: beta_clickstreams_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: beta
+  entity: clickstreams
+
+source:
+  type: kafka
+  options:
+    topic: beta.clickstreams
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

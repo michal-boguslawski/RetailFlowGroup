@@ -21,6 +21,7 @@ class Repository(Protocol[T]):
         *args,
         **kwargs
     ) -> Sequence[T]: ...
+    def find_all(self, *args, **kwargs) -> Sequence[T]: ...
 
 
 class DBService:
@@ -71,3 +72,12 @@ class DBService:
     ) -> Sequence[GeneratedRecord]:
         repo = self._get_repo(entity_name)
         return repo.find_by_date(date_=date_, from_date=from_date, to_date=to_date, *args, **kwargs)
+
+    def get_all(
+        self, 
+        entity_name: str,
+        *args,
+        **kwargs
+    ) -> Sequence[GeneratedRecord] | None:
+        repo = self._get_repo(entity_name)
+        return repo.find_all(*args, **kwargs)

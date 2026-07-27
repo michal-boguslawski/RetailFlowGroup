@@ -19,10 +19,7 @@ class LakeWriter:
             df.write
             .format(self.format)
             .mode(self.mode)
-            .option(
-                "compression",
-                "snappy",
-            )
+            .option("compression", "snappy")
         )
 
         if partition_cols:
@@ -33,26 +30,21 @@ class LakeWriter:
     def write_stream(
         self,
         df: DataFrame,
-        path: str,
         checkpoint_path: str,
         process_batch: Callable[[DataFrame, int], None],
         trigger_interval: str = "1 minute",
         partition_cols: list[str] | None = None,
+        *args,
+        **kwargs
     ) -> StreamingQuery:
         writer = (
             df.writeStream
             .foreachBatch(process_batch)
-            # .format(self.format)
-            .option(
-                "checkpointLocation",
-                checkpoint_path,
-            )
+            .option("checkpointLocation", checkpoint_path)
             .trigger(processingTime=trigger_interval)
-            # .outputMode(self.mode)
         )
 
         if partition_cols:
             writer = writer.partitionBy(*partition_cols)
         
         return writer.start()
-        

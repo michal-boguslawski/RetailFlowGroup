@@ -1,0 +1,19 @@
+name: alpha_clickstreams_bronze
+
+job:
+  app_name: alpha_clickstreams_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: alpha
+  entity: clickstreams
+
+source:
+  type: kafka
+  options:
+    topic: alpha.clickstreams
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

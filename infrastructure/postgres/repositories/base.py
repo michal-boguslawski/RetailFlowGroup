@@ -50,3 +50,12 @@ class BaseRepository(ABC, Generic[ModelT, OrmT]):
     @abstractmethod
     def find_random(self, *args, **kwargs) -> Optional[ModelT]:
         pass
+
+    def find_all(self, *args, **kwargs) -> list[ModelT]:
+        orms = self._find_all_orm(*args, **kwargs)
+        return [self._orm_to_model_mapper(orm) for orm in orms]
+
+    def _find_all_orm(self, *args, **kwargs) -> list[OrmT]:
+        raise NotImplementedError(
+            f"{self.__class__.__name__} does not support find_all"
+        )

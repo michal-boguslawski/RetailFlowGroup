@@ -3,11 +3,14 @@ from infrastructure.config.paths import ENV_PATH
 
 
 class BasePostgresConfig(BaseSettings):
-    host: str =""
+    host: str = ""
+    host_docker: str = ""
     port: int = 5432
+    port_docker: int = 5432
     user: str = ""
     password: str = ""
     database: str = ""
+    local: bool = True
 
     model_config = SettingsConfigDict(
         env_file=ENV_PATH,
@@ -17,10 +20,12 @@ class BasePostgresConfig(BaseSettings):
 
     @property
     def url(self):
+        host = self.host if self.local else self.host_docker
+        port = self.port if self.local else self.port_docker
         return (
             f"postgresql+psycopg2://"
             f"{self.user}:{self.password}@"
-            f"{self.host}:{self.port}/{self.database}"
+            f"{host}:{port}/{self.database}"
         )
 
 
