@@ -1,0 +1,21 @@
+name: beta_user_profiles_bronze
+
+job:
+  app_name: beta_user_profiles_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: beta
+  entity: user_profiles
+
+source:
+  type: mongo
+  options:
+    dataset: beta_db
+    collection: user_profiles
+    date_field: createdAt
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

@@ -1,0 +1,21 @@
+name: beta_products_bronze
+
+job:
+  app_name: beta_products_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: beta
+  entity: products
+
+source:
+  type: mongo
+  options:
+    dataset: beta_db
+    collection: products
+    date_field: updatedAt
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

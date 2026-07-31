@@ -74,6 +74,7 @@ class EntityType(StrEnum):
     USERS        = "users"
     PRODUCTS     = "products"
     CLICKSTREAMS = "clickstreams"
+    USER_PROFILES = "user_profiles"
 
 
 class ExitEventType(StrEnum):

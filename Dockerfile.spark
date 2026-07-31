@@ -18,9 +18,14 @@ ENV UV_PROJECT_ENVIRONMENT=/opt/.spark-venv
 # Stage: resolve all jars (incl. transitive deps) via a throwaway spark-submit
 RUN echo "pass" > /tmp/noop.py && \
     /opt/spark/bin/spark-submit \
-    --packages org.apache.kafka:kafka-clients:4.0.0,org.apache.spark:spark-avro_2.13:4.2.0,org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0,org.apache.hadoop:hadoop-aws:3.4.1 \
-    --conf spark.jars.ivy=/tmp/ivy \
-    /tmp/noop.py
+      --packages \
+        org.apache.kafka:kafka-clients:4.0.0,\
+org.apache.spark:spark-avro_2.13:4.2.0,\
+org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0,\
+org.apache.hadoop:hadoop-aws:3.4.1,\
+org.mongodb.spark:mongo-spark-connector_2.13:11.1.0 \
+      --conf spark.jars.ivy=/tmp/ivy \
+      /tmp/noop.py
 
 # Copy every resolved jar from Ivy's cache into Spark's jars dir
 RUN find /tmp/ivy/jars -name "*.jar" -exec cp {} /opt/spark/jars/ \; && \

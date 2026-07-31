@@ -4,14 +4,15 @@ from pyspark.sql import SparkSession
 from pyspark.sql.streaming.query import StreamingQuery
 
 from ingestion.jobs.kafka_to_bronze import kafka_avro_bronze_job_builder
+from ingestion.jobs.mongo_to_bronze import mongo_bronze_job_builder
 from ingestion.contracts.ingestion import IngestionContract
 from infrastructure.core.db_service import DBService
 from ingestion.writers.base import Writer
 
 
 class IngestionJob(Protocol):
-    def run_batch(self, spark: SparkSession) -> None: ...
-    def run_streaming(self, spark: SparkSession) -> StreamingQuery: ...
+    def run_batch(self, spark: SparkSession, *args, **kwargs) -> None: ...
+    def run_streaming(self, spark: SparkSession, *args, **kwargs) -> StreamingQuery: ...
 
 
 class IngestionJobBuilder(Protocol):
@@ -19,7 +20,8 @@ class IngestionJobBuilder(Protocol):
 
 
 JOB_BUILDER_REGISTRY: dict[str, IngestionJobBuilder] = {
-    "kafka": kafka_avro_bronze_job_builder
+    "kafka": kafka_avro_bronze_job_builder,
+    "mongo": mongo_bronze_job_builder,
 }
 
 

@@ -120,7 +120,7 @@ class KafkaAvroBronzeIngestionJob:
             spark = SparkSession.builder.getOrCreate()
             self._delete_path(spark, checkpoint_path)
 
-    def run_batch(self, spark: SparkSession) -> None:
+    def run_batch(self, spark: SparkSession, *args, **kwargs) -> None:
         raw_df = self.extract_batch(spark)
         if raw_df.isEmpty():
             print("No new data, skipping offset commit")
@@ -128,7 +128,7 @@ class KafkaAvroBronzeIngestionJob:
         path = self._resolve_write_path(datetime.now().date())
         self._write_and_commit(raw_df, path, OffsetWriter.BATCH)
 
-    def run_streaming(self, spark: SparkSession) -> StreamingQuery:
+    def run_streaming(self, spark: SparkSession, *args, **kwargs) -> StreamingQuery:
         checkpoint_path = self._resolve_checkpoint_path()
         self._reset_checkpoint_if_needed(checkpoint_path)
         df = self.extract_streaming(spark)

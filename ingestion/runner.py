@@ -1,14 +1,12 @@
 import argparse
+from datetime import datetime, date
 
-from infrastructure.kafka.config import KafkaConfig
 from infrastructure.postgres.factory import build_control_db_service
 from infrastructure.spark.session import create_spark_session
-from ingestion.connectors.kafka import KafkaConnector
-from ingestion.connectors.avro import AvroConnector
 from ingestion.contracts.loader import load_contract
 from ingestion.writers.lake import LakeWriter
-from ingestion.jobs.kafka_to_bronze import KafkaAvroBronzeIngestionJob
 from ingestion.jobs.factory import build_job
+from ingestion.utils import parse_date_since
 
 
 
@@ -24,6 +22,13 @@ def parse_args() -> argparse.Namespace:
         choices=["batch", "streaming"],
         required=True,
         help="Ingestion mode",
+    )
+    parser.add_argument(
+        "--date_since",
+        type=parse_date_since,
+        help="Date since to run batch job (YYYY-MM-DD or ISO datetime)",
+        required=False,
+        default=None,
     )
     return parser.parse_args()
 
@@ -57,7 +62,7 @@ def main() -> None:
     query = None
     try:
         if args.mode == "batch":
-            job.run_batch(spark)
+            job.run_batch(spark, date_since=args.date_since)
         else:
             query = job.run_streaming(spark)
             query.awaitTermination()
