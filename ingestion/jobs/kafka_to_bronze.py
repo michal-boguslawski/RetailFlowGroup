@@ -87,6 +87,7 @@ class KafkaAvroBronzeIngestionJob:
         return resolver(
             store=self.ingestion_contract.dataset.store.value,
             entity=self.ingestion_contract.dataset.entity.value,
+            source=self.ingestion_contract.source.type,
             dt=run_date,
         )
 
@@ -126,7 +127,8 @@ class KafkaAvroBronzeIngestionJob:
             print("No new data, skipping offset commit")
             return
         path = self._resolve_write_path(datetime.now().date())
-        self._write_and_commit(raw_df, path, OffsetWriter.BATCH)
+        cnt = self._write_and_commit(raw_df, path, OffsetWriter.BATCH)
+        print(f"wrote {cnt} rows to {path}")
 
     def run_streaming(self, spark: SparkSession, *args, **kwargs) -> StreamingQuery:
         checkpoint_path = self._resolve_checkpoint_path()

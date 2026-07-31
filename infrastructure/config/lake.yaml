@@ -4,7 +4,7 @@ landing:
 
 bronze:
   bucket: retailflow-lake
-  path_template: "bronze/{store}/{entity}/dt={date}"
+  path_template: "bronze/{store}/{source}/{entity}/dt={date}"
   format: parquet
 
 silver:

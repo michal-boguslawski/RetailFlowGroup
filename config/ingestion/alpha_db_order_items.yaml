@@ -1,0 +1,19 @@
+name: alpha_db_order_items_bronze
+
+job:
+  app_name: alpha_db_order_items_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: alpha
+  entity: order_items
+
+source:
+  type: postgres
+  options:
+    table: order_items
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

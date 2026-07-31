@@ -5,6 +5,7 @@ from pyspark.sql.streaming.query import StreamingQuery
 
 from ingestion.jobs.kafka_to_bronze import kafka_avro_bronze_job_builder
 from ingestion.jobs.mongo_to_bronze import mongo_bronze_job_builder
+from ingestion.jobs.postgres_to_bronze import postgres_bronze_job_builder
 from ingestion.contracts.ingestion import IngestionContract
 from infrastructure.core.db_service import DBService
 from ingestion.writers.base import Writer
@@ -22,6 +23,7 @@ class IngestionJobBuilder(Protocol):
 JOB_BUILDER_REGISTRY: dict[str, IngestionJobBuilder] = {
     "kafka": kafka_avro_bronze_job_builder,
     "mongo": mongo_bronze_job_builder,
+    "postgres": postgres_bronze_job_builder,
 }
 
 

@@ -70,11 +70,12 @@ class AcquisitionChannel(StrEnum):
 
 
 class EntityType(StrEnum):
-    ORDERS       = "orders"
-    USERS        = "users"
-    PRODUCTS     = "products"
-    CLICKSTREAMS = "clickstreams"
+    ORDERS        = "orders"
+    USERS         = "users"
+    PRODUCTS      = "products"
+    CLICKSTREAMS  = "clickstreams"
     USER_PROFILES = "user_profiles"
+    ORDER_ITEMS   = "order_items"
 
 
 class ExitEventType(StrEnum):

@@ -3,7 +3,7 @@ from datetime import date
 from infrastructure.lake.config import lake_config
 
 
-def bronze_path(*, store: str, entity: str, dt: date) -> str:
+def bronze_path(*, store: str, entity: str, source: str, dt: date) -> str:
     layer = lake_config.bronze
 
     return (
@@ -11,6 +11,7 @@ def bronze_path(*, store: str, entity: str, dt: date) -> str:
         + layer.resolve(
             store=store,
             entity=entity,
+            source=source,
             date=dt.isoformat(),
         )
     )
@@ -24,6 +25,7 @@ def silver_path(*, entity: str, dt: date) -> str:
         + layer.resolve(
             store="",
             entity=entity,
+            source="",
             date=dt.isoformat(),
         )
     )
@@ -37,6 +39,7 @@ def checkpoint_path(*, store: str, entity: str) -> str:
         + layer.resolve(
             store=store,
             entity=entity,
+            source="",
             date="",
         )
     )

@@ -1,17 +1,17 @@
-name: alpha_orders_bronze
+name: alpha_kafka_clickstreams_bronze
 
 job:
-  app_name: alpha_orders_bronze
+  app_name: alpha_kafka_clickstreams_bronze
   shuffle_partitions: 2
 
 dataset:
   store: alpha
-  entity: orders
+  entity: clickstreams
 
 source:
   type: kafka
   options:
-    topic: alpha.orders
+    topic: alpha.clickstreams
 
 target:
   layer: bronze

@@ -1,17 +1,17 @@
-name: alpha_clickstreams_bronze
+name: beta_kafka_clickstreams_bronze
 
 job:
-  app_name: alpha_clickstreams_bronze
+  app_name: beta_kafka_clickstreams_bronze
   shuffle_partitions: 2
 
 dataset:
-  store: alpha
+  store: beta
   entity: clickstreams
 
 source:
   type: kafka
   options:
-    topic: alpha.clickstreams
+    topic: beta.clickstreams
 
 target:
   layer: bronze

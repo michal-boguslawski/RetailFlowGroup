@@ -1,50 +1,103 @@
+#############################################
+# Stage 1: Resolve Spark dependencies
+#############################################
+
+FROM apache/spark:4.2.0-scala2.13-java21-python3-ubuntu AS spark-deps
+
+USER root
+
+COPY spark-packages.txt /tmp/spark-packages.txt
+
+RUN --mount=type=cache,target=/root/.ivy2.5.2 \
+    echo "pass" > /tmp/noop.py && \
+    /opt/spark/bin/spark-submit \
+      --packages "$(paste -sd, /tmp/spark-packages.txt)" \
+      /tmp/noop.py && \
+    mkdir -p /spark-jars && \
+    cp /root/.ivy2.5.2/jars/*.jar /spark-jars/
+
+
+#############################################
+# Stage 2: Build final Spark image
+#############################################
+
 FROM apache/spark:4.2.0-scala2.13-java21-python3-ubuntu
 
 USER root
 
+
+#############################################
+# Python 3.13 installation
+#############################################
+
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends software-properties-common curl ca-certificates && \
+    apt-get install -y --no-install-recommends \
+        software-properties-common \
+        curl \
+        ca-certificates && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
-    apt-get install -y --no-install-recommends python3.13 python3.13-venv python3.13-dev && \
+    apt-get install -y --no-install-recommends \
+        python3.13 \
+        python3.13-venv \
+        python3.13-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY --from=ghcr.io/astral-sh/uv:0.11.29 /uv /uvx /usr/local/bin/
 
-# Venv lives OUTSIDE /opt/retailflow on purpose: that path is bind-mounted
-# over at runtime (see compose volumes), which would shadow anything built here.
+#############################################
+# Python dependency manager
+#############################################
+
+COPY --from=ghcr.io/astral-sh/uv:0.11.29 \
+    /uv \
+    /uvx \
+    /usr/local/bin/
+
+
 ENV UV_PROJECT_ENVIRONMENT=/opt/.spark-venv
 
-# Stage: resolve all jars (incl. transitive deps) via a throwaway spark-submit
-RUN echo "pass" > /tmp/noop.py && \
-    /opt/spark/bin/spark-submit \
-      --packages \
-        org.apache.kafka:kafka-clients:4.0.0,\
-org.apache.spark:spark-avro_2.13:4.2.0,\
-org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0,\
-org.apache.hadoop:hadoop-aws:3.4.1,\
-org.mongodb.spark:mongo-spark-connector_2.13:11.1.0 \
-      --conf spark.jars.ivy=/tmp/ivy \
-      /tmp/noop.py
 
-# Copy every resolved jar from Ivy's cache into Spark's jars dir
-RUN find /tmp/ivy/jars -name "*.jar" -exec cp {} /opt/spark/jars/ \; && \
-    test -f /opt/spark/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.13-4.2.0.jar && \
-    test -f /opt/spark/jars/org.apache.hadoop_hadoop-aws-3.4.1.jar && \
-    rm -rf /tmp/ivy && \
-    echo "Kafka/S3 jars present: $(ls /opt/spark/jars | grep -cE 'kafka|hadoop-aws|awssdk')"
+#############################################
+# Install Python dependencies
+#############################################
 
 WORKDIR /opt/retailflow-build
+
 COPY pyproject.toml uv.lock ./
 
-RUN uv sync --frozen --no-cache --python python3.13 && \
+RUN uv sync \
+      --frozen \
+      --no-cache \
+      --python python3.13 && \
     chown -R spark:spark /opt/.spark-venv
+
 
 ENV PYSPARK_PYTHON=/opt/.spark-venv/bin/python3.13
 ENV PYSPARK_DRIVER_PYTHON=/opt/.spark-venv/bin/python3.13
 
+
+#############################################
+# Spark runtime dirs
+#############################################
+
 RUN mkdir -p /tmp/spark-home/.ivy2 && \
     chown -R spark:spark /tmp/spark-home
 
+
+#############################################
+# Copy Spark dependencies
+#############################################
+
+COPY --from=spark-deps /spark-jars/*.jar /opt/spark/jars/
+
+ENV SPARK_EXTRA_CLASSPATH=/opt/spark/jars/*
+ENV SPARK_EXECUTOR_EXTRA_CLASSPATH=/opt/spark/jars/*
+
+
+#############################################
+# Application
+#############################################
+
 WORKDIR /opt/retailflow
+
 USER spark

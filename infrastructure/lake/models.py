@@ -3,7 +3,7 @@ from pydantic import BaseModel, ConfigDict, field_validator
 import re
 
 
-_ALLOWED_PLACEHOLDERS = {"store", "entity", "date"}
+_ALLOWED_PLACEHOLDERS = {"store", "entity", "source", "date"}
 _PLACEHOLDER_PATTERN = re.compile(r"\{(\w+)\}")
 
 
@@ -34,14 +34,14 @@ class LayerConfig(BucketConfig):
             )
         return v
 
-    def resolve(self, *, store: str, entity: str, date: str) -> str:
+    def resolve(self, *, store: str, entity: str, source: str, date: str) -> str:
         """Build a concrete object path for a given store/entity/date.
 
         Only pass what the template actually references; extra kwargs
         are ignored by str.format, missing ones raise KeyError early
         rather than writing to the wrong path silently.
         """
-        return self.path_template.format(store=store, entity=entity, date=date)
+        return self.path_template.format(store=store, entity=entity, source=source, date=date)
 
 
 class LakeConfig(BaseModel):

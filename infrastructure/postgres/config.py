@@ -28,6 +28,15 @@ class BasePostgresConfig(BaseSettings):
             f"{host}:{port}/{self.database}"
         )
 
+    @property
+    def jdbc_url(self):
+        host = self.host if self.local else self.host_docker
+        port = self.port if self.local else self.port_docker
+        return (
+            f"jdbc:postgresql://"
+            f"{host}:{port}/{self.database}"
+        )
+
 
 class AlphaPostgresConfig(BasePostgresConfig):
     model_config = SettingsConfigDict(

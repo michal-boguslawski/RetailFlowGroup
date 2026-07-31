@@ -34,12 +34,17 @@ run-generator:
 	python -m generator.runner gamma
 
 alpha-bronze-ingestion:
-	python -m ingestion.runner --contract alpha_orders --mode batch
-	python -m ingestion.runner --contract alpha_clickstreams --mode batch
+	python -m ingestion.runner --contract alpha_kafka_orders --mode batch
+	python -m ingestion.runner --contract alpha_kafka_clickstreams --mode batch
+	python -m ingestion.runner --contract alpha_db_users --mode batch
+	python -m ingestion.runner --contract alpha_db_products --mode batch
+	python -m ingestion.runner --contract alpha_db_orders --mode batch
+	python -m ingestion.runner --contract alpha_db_order_items --mode batch
 
 beta-bronze-ingestion:
-	python -m ingestion.runner --contract beta_orders --mode batch
-	python -m ingestion.runner --contract beta_clickstreams --mode batch
-	python -m ingestion.runner --contract beta_user_profiles --mode batch
+	python -m ingestion.runner --contract beta_kafka_orders --mode batch
+	python -m ingestion.runner --contract beta_kafka_clickstreams --mode batch
+	python -m ingestion.runner --contract beta_db_user_profiles --mode batch
+	python -m ingestion.runner --contract beta_db_products --mode batch
 
 bronze-ingestion: alpha-bronze-ingestion beta-bronze-ingestion

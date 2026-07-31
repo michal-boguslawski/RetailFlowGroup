@@ -1,0 +1,19 @@
+name: alpha_db_products_bronze
+
+job:
+  app_name: alpha_db_products_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: alpha
+  entity: products
+
+source:
+  type: postgres
+  options:
+    table: products
+
+target:
+  layer: bronze
+  format: parquet
+  mode: overwrite

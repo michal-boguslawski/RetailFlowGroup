@@ -15,7 +15,6 @@ class MongoConnector:
     def read_batch(
         self,
         spark: SparkSession,
-        database: str,
         collection: str,
         date_since: datetime | None = None,
         date_field: str = "updatedAt",
@@ -26,9 +25,8 @@ class MongoConnector:
 
             # MongoDB config
             .option("spark.mongodb.read.connection.uri", self._mongo_config.uri)
-            .option("spark.mongodb.write.connection.uri", self._mongo_config.uri)
 
-            .option("database", database)
+            .option("database", self._mongo_config.database)
             .option("collection", collection)
         )
 

@@ -1,0 +1,19 @@
+name: alpha_kafka_orders_bronze
+
+job:
+  app_name: alpha_kafka_orders_bronze
+  shuffle_partitions: 2
+
+dataset:
+  store: alpha
+  entity: orders
+
+source:
+  type: kafka
+  options:
+    topic: alpha.orders
+
+target:
+  layer: bronze
+  format: parquet
+  mode: append

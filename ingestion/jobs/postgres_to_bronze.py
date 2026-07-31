@@ -4,24 +4,24 @@ from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.streaming.query import StreamingQuery
 
 from infrastructure.core.db_service import DBService
-from infrastructure.mongo.config import MongoDBConfig
+from infrastructure.postgres.config import AlphaPostgresConfig
 from infrastructure.lake import LAKE_PATHS_RESOLVERS
-from ingestion.connectors.mongo import MongoConnector
+from ingestion.connectors.postgres import PostgresConnector
 from ingestion.contracts.ingestion import IngestionContract
 from ingestion.writers.base import Writer
 
 
 @dataclass
-class MongoBronzeIngestionJob:
+class PostgresBronzeIngestionJob:
     ingestion_contract: IngestionContract
-    mongo_connector: MongoConnector
+    postgres_connector: PostgresConnector
     writer: Writer
     control_db_service: DBService
 
     def extract_batch(self, spark: SparkSession, date_since: datetime | None = None) -> DataFrame:
-        return self.mongo_connector.read_batch(
+        return self.postgres_connector.read_batch(
             spark,
-            collection=self.ingestion_contract.source.options["collection"],
+            table=self.ingestion_contract.source.options["table"],
             date_since=date_since,
             date_field=str(self.ingestion_contract.source.options.get("date_field", None))
         )
@@ -49,19 +49,19 @@ class MongoBronzeIngestionJob:
         print(f"wrote {cnt} rows to {path}")
 
     def run_streaming(self, spark: SparkSession) -> StreamingQuery:
-        raise NotImplementedError("Streaming not implemented for Mongo")
+        raise NotImplementedError("Streaming not implemented for Postgres")
 
 
-def mongo_bronze_job_builder(
+def postgres_bronze_job_builder(
     ingestion_contract: IngestionContract,
     control_db_service: DBService,
     writer: Writer,
-) -> MongoBronzeIngestionJob:
-    mongo_config = MongoDBConfig(local=False)
-    mongo_connector = MongoConnector(mongo_config)
-    return MongoBronzeIngestionJob(
+) -> PostgresBronzeIngestionJob:
+    postgres_config = AlphaPostgresConfig(local=False)
+    postgres_connector = PostgresConnector(postgres_config)
+    return PostgresBronzeIngestionJob(
         ingestion_contract=ingestion_contract,
-        mongo_connector=mongo_connector,
+        postgres_connector=postgres_connector,
         writer=writer,
         control_db_service=control_db_service,
     )
