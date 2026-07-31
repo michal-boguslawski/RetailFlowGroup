@@ -2,15 +2,15 @@ from datetime import datetime
 import json
 from pyspark.sql import SparkSession, DataFrame
 
-from infrastructure.kafka.config import KafkaConfig
+from infrastructure.mongo.config import MongoDBConfig
 
 
 class MongoConnector:
     def __init__(
         self,
-        kafka_config: KafkaConfig | None = None
+        mongo_config: MongoDBConfig | None = None,
     ):
-        self._kafka_config = kafka_config or KafkaConfig()
+        self._mongo_config = mongo_config or MongoDBConfig(local=False)
 
     def read_batch(
         self,
@@ -23,6 +23,11 @@ class MongoConnector:
         reader = (
             spark.read
             .format("mongodb")
+
+            # MongoDB config
+            .option("spark.mongodb.read.connection.uri", self._mongo_config.uri)
+            .option("spark.mongodb.write.connection.uri", self._mongo_config.uri)
+
             .option("database", database)
             .option("collection", collection)
         )

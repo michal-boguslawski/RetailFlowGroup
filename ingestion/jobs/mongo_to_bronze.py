@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.streaming.query import StreamingQuery
 
 from infrastructure.core.db_service import DBService
-from infrastructure.kafka.config import KafkaConfig
+from infrastructure.mongo.config import MongoDBConfig
 from infrastructure.lake import LAKE_PATHS_RESOLVERS
 from ingestion.connectors.mongo import MongoConnector
 from ingestion.contracts.ingestion import IngestionContract
@@ -56,8 +56,8 @@ def mongo_bronze_job_builder(
     control_db_service: DBService,
     writer: Writer,
 ) -> MongoBronzeIngestionJob:
-    kafka_config = KafkaConfig()
-    mongo_connector = MongoConnector(kafka_config)
+    mongo_config = MongoDBConfig(local=False)
+    mongo_connector = MongoConnector(mongo_config)
     return MongoBronzeIngestionJob(
         ingestion_contract=ingestion_contract,
         mongo_connector=mongo_connector,

@@ -9,12 +9,10 @@ def create_spark_session(
     app_name: str,
     spark_settings: SparkConfig | None = None,
     s3_settings: S3Config | None = None,
-    mongo_settings: MongoDBConfig | None = None,
     shuffle_partitions: int = 2,
 ) -> SparkSession:
     spark_settings = spark_settings or SparkConfig()
     s3_settings = s3_settings or S3Config()
-    mongo_settings = mongo_settings or MongoDBConfig(local=False)
     builder = SparkSession.builder
 
     if not isinstance(builder, SparkSession.Builder):
@@ -40,10 +38,6 @@ def create_spark_session(
         .config("spark.hadoop.fs.s3a.connection.ssl.enabled", str(s3_settings.secure).lower())
         .config("spark.hadoop.fs.s3a.aws.credentials.provider",
                 "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
-
-        # MongoDB config
-        .config("spark.mongodb.read.connection.uri", mongo_settings.uri)
-        .config("spark.mongodb.write.connection.uri", mongo_settings.uri)
     )
 
     return builder.getOrCreate()
